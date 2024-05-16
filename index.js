@@ -4,6 +4,10 @@ import {name as appName} from './app.json';
 
 console.log("__DEV__", __DEV__);
 
+if (__DEV__) {
+  import ("./reactotron.config");
+}
+
 async function enableMocking() {
   if (!__DEV__) {
     return
