@@ -1,6 +1,6 @@
 import Reactotron, {
   ReactotronReactNative,
-  networking,
+  //networking,
 } from 'reactotron-react-native';
 
 declare global {
@@ -12,7 +12,7 @@ declare global {
 const reactotron = Reactotron.configure({
   name: 'FoodShopApp',
 })
-  .use(networking())
+  //  .use(networking())
   .useReactNative()
   .connect();
 

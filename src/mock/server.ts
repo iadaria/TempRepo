@@ -3,10 +3,10 @@ import { handlers } from './handlers';
 
 export const server = setupServer(...handlers);
 
-server.events.on('request:start', request => {
-  console.log({ request });
-  //console.log('Outgoing:', request.method, request.url, request.body);
-});
+// server.events.on('request:start', request => {
+//   console.log({ request });
+//   //console.log('Outgoing:', request.method, request.url, request.body);
+// });
 
 server.events.on('response:mocked', async ({ response, request }) => {
   const result: object = await response.json();

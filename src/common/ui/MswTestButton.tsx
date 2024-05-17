@@ -8,8 +8,14 @@ export function MswTestButton() {
     console.info('', { user });
   }
   return (
-    <Pressable onPress={fetchAndShowUser}>
-      <Text>MsvTestButton</Text>
+    <Pressable
+      onPress={fetchAndShowUser}
+      style={{
+        backgroundColor: 'green',
+        padding: 10,
+        alignSelf: 'center',
+      }}>
+      <Text style={{ fontSize: 20 }}>Msv Test Button</Text>
     </Pressable>
   );
 }

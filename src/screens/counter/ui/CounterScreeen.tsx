@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { Counter } from '../../../features/counter/Counter';
+import { Counter } from '../../../features/counterOld/Counter';
 
 /* type SectionProps = PropsWithChildren<{
     title: string;
