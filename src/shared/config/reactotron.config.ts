@@ -5,7 +5,7 @@ import Reactotron, {
 
 declare global {
   interface Console {
-    tron: ReactotronReactNative;
+    tron?: ReactotronReactNative;
   }
 }
 

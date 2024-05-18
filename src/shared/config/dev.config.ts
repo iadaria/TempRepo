@@ -1,13 +1,7 @@
-export async function enableMocking() {
-  if (__DEV__) {
-    await import('./msw.config');
-    const { server } = await import('@/mock/server');
-    server.listen();
-  }
-}
+// Wrong can't use it in low level
 
 export async function enableReactotron() {
-  if (!__DEV__) {
-    await import('@config/reactotron.config');
+  if (__DEV__) {
+    await import('./reactotron.config');
   }
 }
