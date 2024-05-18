@@ -5,8 +5,11 @@
     "typeRoots": ["./src/app/types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@config/*": ["src/shared/config/*"]
+      "@src/*": ["src/*"],
+      "@config/*": ["src/shared/config/*"],
+      "@mock/*": ["src/mock/*"],
+      "@features/*": ["src/features/*"],
+      "@screens/*": ["src/screens/*"]
     }
   }
 }

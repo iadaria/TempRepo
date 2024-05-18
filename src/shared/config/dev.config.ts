@@ -8,6 +8,6 @@ export async function enableMocking() {
 
 export async function enableReactotron() {
   if (!__DEV__) {
-    await import('@/shared/config/reactotron.config');
+    await import('@config/reactotron.config');
   }
 }
