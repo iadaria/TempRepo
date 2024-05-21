@@ -1,10 +1,17 @@
 import { API_BASE_URL } from '@env';
-import { http, HttpResponse } from 'msw';
+import { nanoid } from '@reduxjs/toolkit';
+import { http, HttpResponse, PathParams } from 'msw';
 
 console.log('handlers', { API_BASE_URL });
 
+let count = 0;
+let token = nanoid();
+
 export const handlers = [
-  http.get(`${API_BASE_URL}/user`, () => {
-    return HttpResponse.json({ name: 'John Maverick' });
+  // Login
+  http.post(`${API_BASE_URL}/login`, () => {
+    return HttpResponse.json({
+      data: { token, user: { firstName: 'Daria', lastName: 'Iakimova' } },
+    });
   }),
 ];
