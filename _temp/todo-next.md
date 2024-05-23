@@ -1,1 +1,6 @@
 - 400 error by intecepting
+- create account
+- login with Facebook
+- add server
+- add language
+- theme

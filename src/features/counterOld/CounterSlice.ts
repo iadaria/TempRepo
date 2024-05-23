@@ -35,6 +35,16 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload;
     },
+    /*  addTodo: {
+      reducer: (state, action: PayloadAction) => {
+        state.push(action.payload)
+      },
+      prepare: (text: string) => {
+        const id = nanoid()
+        return { payload: { value: 4, status: 'loading'}}
+        return { payload: { id, text } }
+      },
+   },*/
   },
   extraReducers: builder => {
     builder
@@ -44,6 +54,9 @@ export const counterSlice = createSlice({
       .addCase(incrementAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         state.value = action.payload;
+      })
+      .addDefaultCase(() => {
+        //nothin doing
       });
   },
 });
