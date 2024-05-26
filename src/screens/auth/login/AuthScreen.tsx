@@ -1,45 +1,82 @@
 import {
-  Image,
   Pressable,
   StyleSheet,
   Text,
   TextInput,
   View,
+  Image,
+  ImageBackground,
 } from 'react-native';
 import React from 'react';
 import { Icons, Images } from '@src/shared/assets';
-import { Google } from '@src/shared/assets/icons';
+import Svg, {
+  Defs,
+  Ellipse,
+  LinearGradient,
+  Rect,
+  Stop,
+} from 'react-native-svg';
+import { Logo, Pattern } from '@src/shared/assets/images';
+
+const Background = ({ children }: any) => {
+  const FROM_COLOR = 'rgba(255, 255, 255, 0.02)';
+  const TO_COLOR = '#0D0D0D';
+  return (
+    <ImageBackground source={Pattern} style={styles.logo}>
+      <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
+        <Defs>
+          <LinearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <Stop offset="0" stopColor={FROM_COLOR} stopOpacity={0.001} />
+            <Stop offset="1" stopColor={TO_COLOR} stopOpacity={1} />
+          </LinearGradient>
+        </Defs>
+        <Rect width="100%" height="100%" fill="url(#grad)" />
+      </Svg>
+      <Image source={Logo} style={{ marginTop: 47 }} />
+      <Text style={styles.logoTitle}>FoodNinja</Text>
+      <Text style={styles.title}>Deliever Favorite Food</Text>
+    </ImageBackground>
+  );
+};
 
 export const AuthScreen = () => {
   return (
     <View style={styles.container}>
-      {/* <Image source={Pattern} /> */}
-      <View style={{ flex: 1 }}>
-        <Image source={Images.Logo} />
+      <Background>
+        <Image source={Logo} />
         <Text style={styles.logoTitle}>FoodNinja</Text>
         <Text style={styles.title}>Deliever Favorite Food</Text>
-      </View>
+      </Background>
 
-      <View style={styles.group}>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="rgba(255, 255, 255, 0.3)"
-        />
-        <View style={{ height: 12 }} />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="rgba(255, 255, 255, 0.3)"
-        />
+      <View style={{ flex: 1, rowGap: 21, paddingHorizontal: 25 }}>
+        <View style={styles.group}>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="rgba(255, 255, 255, 0.3)"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="rgba(255, 255, 255, 0.3)"
+          />
+        </View>
         <Text style={styles.text}>Or Continue With</Text>
-
-        <View>
-          <Pressable>
-            <Google />
-            <Text style={styles.text}>Google</Text>
+        <View style={styles.row}>
+          <Pressable style={styles.button}>
+            <Icons.Facebook />
+            <Text style={styles.buttonText}>Facebook</Text>
+          </Pressable>
+          <Pressable style={styles.button}>
+            <Icons.Google />
+            <Text style={styles.buttonText}>Google</Text>
           </Pressable>
         </View>
+        <Text style={styles.text}>Forgot Your Password?</Text>
+
+        <Pressable style={styles.ownButton}>
+          <Text style={styles.buttonText}>Login</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -47,16 +84,11 @@ export const AuthScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // screen: show figma color
-    backgroundColor: '#0D0D0D', // 1
-    // screen: show figma margin
-    // marginHorizontal: 25, // 2
-    // paddingHorizontal: 25,
     flex: 1,
-    paddingHorizontal: 25,
-    //flexDirection: 'column',
-    //alignItems: 'center',
+    backgroundColor: '#0D0D0D', // 1
+    //paddingHorizontal: 25,
   },
+  logo: { flex: 1, alignItems: 'center' },
   logoTitle: {
     fontFamily: 'Viga-Regular',
     color: '#53E88B',
@@ -70,16 +102,16 @@ const styles = StyleSheet.create({
     fontSize: 13,
     letterSpacing: 1,
   },
-  group: { flex: 1 },
+  group: { rowGap: 12 },
   // http://hex2rgba.devoth.com/
   input: {
-    borderRadius: 15,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     height: 57,
     paddingVertical: 21,
     paddingHorizontal: 28,
     color: 'white',
     fontFamily: 'Inter-Regular',
+    borderRadius: 15,
   },
   //https://freefontsfamily.net/benton-sans-font/
   text: {
@@ -87,7 +119,40 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Medium',
     borderWidth: 1,
     borderColor: 'red',
-    marginVertical: 20,
+    //marginVertical: 20,
+    textAlign: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontFamily: 'Inter-SemiBold',
+    fontSize: 14,
+    letterSpacing: 0.5,
+    borderColor: 'red',
+    borderWidth: 1,
+    alignSelf: 'center',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'row',
+    columnGap: 21,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    height: 57,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15,
+  },
+  row: {
+    flexDirection: 'row',
+    columnGap: 21,
+  },
+  ownButton: {
+    height: 57,
+    alignSelf: 'center',
+    justifyContent: 'center',
+
+    borderRadius: 15,
+    width: '40%',
+    backgroundColor: '#15BE77',
   },
 });
 // Dimentions?
@@ -119,4 +184,7 @@ const styles = StyleSheet.create({
  * - declare *.svg
  * - install react-native-svg
  * - add .svgrcc file
+ * - recompile and show svg
+ * - change facebook svg fill property
  */
+/* Rectangle */
