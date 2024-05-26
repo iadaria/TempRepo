@@ -1,4 +1,2 @@
-import Logo from './logo.png';
-import Pattern from './pattern.png';
-
-export { Logo, Pattern };
+export { default as Logo } from './logo.png';
+export { default as Pattern } from './pattern.png';
