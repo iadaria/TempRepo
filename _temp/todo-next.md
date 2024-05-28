@@ -1,6 +1,8 @@
 - 400 error by intecepting
 - create account
 - login with Facebook
-- add server
+- build server in (NodeJS or NestJS)
 - add language
 - theme
+- detect internet
+- story book
