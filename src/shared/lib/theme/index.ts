@@ -1,7 +1,7 @@
 import { Appearance } from 'react-native';
-import { colors } from './colors.const';
+import { colorPallete } from './colors';
 
 //const colorScheme = Appearance.getColorScheme() || 'dark';
-const colorScheme = 'light';
+export const colorScheme = 'light';
 
-export default colors[colorScheme];
+export const colors = colorPallete[colorScheme];

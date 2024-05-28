@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import { Icons } from '@src/shared/assets';
-import theme from '@src/shared/lib/theme';
+
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
+import { colors } from '@src/shared/lib/theme';
 
 export const AuthScreen = () => {
   return (
@@ -22,12 +23,12 @@ export const AuthScreen = () => {
           <TextInput
             style={s.input}
             placeholder="Email"
-            placeholderTextColor={theme.placeholder}
+            placeholderTextColor={colors.placeholder}
           />
           <TextInput
             style={s.input}
             placeholder="Password"
-            placeholderTextColor={theme.placeholder}
+            placeholderTextColor={colors.placeholder}
           />
         </View>
         <Text style={s.text}>Or Continue With</Text>
@@ -58,5 +59,5 @@ export const AuthScreen = () => {
  *
  * 2 Replace styles to s
  *
- *
+ * 3 As we use Logo in two/few places Let's move it into separate shared component
  */

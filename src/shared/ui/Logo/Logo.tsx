@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import React from 'react';
-import theme from '@src/shared/lib/theme';
 import Svg, {
   Defs,
   LinearGradient,
@@ -11,9 +10,10 @@ import Svg, {
 
 import { styles as s } from './LogoStyle';
 import { LogoIcon, Pattern } from '@src/shared/assets/images';
+import { colors } from '@src/shared/lib/theme';
 
 export const Logo = () => {
-  const COLOR = theme.primary;
+  const COLOR = colors.primary;
   return (
     <View style={s.logo}>
       <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>

@@ -1,10 +1,10 @@
-import theme from '@src/shared/lib/theme';
+import { colors } from '@src/shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.primary, // 1
+    backgroundColor: colors.primary, // 1
     //paddingHorizontal: 25,
   },
   interface: {
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   group: { rowGap: 12 },
   // http://hex2rgba.devoth.com/
   input: {
-    backgroundColor: theme.input,
+    backgroundColor: colors.input,
     height: 57,
     paddingVertical: 21,
     paddingHorizontal: 28,
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     columnGap: 21,
-    backgroundColor: theme.input,
+    backgroundColor: colors.input,
     height: 57,
     alignItems: 'center',
     justifyContent: 'center',
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
 
     borderRadius: 15,
     width: '40%',
-    backgroundColor: theme.secondary,
+    backgroundColor: colors.secondary,
     marginTop: 36 - 21,
   },
 });
