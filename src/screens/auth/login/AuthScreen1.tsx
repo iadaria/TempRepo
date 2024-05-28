@@ -21,8 +21,7 @@ import Svg, {
 import { Logo, Pattern } from '@src/shared/assets/images';
 
 const Background = ({ children }: { children: React.JSX.Element[] }) => {
-  const FROM_COLOR = 'rgba(255, 255, 255, 0.02)';
-  const TO_COLOR = '#0D0D0D';
+  const COLOR = '#0D0D0D';
   return (
     // Start as View
     /**
@@ -44,9 +43,15 @@ const Background = ({ children }: { children: React.JSX.Element[] }) => {
           href={require('./pattern.png')}
         />
         <Defs>
-          <LinearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <Stop offset="0" stopColor={FROM_COLOR} stopOpacity={0.001} />
-            <Stop offset="1" stopColor={TO_COLOR} stopOpacity={1} />
+          <LinearGradient
+            id="grad"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+            gradientUnits="userSpaceOnUse">
+            <Stop offset="0" stopColor={COLOR} stopOpacity={0} />
+            <Stop offset="1" stopColor={COLOR} stopOpacity={1} />
           </LinearGradient>
         </Defs>
         <Rect width="100%" height="100%" fill="url(#grad)" />
@@ -125,10 +130,8 @@ const styles = StyleSheet.create({
     flex: 1,
     rowGap: 21,
     paddingHorizontal: 25,
-    borderWidth: 1,
-    borderColor: 'blue',
   },
-  group: { rowGap: 12, borderWidth: 1, borderColor: 'red' },
+  group: { rowGap: 12 },
   // http://hex2rgba.devoth.com/
   input: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
