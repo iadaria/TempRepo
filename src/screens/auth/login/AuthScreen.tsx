@@ -60,4 +60,7 @@ export const AuthScreen = () => {
  * 2 Replace styles to s
  *
  * 3 As we use Logo in two/few places Let's move it into separate shared component
+ *
+ * 4 Use React Hook Form
+ * - npm install react-hook-form
  */

@@ -1,16 +1,15 @@
+import { Icons } from '@src/shared/assets';
+import React from 'react';
 import {
+  Image,
   Pressable,
+  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   View,
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  StatusBar,
 } from 'react-native';
-import React from 'react';
-import { Icons } from '@src/shared/assets';
 import Svg, {
   Defs,
   LinearGradient,
@@ -18,7 +17,6 @@ import Svg, {
   Stop,
   Image as SvgImage,
 } from 'react-native-svg';
-import { Logo, Pattern } from '@src/shared/assets/images';
 
 const Background = ({ children }: { children: React.JSX.Element[] }) => {
   const COLOR = '#0D0D0D';
