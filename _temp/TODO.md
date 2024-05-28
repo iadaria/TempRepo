@@ -1,1 +1,3 @@
-Find msw.polyfills.js in github.com
+- how to do the theme?
+- add status bar
+- how does it work on ios
