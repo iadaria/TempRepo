@@ -1,13 +1,12 @@
 import {
   Pressable,
-  sheet,
   Text,
   TextInput,
   View,
   Image,
-  ImageBackground,
   SafeAreaView,
   StatusBar,
+  StyleSheet,
 } from 'react-native';
 import React from 'react';
 import { Icons } from '@src/shared/assets';
@@ -18,7 +17,7 @@ import Svg, {
   Stop,
   Image as SvgImage,
 } from 'react-native-svg';
-import { Logo, Pattern } from '@src/shared/assets/images';
+import { Logo } from '@src/shared/assets/images';
 import { styles as s } from './AuthScreenStyle';
 import theme from '@src/shared/lib/theme';
 
@@ -27,7 +26,7 @@ export const AuthScreen = () => {
     const COLOR = theme.primary;
     return (
       <View style={s.logo}>
-        <Svg height="100%" width="100%" style={sheet.absoluteFillObject}>
+        <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
           <SvgImage
             x="0%"
             y="0%"

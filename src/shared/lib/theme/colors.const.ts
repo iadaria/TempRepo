@@ -4,7 +4,7 @@ export const colors = {
     secondary: '#15BE77',
     text: '#FFFFFF',
     placeholder: 'rgba(255, 255, 255, 0.3)',
-    input: 'rgba(13, 13, 13, 0.1)',
+    input: 'rgba(255, 255, 255, 0.1)',
     red: {
       50: '#fef2f2',
       100: '#fee2e2',

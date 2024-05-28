@@ -72,7 +72,7 @@ export const styles = StyleSheet.create({
 
     borderRadius: 15,
     width: '40%',
-    backgroundColor: theme.primary,
+    backgroundColor: theme.secondary,
     marginTop: 36 - 21,
   },
 });
