@@ -8,7 +8,6 @@ let count = 0;
 let token = nanoid();
 
 export const handlers = [
-  // Login
   http.post(`${API_BASE_URL}/login`, () => {
     return HttpResponse.json({
       data: { token, user: { firstName: 'Daria', lastName: 'Iakimova' } },
