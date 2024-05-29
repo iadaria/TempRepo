@@ -1,7 +1,12 @@
+export enum TypeColor {
+  Prime = 'primary',
+  Second = 'secondary',
+}
+
 export const colorPallete = {
   light: {
-    primary: '#0D0D0D',
-    secondary: '#15BE77',
+    [TypeColor.Prime]: '#0D0D0D',
+    [TypeColor.Second]: '#15BE77',
     text: '#FFFFFF',
     placeholder: 'rgba(255, 255, 255, 0.3)',
     input: 'rgba(255, 255, 255, 0.1)',

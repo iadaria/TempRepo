@@ -1,7 +1,8 @@
 import { Icons } from '@src/shared/assets';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import {
   Pressable,
+  PressableProps,
   SafeAreaView,
   StatusBar,
   Text,
@@ -12,13 +13,13 @@ import {
 import { colors } from '@src/shared/lib/theme';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
+import { TypeColor } from '@src/shared/lib/theme/colors';
 
-interface ButtonProps {
-  type?: 'primary' | 'secondary';
-  children: ReactNode;
+interface ButtonProps extends PressableProps {
+  type?: TypeColor;
 }
 
-const Button = ({ children, type = 'primary' }: ButtonProps) => {
+const Button = ({ children, type = TypeColor.Prime }: ButtonProps) => {
   return <Pressable style={s.button}>{children}</Pressable>;
 };
 
@@ -81,7 +82,8 @@ export const AuthScreen = () => {
  *
  * - Lets create common Input component
  * - Create commpon Button component
- *
+ * Refactor button 1
+ * Then move into separate file: Button.tsx & ButtonStyle.ts
  *
  * 4 Use React Hook Form
  * - npm install react-hook-form
