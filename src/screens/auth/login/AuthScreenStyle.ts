@@ -37,16 +37,6 @@ export const styles = StyleSheet.create({
     letterSpacing: 0.5,
     alignSelf: 'center',
   },
-  button: {
-    flex: 1,
-    flexDirection: 'row',
-    columnGap: 21, // if icon
-    backgroundColor: colors.input,
-    height: 57,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 15,
-  },
   row: {
     flexDirection: 'row',
     columnGap: 21,

@@ -2,7 +2,6 @@ import { Icons } from '@src/shared/assets';
 import React from 'react';
 import {
   Pressable,
-  PressableProps,
   SafeAreaView,
   StatusBar,
   Text,
@@ -13,15 +12,7 @@ import {
 import { colors } from '@src/shared/lib/theme';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
-import { TypeColor } from '@src/shared/lib/theme/colors';
-
-interface ButtonProps extends PressableProps {
-  type?: TypeColor;
-}
-
-const Button = ({ children, type = TypeColor.Prime }: ButtonProps) => {
-  return <Pressable style={s.button}>{children}</Pressable>;
-};
+import { Button } from '@src/shared/ui/Button';
 
 interface InputProps {
   placeholder?: string;
@@ -62,9 +53,9 @@ export const AuthScreen = () => {
         <Text style={s.text}>Forgot Your Password?</Text>
 
         <View style={s.row}>
-          <Pressable style={s.ownButton}>
+          <Button>
             <Text style={s.buttonText}>Login</Text>
-          </Pressable>
+          </Button>
         </View>
       </View>
     </SafeAreaView>
@@ -84,6 +75,9 @@ export const AuthScreen = () => {
  * - Create commpon Button component
  * Refactor button 1
  * Then move into separate file: Button.tsx & ButtonStyle.ts
+ * Move styles of button
+ * Replace the first button
+ * Then replace the second button
  *
  * 4 Use React Hook Form
  * - npm install react-hook-form
