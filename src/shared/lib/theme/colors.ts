@@ -3,6 +3,11 @@ export enum TypeColor {
   Second = 'secondary',
 }
 
+export enum Size {
+  default = 1,
+  small = 0.4,
+}
+
 export const colorPallete = {
   light: {
     [TypeColor.Prime]: '#0D0D0D',

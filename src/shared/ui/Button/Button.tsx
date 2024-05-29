@@ -1,12 +1,26 @@
-import { TypeColor } from '@src/shared/lib/theme/colors';
-import { Pressable, PressableProps } from 'react-native';
-import { styles as s } from './ButtonStyle';
+import { Pressable, PressableProps, ViewStyle } from 'react-native';
+import { styles } from './ButtonStyle';
+import { SvgProps } from 'react-native-svg';
 
 interface ButtonProps extends PressableProps {
-  type?: TypeColor;
-  [TypeColor.Second]: boolean;
+  secondary?: boolean;
+  icon?: React.FC<SvgProps>;
 }
 
-export const Button = ({ children, type = TypeColor.Prime }: ButtonProps) => {
-  return <Pressable style={s.button}>{children}</Pressable>;
+export const Button = ({ children, secondary, icon }: ButtonProps) => {
+  const style = {
+    ...styles.button,
+    ...(secondary && styles.secondary),
+  };
+
+  console.log(JSON.stringify(style, null, 4));
+
+  return (
+    <Pressable style={style}>
+      <>
+        {icon && icon({})}
+        {children}
+      </>
+    </Pressable>
+  );
 };

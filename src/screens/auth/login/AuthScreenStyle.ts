@@ -42,15 +42,4 @@ export const styles = StyleSheet.create({
     columnGap: 21,
     justifyContent: 'center',
   },
-  ownButton: {
-    flex: 0.4,
-
-    height: 57,
-    alignSelf: 'center',
-    justifyContent: 'center',
-
-    borderRadius: 15,
-
-    backgroundColor: colors.secondary,
-  },
 });

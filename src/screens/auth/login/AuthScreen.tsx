@@ -1,18 +1,12 @@
 import { Icons } from '@src/shared/assets';
 import React from 'react';
-import {
-  Pressable,
-  SafeAreaView,
-  StatusBar,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { SafeAreaView, StatusBar, Text, TextInput, View } from 'react-native';
 
 import { colors } from '@src/shared/lib/theme';
+import { Button } from '@src/shared/ui/Button';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
-import { Button } from '@src/shared/ui/Button';
+import { Facebook } from '@src/shared/assets/icons';
 
 interface InputProps {
   placeholder?: string;
@@ -53,7 +47,7 @@ export const AuthScreen = () => {
         <Text style={s.text}>Forgot Your Password?</Text>
 
         <View style={s.row}>
-          <Button>
+          <Button secondary>
             <Text style={s.buttonText}>Login</Text>
           </Button>
         </View>

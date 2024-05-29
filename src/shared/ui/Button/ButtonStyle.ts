@@ -1,4 +1,5 @@
 import { colors } from '@src/shared/lib/theme';
+import { TypeColor } from '@src/shared/lib/theme/colors';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -11,5 +12,8 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.interactive,
     height: 57,
     borderRadius: 15,
+  },
+  secondary: {
+    backgroundColor: colors[TypeColor.Second],
   },
 });
