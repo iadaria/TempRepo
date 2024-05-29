@@ -1,17 +1,40 @@
+import { Icons } from '@src/shared/assets';
+import React, { ReactNode } from 'react';
 import {
   Pressable,
+  SafeAreaView,
+  StatusBar,
   Text,
   TextInput,
   View,
-  SafeAreaView,
-  StatusBar,
 } from 'react-native';
-import React from 'react';
-import { Icons } from '@src/shared/assets';
 
+import { colors } from '@src/shared/lib/theme';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
-import { colors } from '@src/shared/lib/theme';
+
+interface ButtonProps {
+  type?: 'primary' | 'secondary';
+  children: ReactNode;
+}
+
+const Button = ({ children, type = 'primary' }: ButtonProps) => {
+  return <Pressable style={s.button}>{children}</Pressable>;
+};
+
+interface InputProps {
+  placeholder?: string;
+}
+
+const Input = ({ placeholder }: InputProps) => {
+  return (
+    <TextInput
+      style={s.input}
+      placeholder={placeholder}
+      placeholderTextColor={colors.placeholder}
+    />
+  );
+};
 
 export const AuthScreen = () => {
   return (
@@ -20,33 +43,28 @@ export const AuthScreen = () => {
       <Logo />
       <View style={s.interface}>
         <View style={s.group}>
-          <TextInput
-            style={s.input}
-            placeholder="Email"
-            placeholderTextColor={colors.placeholder}
-          />
-          <TextInput
-            style={s.input}
-            placeholder="Password"
-            placeholderTextColor={colors.placeholder}
-          />
+          <Input placeholder="Email" />
+          <Input placeholder="Password" />
         </View>
         <Text style={s.text}>Or Continue With</Text>
         <View style={s.row}>
-          <Pressable style={s.button}>
+          <Button>
             <Icons.Facebook />
             <Text style={s.buttonText}>Facebook</Text>
-          </Pressable>
-          <Pressable style={s.button}>
+          </Button>
+
+          <Button>
             <Icons.Google />
             <Text style={s.buttonText}>Google</Text>
-          </Pressable>
+          </Button>
         </View>
         <Text style={s.text}>Forgot Your Password?</Text>
 
-        <Pressable style={s.ownButton}>
-          <Text style={s.buttonText}>Login</Text>
-        </Pressable>
+        <View style={s.row}>
+          <Pressable style={s.ownButton}>
+            <Text style={s.buttonText}>Login</Text>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -60,6 +78,10 @@ export const AuthScreen = () => {
  * 2 Replace styles to s
  *
  * 3 As we use Logo in two/few places Let's move it into separate shared component
+ *
+ * - Lets create common Input component
+ * - Create commpon Button component
+ *
  *
  * 4 Use React Hook Form
  * - npm install react-hook-form

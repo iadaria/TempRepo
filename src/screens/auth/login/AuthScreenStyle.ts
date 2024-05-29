@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
   button: {
     flex: 1,
     flexDirection: 'row',
-    columnGap: 21,
+    columnGap: 21, // if icon
     backgroundColor: colors.input,
     height: 57,
     alignItems: 'center',
@@ -50,15 +50,17 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     columnGap: 21,
+    justifyContent: 'center',
   },
   ownButton: {
+    flex: 0.4,
+
     height: 57,
     alignSelf: 'center',
     justifyContent: 'center',
 
     borderRadius: 15,
-    width: '40%',
+
     backgroundColor: colors.secondary,
-    marginTop: 36 - 21,
   },
 });
