@@ -1,21 +1,37 @@
 import { Icons } from '@src/shared/assets';
 import React from 'react';
-import { SafeAreaView, StatusBar, Text, TextInput, View } from 'react-native';
+import {
+  Alert,
+  SafeAreaView,
+  StatusBar,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 import { colors } from '@src/shared/lib/theme';
 import { Button } from '@src/shared/ui/Button';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
-import { Facebook } from '@src/shared/assets/icons';
+import { Control, FieldValues, useController, useForm } from 'react-hook-form';
 
 interface InputProps {
   placeholder?: string;
+  name: string;
+  control: Control<FieldValues, any>;
 }
 
-const Input = ({ placeholder }: InputProps) => {
+const Input = ({ placeholder, name, control }: InputProps) => {
+  const { field } = useController({
+    control,
+    name,
+  });
   return (
     <TextInput
       style={s.input}
+      value={field.value}
+      onChangeText={field.onChange}
+      onBlur={field.onBlur}
       placeholder={placeholder}
       placeholderTextColor={colors.placeholder}
     />
@@ -23,14 +39,18 @@ const Input = ({ placeholder }: InputProps) => {
 };
 
 export const AuthScreen = () => {
+  const { control, handleSubmit } = useForm();
+
+  const onLogin = (data: any) => console.log({ data });
+
   return (
     <SafeAreaView style={s.container}>
       <StatusBar backgroundColor={'transparent'} translucent />
       <Logo />
       <View style={s.interface}>
         <View style={s.group}>
-          <Input placeholder="Email" />
-          <Input placeholder="Password" />
+          <Input name="email" control={control} placeholder="Email" />
+          <Input name="password" control={control} placeholder="Password" />
         </View>
         <Text style={s.text}>Or Continue With</Text>
         <View style={s.row}>
@@ -47,7 +67,7 @@ export const AuthScreen = () => {
         <Text style={s.text}>Forgot Your Password?</Text>
 
         <View style={s.row}>
-          <Button secondary>
+          <Button secondary onPress={handleSubmit(onLogin)}>
             <Text style={s.buttonText}>Login</Text>
           </Button>
         </View>
@@ -65,7 +85,6 @@ export const AuthScreen = () => {
  *
  * 3 As we use Logo in two/few places Let's move it into separate shared component
  *
- * - Lets create common Input component
  * - Create commpon Button component
  * Refactor button 1
  * Then move into separate file: Button.tsx & ButtonStyle.ts
@@ -73,6 +92,9 @@ export const AuthScreen = () => {
  * Replace the first button
  * Then replace the second button
  *
+ *  ! Only then - Lets create common Input component
+ * - simple refactor in the same file
  * 4 Use React Hook Form
  * - npm install react-hook-form
+ *
  */
