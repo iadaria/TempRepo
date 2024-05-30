@@ -13,12 +13,23 @@ import { colors } from '@src/shared/lib/theme';
 import { Button } from '@src/shared/ui/Button';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { styles as s } from './AuthScreenStyle';
-import { Control, FieldValues, useController, useForm } from 'react-hook-form';
+import {
+  Control,
+  FieldValues,
+  SubmitHandler,
+  useController,
+  useForm,
+} from 'react-hook-form';
+
+type LoginDto = {
+  email: string;
+  password: string;
+};
 
 interface InputProps {
   placeholder?: string;
-  name: string;
-  control: Control<FieldValues, any>;
+  name: keyof LoginDto; // the same type as "email" | "password"
+  control: Control<LoginDto>;
 }
 
 const Input = ({ placeholder, name, control }: InputProps) => {
@@ -39,9 +50,9 @@ const Input = ({ placeholder, name, control }: InputProps) => {
 };
 
 export const AuthScreen = () => {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm<LoginDto>();
 
-  const onLogin = (data: any) => console.log({ data });
+  const onLogin: SubmitHandler<LoginDto> = data => console.log({ data });
 
   return (
     <SafeAreaView style={s.container}>
@@ -99,4 +110,6 @@ export const AuthScreen = () => {
  * 4 Use React Hook Form
  * - npm install react-hook-form
  *
+ * 1 Added the simple example for Input from the doc site
+ * 2 Lets add the type
  */
