@@ -12,14 +12,13 @@ import {
 import { colors } from '@src/shared/lib/theme';
 import { Button } from '@src/shared/ui/Button';
 import { Logo } from '@src/shared/ui/Logo/Logo';
-import { styles as s } from './AuthScreenStyle';
 import {
   Control,
-  FieldValues,
   SubmitHandler,
   useController,
   useForm,
 } from 'react-hook-form';
+import { styles as s } from './AuthScreenStyle';
 
 type LoginDto = {
   email: string;
@@ -52,7 +51,8 @@ const Input = ({ placeholder, name, control }: InputProps) => {
 export const AuthScreen = () => {
   const { control, handleSubmit } = useForm<LoginDto>();
 
-  const onLogin: SubmitHandler<LoginDto> = data => console.log({ data });
+  const onLogin: SubmitHandler<LoginDto> = data =>
+    Alert.alert('', JSON.stringify(data));
 
   return (
     <SafeAreaView style={s.container}>
