@@ -16,10 +16,7 @@ export const styles = StyleSheet.create({
   secondary: {
     backgroundColor: colors[TypeColor.Second],
   },
-  opacity: {
-    opacity: 0.5,
-  },
   pressed: {
-    backgroundColor: 'grey',
+    opacity: 0.5,
   },
 });

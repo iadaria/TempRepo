@@ -92,6 +92,8 @@ export const AuthScreen = () => {
  * Replace the first button
  * Then replace the second button
  *
+ * add pressed style for button
+ *
  *  ! Only then - Lets create common Input component
  * - simple refactor in the same file
  * 4 Use React Hook Form
