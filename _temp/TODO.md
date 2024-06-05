@@ -1,3 +1,0 @@
-- how to do the theme?
-- add status bar
-- how does it work on ios
