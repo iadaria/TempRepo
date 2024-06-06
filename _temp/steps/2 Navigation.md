@@ -9,4 +9,7 @@
 
 3 filter symbolicate in reactotron
 
+- add msw
+- add login response
+
 4 filter symbolicate in msw

@@ -10,7 +10,7 @@ export const server = setupServer(...handlers);
 
 server.events.on('response:mocked', async ({ response, request }) => {
   const result: object = await response.json();
-  console.tron.display({
+  console.tron?.display({
     name: 'network',
     value: { url: request.url, result },
     preview: request.url,
