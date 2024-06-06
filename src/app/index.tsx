@@ -5,12 +5,13 @@ import { store } from './providers/StoreProvider/config/store';
 import { MswTestButton } from '../common/ui/MswTestButton';
 import { AuthScreen } from '@src/screens/auth/login/AuthScreen';
 import { Navigation } from '@src/navigation/Navigation';
+import { ShopHome } from '@src/screens/shop/home/ShopHome';
 
 function App(): React.JSX.Element {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <Navigation />
+        <ShopHome />
       </Provider>
     </React.StrictMode>
   );
