@@ -42,4 +42,12 @@ export const styles = StyleSheet.create({
     columnGap: 21,
     justifyContent: 'center',
   },
+  error: {
+    color: colors.red[700],
+    paddingHorizontal: 15,
+  },
+  errorInput: {
+    borderWidth: 1,
+    borderColor: colors.red[700],
+  },
 });

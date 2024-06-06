@@ -14,6 +14,7 @@ import { Button } from '@src/shared/ui/Button';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import {
   Control,
+  FieldError,
   SubmitHandler,
   useController,
   useForm,
@@ -29,30 +30,51 @@ interface InputProps {
   placeholder?: string;
   name: keyof LoginDto; // the same type as "email" | "password"
   control: Control<LoginDto>;
+  error?: FieldError;
 }
 
-const Input = ({ placeholder, name, control }: InputProps) => {
+const Input = ({ placeholder, name, control, error }: InputProps) => {
   const { field } = useController({
     control,
     name,
+    rules: {
+      required: { message: 'Required!', value: true },
+    },
   });
+
+  console.log({ error });
+
+  const style = {
+    ...s.input,
+    ...(error && s.errorInput),
+  };
+
   return (
-    <TextInput
-      style={s.input}
-      value={field.value}
-      onChangeText={field.onChange}
-      onBlur={field.onBlur}
-      placeholder={placeholder}
-      placeholderTextColor={colors.placeholder}
-    />
+    <>
+      <TextInput
+        style={style}
+        value={field.value}
+        onChangeText={field.onChange}
+        onBlur={field.onBlur}
+        placeholder={placeholder}
+        placeholderTextColor={colors.placeholder}
+      />
+      {error && <Text style={s.error}>{error?.message}</Text>}
+    </>
   );
 };
 
 export const AuthScreen = () => {
-  const { control, handleSubmit } = useForm<LoginDto>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginDto>();
 
   const onLogin: SubmitHandler<LoginDto> = data =>
     Alert.alert('', JSON.stringify(data));
+
+  //console.log({ errors });
 
   return (
     <SafeAreaView style={s.container}>
@@ -60,8 +82,19 @@ export const AuthScreen = () => {
       <Logo />
       <View style={s.interface}>
         <View style={s.group}>
-          <Input name="email" control={control} placeholder="Email" />
-          <Input name="password" control={control} placeholder="Password" />
+          <Input
+            name="email"
+            control={control}
+            placeholder="Email"
+            error={errors.email}
+          />
+
+          <Input
+            name="password"
+            control={control}
+            placeholder="Password"
+            error={errors.password}
+          />
         </View>
         <Text style={s.text}>Or Continue With</Text>
         <View style={s.row}>
@@ -112,4 +145,13 @@ export const AuthScreen = () => {
  *
  * 1 Added the simple example for Input from the doc site
  * 2 Lets add the type
+ * - rules: https://www.react-hook-form.com/api/useform/register/#options
+ * - add required rules for input
+ *
+ *
+ *
+ *
+ *
+ *
+ *
  */
