@@ -1,66 +1,15 @@
 import { Icons } from '@src/shared/assets';
 import React from 'react';
-import {
-  Alert,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import { Alert, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
-import { colors } from '@src/shared/lib/theme';
-import { Button } from '@src/shared/ui/Button';
-import { Logo } from '@src/shared/ui/Logo/Logo';
-import {
-  Control,
-  FieldError,
-  SubmitHandler,
-  useController,
-  useForm,
-} from 'react-hook-form';
-import { styles as s } from './AuthScreenStyle';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema } from '@src/features/auth/authValidation';
 import { LoginDto } from '@src/features/auth/authSlice';
-
-interface InputProps {
-  placeholder?: string;
-  name: keyof LoginDto; // the same type as "email" | "password"
-  control: Control<LoginDto>;
-  error?: FieldError;
-}
-
-const Input = ({ placeholder, name, control, error }: InputProps) => {
-  const { field } = useController({
-    control,
-    name,
-  });
-
-  console.log({ error });
-
-  const style = {
-    ...s.input,
-    ...(error && s.errorInput),
-  };
-
-  return (
-    <>
-      <TextInput
-        style={style}
-        value={field.value}
-        onChangeText={field.onChange}
-        onBlur={field.onBlur}
-        placeholder={placeholder}
-        placeholderTextColor={colors.placeholder}
-      />
-      {error && <Text style={s.error}>{error?.message}</Text>}
-    </>
-  );
-};
+import { loginSchema } from '@src/features/auth/authValidation';
+import { Button } from '@src/shared/ui/Button';
+import { Input } from '@src/shared/ui/Input';
+import { Logo } from '@src/shared/ui/Logo/Logo';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { styles as s } from './AuthScreenStyle';
 
 export const AuthScreen = () => {
   const {
