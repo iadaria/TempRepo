@@ -11,5 +11,6 @@
 
 - add msw
 - add login response
+- add events watching
 
 4 filter symbolicate in msw

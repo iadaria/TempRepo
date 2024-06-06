@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '@env';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@src/app/providers/StoreProvider/config/store';
 
@@ -36,14 +37,13 @@ export const loginAsync = createAsyncThunk<
   // First argument to the payload creator
   LoginDto
 >('auth/login', async (credentials: LoginDto) => {
-  console.log('auth/login');
-  const response = await fetch('/login', {
+  const response = await fetch(`${API_BASE_URL}/login`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(credentials),
   });
   const user = await response.json();
-
+  console.log({ user });
   return user.data;
 });
 
