@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Alert,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   Text,
   TextInput,
@@ -79,8 +80,8 @@ export const AuthScreen = () => {
   return (
     <SafeAreaView style={s.container}>
       <StatusBar backgroundColor={'transparent'} translucent />
-      <Logo />
-      <View style={s.interface}>
+      <ScrollView contentContainerStyle={s.interface}>
+        <Logo />
         <View style={s.group}>
           <Input
             name="email"
@@ -115,7 +116,7 @@ export const AuthScreen = () => {
             <Text style={s.buttonText}>Login</Text>
           </Button>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -148,6 +149,7 @@ export const AuthScreen = () => {
  * - rules: https://www.react-hook-form.com/api/useform/register/#options
  * - add required rules for input
  *
+ * 3 Got a problem with interface on Android
  *
  *
  *
