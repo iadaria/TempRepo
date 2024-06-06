@@ -14,8 +14,6 @@ export const Button = ({ children, secondary, ...props }: ButtonProps) => {
     ...(pressed && styles.pressed),
   });
 
-  console.log(JSON.stringify(style, null, 4));
-
   return (
     <Pressable style={style} {...props}>
       {children}

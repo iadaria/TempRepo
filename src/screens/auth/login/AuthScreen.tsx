@@ -80,41 +80,40 @@ export const AuthScreen = () => {
   return (
     <SafeAreaView style={s.container}>
       <StatusBar backgroundColor={'transparent'} translucent />
-      <ScrollView contentContainerStyle={s.interface}>
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
         <Logo />
-        <View style={s.group}>
-          <Input
-            name="email"
-            control={control}
-            placeholder="Email"
-            error={errors.email}
-          />
-
-          <Input
-            name="password"
-            control={control}
-            placeholder="Password"
-            error={errors.password}
-          />
-        </View>
-        <Text style={s.text}>Or Continue With</Text>
-        <View style={s.row}>
-          <Button>
-            <Icons.Facebook />
-            <Text style={s.buttonText}>Facebook</Text>
-          </Button>
-
-          <Button>
-            <Icons.Google />
-            <Text style={s.buttonText}>Google</Text>
-          </Button>
-        </View>
-        <Text style={s.text}>Forgot Your Password?</Text>
-
-        <View style={s.row}>
-          <Button secondary onPress={handleSubmit(onLogin)}>
-            <Text style={s.buttonText}>Login</Text>
-          </Button>
+        <View style={s.interface}>
+          <View style={s.group}>
+            <Input
+              name="email"
+              control={control}
+              placeholder="Email"
+              error={errors.email}
+            />
+            <Input
+              name="password"
+              control={control}
+              placeholder="Password"
+              error={errors.password}
+            />
+          </View>
+          <Text style={s.text}>Or Continue With</Text>
+          <View style={s.row}>
+            <Button>
+              <Icons.Facebook />
+              <Text style={s.buttonText}>Facebook</Text>
+            </Button>
+            <Button>
+              <Icons.Google />
+              <Text style={s.buttonText}>Google</Text>
+            </Button>
+          </View>
+          <Text style={s.text}>Forgot Your Password?</Text>
+          <View style={s.row}>
+            <Button secondary onPress={handleSubmit(onLogin)}>
+              <Text style={s.buttonText}>Login</Text>
+            </Button>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
