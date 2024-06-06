@@ -6,3 +6,7 @@
 
 - https://docs.infinite.red/reactotron/plugins/redux/
 - yarn add reactoron-redux -D
+
+3 filter symbolicate in reactotron
+
+4 filter symbolicate in msw

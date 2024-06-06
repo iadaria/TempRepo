@@ -1,6 +1,6 @@
 import Reactotron, {
   ReactotronReactNative,
-  //networking,
+  networking,
 } from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
 
@@ -13,9 +13,15 @@ declare global {
 export const reactotron = Reactotron.configure({
   name: 'FoodShopApp',
 })
-  //  .use(networking())
-  .useReactNative()
-  .configure({ name: 'FoodShopApp' })
+  .useReactNative({
+    networking: {
+      ignoreUrls: /symbolicate/,
+    },
+  })
+  /*   .use(networking({
+    ignoreContentTypes: /^(image)\/.*$/i,
+    ignoreUrls: /\/(logs|symbolicate)$/,
+  })) */
   .use(reactotronRedux())
   .connect();
 
