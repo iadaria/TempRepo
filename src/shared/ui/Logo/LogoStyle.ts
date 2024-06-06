@@ -2,7 +2,7 @@ import { colors } from '@src/shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  logo: { flex: 1, alignItems: 'center' },
+  logo: { alignItems: 'center', marginBottom: 60 },
   logoTitle: {
     fontFamily: 'Viga-Regular',
     color: colors.secondary,

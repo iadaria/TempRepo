@@ -2,6 +2,8 @@ import { Icons } from '@src/shared/assets';
 import React from 'react';
 import {
   Alert,
+  KeyboardAvoidingView,
+  Platform,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -21,6 +23,8 @@ import {
   useForm,
 } from 'react-hook-form';
 import { styles as s } from './AuthScreenStyle';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { loginSchema } from '@src/features/auth/authValidation';
 
 type LoginDto = {
   email: string;
@@ -38,9 +42,6 @@ const Input = ({ placeholder, name, control, error }: InputProps) => {
   const { field } = useController({
     control,
     name,
-    rules: {
-      required: { message: 'Required!', value: true },
-    },
   });
 
   console.log({ error });
@@ -76,6 +77,7 @@ export const AuthScreen = () => {
       email: '',
       password: '',
     },
+    resolver: yupResolver(loginSchema),
   });
 
   const onLogin: SubmitHandler<LoginDto> = data =>
@@ -160,5 +162,8 @@ export const AuthScreen = () => {
  * 4 Disable button
  * Don't have error after render
  *
+ * 5 Add next rules for password and email
+ * - add yup
+ * - add @hookform/resolvers
  *
  */
