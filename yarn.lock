@@ -6487,6 +6487,11 @@ reactotron-react-native@^5.1.7:
   optionalDependencies:
     react-native-flipper "^0.164.0"
 
+reactotron-redux@^3.1.9:
+  version "3.1.9"
+  resolved "https://registry.yarnpkg.com/reactotron-redux/-/reactotron-redux-3.1.9.tgz#42108f3d2babaf2f8c623e954b984994bb6a2b41"
+  integrity sha512-XeeumUnuZDlymDvlk7AtNloyXjPAdDnAAot/eCWmtlbEtEFVtpCj4eOew0EBnRdobo+BZOA3X8qo4g0pTU2WzQ==
+
 readable-stream@^3.4.0:
   version "3.6.2"
   resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz"

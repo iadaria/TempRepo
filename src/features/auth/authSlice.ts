@@ -36,6 +36,7 @@ export const loginAsync = createAsyncThunk<
   // First argument to the payload creator
   LoginDto
 >('auth/login', async (credentials: LoginDto) => {
+  console.log('auth/login');
   const response = await fetch('/login', {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -54,6 +55,7 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(loginAsync.fulfilled, (state, action) => {
+      console.log('fulfilled', action);
       state.token = action.payload.token;
       state.user = action.payload.user;
       state.isAuthenticated = true;
@@ -65,3 +67,6 @@ export const { logout } = authSlice.actions;
 //export const selectAuth = (state: RootState) => state.auth;
 
 export default authSlice.reducer;
+
+export const selectIsAuthenticated = (state: RootState) =>
+  state.auth.isAuthenticated;

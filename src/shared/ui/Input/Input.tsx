@@ -17,8 +17,6 @@ export const Input = ({ placeholder, name, control, error }: InputProps) => {
     name,
   });
 
-  console.log({ error });
-
   const style = {
     ...s.input,
     ...(error && s.errorInput),

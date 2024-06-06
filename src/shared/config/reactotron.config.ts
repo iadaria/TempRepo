@@ -2,6 +2,7 @@ import Reactotron, {
   ReactotronReactNative,
   //networking,
 } from 'reactotron-react-native';
+import { reactotronRedux } from 'reactotron-redux';
 
 declare global {
   interface Console {
@@ -9,11 +10,13 @@ declare global {
   }
 }
 
-const reactotron = Reactotron.configure({
+export const reactotron = Reactotron.configure({
   name: 'FoodShopApp',
 })
   //  .use(networking())
   .useReactNative()
+  .configure({ name: 'FoodShopApp' })
+  .use(reactotronRedux())
   .connect();
 
 reactotron.clear();
