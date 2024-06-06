@@ -69,13 +69,21 @@ export const AuthScreen = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
-  } = useForm<LoginDto>();
+    formState: { isValid, errors },
+  } = useForm<LoginDto>({
+    mode: 'onChange',
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   const onLogin: SubmitHandler<LoginDto> = data =>
     Alert.alert('', JSON.stringify(data));
 
-  //console.log({ errors });
+  console.log({ errors, isValid });
+
+  const disabled = !isValid;
 
   return (
     <SafeAreaView style={s.container}>
@@ -110,7 +118,10 @@ export const AuthScreen = () => {
           </View>
           <Text style={s.text}>Forgot Your Password?</Text>
           <View style={s.row}>
-            <Button secondary onPress={handleSubmit(onLogin)}>
+            <Button
+              disabled={disabled}
+              secondary
+              onPress={handleSubmit(onLogin)}>
               <Text style={s.buttonText}>Login</Text>
             </Button>
           </View>
@@ -149,10 +160,10 @@ export const AuthScreen = () => {
  * - add required rules for input
  *
  * 3 Got a problem with interface on Android
+ * add scrollView
  *
- *
- *
- *
+ * 4 Disable button
+ * Don't have error after render
  *
  *
  */

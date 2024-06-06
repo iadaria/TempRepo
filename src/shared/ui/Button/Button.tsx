@@ -7,11 +7,17 @@ interface ButtonProps extends PressableProps {
   icon?: React.FC<SvgProps>;
 }
 
-export const Button = ({ children, secondary, ...props }: ButtonProps) => {
+export const Button = ({
+  children,
+  secondary,
+  disabled,
+  ...props
+}: ButtonProps) => {
   const style = ({ pressed }: { pressed: boolean }) => ({
     ...styles.button,
     ...(secondary && styles.secondary),
     ...(pressed && styles.pressed),
+    ...(disabled && styles.disabled),
   });
 
   return (

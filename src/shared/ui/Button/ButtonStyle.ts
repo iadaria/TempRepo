@@ -19,4 +19,7 @@ export const styles = StyleSheet.create({
   pressed: {
     opacity: 0.5,
   },
+  disabled: {
+    opacity: 0.6,
+  },
 });
