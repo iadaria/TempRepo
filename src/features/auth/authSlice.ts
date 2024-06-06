@@ -9,7 +9,7 @@ export type User = {
 };
 
 export type LoginDto = {
-  login: string;
+  email: string;
   password: string;
 };
 

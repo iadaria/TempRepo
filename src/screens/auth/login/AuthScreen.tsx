@@ -25,11 +25,7 @@ import {
 import { styles as s } from './AuthScreenStyle';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '@src/features/auth/authValidation';
-
-type LoginDto = {
-  email: string;
-  password: string;
-};
+import { LoginDto } from '@src/features/auth/authSlice';
 
 interface InputProps {
   placeholder?: string;
@@ -165,5 +161,9 @@ export const AuthScreen = () => {
  * 5 Add next rules for password and email
  * - add yup
  * - add @hookform/resolvers
+ *
+ * 6 Checking on server side
+ *
+ *
  *
  */
