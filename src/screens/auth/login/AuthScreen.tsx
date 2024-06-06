@@ -3,15 +3,17 @@ import React from 'react';
 import { Alert, SafeAreaView, StatusBar, Text, View } from 'react-native';
 
 import { yupResolver } from '@hookform/resolvers/yup';
-import { LoginDto } from '@src/features/auth/authSlice';
+import { LoginDto, loginAsync } from '@src/features/auth/authSlice';
 import { loginSchema } from '@src/features/auth/authValidation';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Logo } from '@src/shared/ui/Logo/Logo';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { styles as s } from './AuthScreenStyle';
+import { useAppDispatch } from '@src/app/hooks';
 
 export const AuthScreen = () => {
+  const dispatch = useAppDispatch();
   const {
     control,
     handleSubmit,
@@ -22,13 +24,13 @@ export const AuthScreen = () => {
       email: '',
       password: '',
     },
-    resolver: yupResolver(loginSchema),
+    //resolver: yupResolver(loginSchema),
   });
 
-  const onLogin: SubmitHandler<LoginDto> = data =>
-    Alert.alert('', JSON.stringify(data));
+  const onLogin: SubmitHandler<LoginDto> = data => dispatch(loginAsync(data));
+  //Alert.alert('', JSON.stringify(data));
 
-  console.log({ errors, isValid });
+  //console.log({ errors, isValid });
 
   const disabled = !isValid;
 
@@ -64,7 +66,7 @@ export const AuthScreen = () => {
         </View>
         <Text style={s.text}>Forgot Your Password?</Text>
         <View style={s.row}>
-          <Button disabled={disabled} secondary onPress={handleSubmit(onLogin)}>
+          <Button secondary onPress={handleSubmit(onLogin)}>
             <Text style={s.buttonText}>Login</Text>
           </Button>
         </View>
