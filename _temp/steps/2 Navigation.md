@@ -14,3 +14,12 @@
 - add events watching
 
 4 filter symbolicate in msw
+
+- login and see states in Reactotron
+
+6 After reloading all data are empty/rejected
+
+- https://react-native-async-storage.github.io/async-storage/docs/install/
+- we lose our autherization every time after relaunching and reloading
+- yarn add AsyncStoryge
+- add consts for key name

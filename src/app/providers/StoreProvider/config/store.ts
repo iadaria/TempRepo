@@ -1,5 +1,5 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import authReducer from '@src/features/auth/authSlice';
+import authReducer from '@src/features/auth/auth.slice';
 import { reactotron } from '@src/shared/config/reactotron.config';
 
 const enhcnaer = __DEV__ ? [reactotron.createEnhancer!()] : [];
