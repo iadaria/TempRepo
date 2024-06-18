@@ -21,6 +21,11 @@ export const ShopHome = () => {
  *
  * 1 How to keep states?
  * When you refresh or leave page, you are restarting the redux store so it will always go back to the default. If you want to persist the store you will need to use a tool like redux-persist. Here is how you could setup your store with redux-persist.
+ * add redux-persist
+ *
+ * 2 Show the ShopHome with list of
+ *
+ * 2.1 Get all the products:
  *
  *
  */
