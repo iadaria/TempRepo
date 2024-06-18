@@ -27,5 +27,6 @@ export const ShopHome = () => {
  *
  * 2.1 Get all the products:
  *
+ * - refactor handlers and add restaurants handlers
  *
  */
