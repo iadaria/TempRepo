@@ -8,8 +8,7 @@ export const fetchRestaurants = createAsyncThunk<Restuarant[]>(
     const response = await fetch(`${API_BASE_URL}/restaurant`, {
       headers: { 'Content-Type': 'application/json' },
     });
-    const restaurants = await response.json();
-    console.log({ restaurants });
-    return restaurants.data;
+    const json = await response.json();
+    return json.data;
   },
 );

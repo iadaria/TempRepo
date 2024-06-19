@@ -16,12 +16,11 @@ export const login = createAsyncThunk<
     method: 'POST',
     body: JSON.stringify(credentials),
   });
-  const user = await response.json();
+  const json = await response.json();
 
-  console.log({ user });
   await AsyncStorage.setItem(AUTH_TOKEN_STORAGE_KEY, 'hi there');
-  dispatch(setToken(user.data.token));
-  return user.data;
+  dispatch(setToken(json.data.token));
+  return json.data;
 });
 
 export const initAuth = createAsyncThunk(
