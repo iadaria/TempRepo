@@ -4,7 +4,7 @@ import { RESTAURANTS } from './data/restaurants.data';
 import { baseUrl } from '../utils';
 
 export const restaurantsHandlers = [
-  http.get(baseUrl('/restaurant'), () => {
+  http.get(baseUrl('/restaurants'), () => {
     return HttpResponse.json({
       data: RESTAURANTS,
     });
