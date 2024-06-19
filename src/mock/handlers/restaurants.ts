@@ -1,9 +1,10 @@
 import { API_BASE_URL } from '@env';
 import { HttpResponse, http } from 'msw';
 import { RESTAURANTS } from './data/restaurants.data';
+import { baseUrl } from '../utils';
 
 export const restaurantsHandlers = [
-  http.get(`${API_BASE_URL}/restaurants`, () => {
+  http.get(baseUrl('/restaurant'), () => {
     return HttpResponse.json({
       data: RESTAURANTS,
     });
