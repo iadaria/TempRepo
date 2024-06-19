@@ -4,6 +4,9 @@ import { API_BASE_URL } from '@env';
 import { AuthResponse, LoginDto } from './auth.types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AUTH_TOKEN_STORAGE_KEY } from '@src/shared/consts/storageKeys';
+import { endpoints } from '@src/shared/consts/endpoints';
+
+const { account } = endpoints;
 
 export const login = createAsyncThunk<
   // Return type of the payload creator
@@ -11,7 +14,7 @@ export const login = createAsyncThunk<
   // First argument to the payload creator
   LoginDto
 >('auth/login', async (credentials: LoginDto, { dispatch }) => {
-  const response = await fetch(`${API_BASE_URL}/login`, {
+  const response = await fetch(`${API_BASE_URL}/${account.login}`, {
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
     body: JSON.stringify(credentials),
