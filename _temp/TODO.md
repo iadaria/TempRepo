@@ -1,1 +1,5 @@
-- check the AsyncStorage
+- get restuarant and commet
+- refactor and get restaurants
+- refactor fetch
+- add error for fetch and show alert
+- thingking about shop and slices

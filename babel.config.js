@@ -18,6 +18,7 @@ module.exports = {
           '@screens': './scrc/screens'
         }
       }
-    ]
+    ],
+    'transform-dirname-filename'
   ]
 };

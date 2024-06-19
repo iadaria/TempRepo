@@ -1,11 +1,25 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, Button } from 'react-native';
+import React, { useEffect } from 'react';
 import { styles } from './ShopHomeStyle';
+import { useAppDispatch } from '@src/app/hooks';
+import { fetchRestaurants } from '@src/features/shop/shop.services';
 
 export const ShopHome = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchRestaurants());
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to the FoodNinja app!</Text>
+      <Button
+        onPress={() => {
+          dispatch(fetchRestaurants());
+        }}
+        title="Go"
+      />
     </View>
   );
 };
@@ -28,5 +42,9 @@ export const ShopHome = () => {
  * 2.1 Get all the products:
  *
  * - refactor handlers and add restaurants handlers
+ *
+ * - DO the mestake in api: restaurant instead of restaurants
+ * - see error in Reactotron: API RESPONSE 404
+ * - And then refactoring
  *
  */
