@@ -5,6 +5,7 @@ import { AuthResponse, LoginDto } from './auth.types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AUTH_TOKEN_STORAGE_KEY } from '@src/shared/consts/storageKeys';
 import { endpoints } from '@src/shared/consts/endpoints';
+import { request } from '@src/shared/lib/api/request';
 
 const { account } = endpoints;
 
@@ -14,11 +15,11 @@ export const login = createAsyncThunk<
   // First argument to the payload creator
   LoginDto
 >('auth/login', async (credentials: LoginDto, { dispatch }) => {
-  const response = await fetch(`${API_BASE_URL}/${account.login}`, {
-    headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    body: JSON.stringify(credentials),
-  });
+  const endpoint = account.login;
+  const method = 'post';
+  const body = JSON.stringify(credentials);
+
+  const response = await request({ endpoint, method, body });
   const json = await response.json();
 
   await AsyncStorage.setItem(AUTH_TOKEN_STORAGE_KEY, 'hi there');
