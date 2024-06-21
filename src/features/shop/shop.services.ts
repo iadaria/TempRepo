@@ -9,6 +9,7 @@ export const fetchRestaurants = createAsyncThunk<Restuarant[]>(
   'shop/restaurants',
   async () => {
     const response = await request({ endpoint: shop.restaurants });
+    console.log({ response });
     const json = await response.json();
     return json.data;
   },

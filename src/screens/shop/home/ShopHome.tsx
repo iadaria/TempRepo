@@ -1,24 +1,29 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, FlatList } from 'react-native';
 import React, { useEffect } from 'react';
 import { styles } from './ShopHomeStyle';
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
+import { useSelector } from 'react-redux';
+import { selectRestaurants } from '@src/features/shop/shop.slice';
+import { Restuarant } from '@src/features/shop/shop.types';
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
+  const restaurants = useSelector(selectRestaurants);
 
   useEffect(() => {
-    dispatch(fetchRestaurants());
+    setTimeout(() => dispatch(fetchRestaurants()), 1000);
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to the FoodNinja app!</Text>
-      <Button
-        onPress={() => {
-          dispatch(fetchRestaurants());
-        }}
-        title="Go"
+      <FlatList
+        data={restaurants}
+        keyExtractor={(item: Restuarant, index) => `item-${item.id}`}
+        renderItem={({ item }) => (
+          <Text style={{ color: 'white' }}>{item.name}</Text>
+        )}
       />
     </View>
   );
