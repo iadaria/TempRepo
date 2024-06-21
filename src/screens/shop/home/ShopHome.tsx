@@ -20,7 +20,7 @@ export const ShopHome = () => {
       <Text style={styles.text}>Welcome to the FoodNinja app!</Text>
       <FlatList
         data={restaurants}
-        keyExtractor={(item: Restuarant, index) => `item-${item.id}`}
+        keyExtractor={(item: Restuarant, index) => `item-${index}`}
         renderItem={({ item }) => (
           <Text style={{ color: 'white' }}>{item.name}</Text>
         )}
