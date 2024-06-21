@@ -1,8 +1,8 @@
 import { API_BASE_URL } from '@env';
 import { nanoid } from '@reduxjs/toolkit';
 import { HttpResponse, http } from 'msw';
-import { baseUrl } from '../utils';
 import { endpoints } from '@src/shared/consts/endpoints';
+import { baseUrl } from '@src/shared/lib/api/baseUrl';
 
 let token = nanoid();
 
