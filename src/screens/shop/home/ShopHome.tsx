@@ -6,14 +6,17 @@ import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { useSelector } from 'react-redux';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
 import { Restuarant } from '@src/features/shop/shop.types';
+import { selectMswEnabled } from '@src/app/services/msw';
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
+  const msw = useSelector(selectMswEnabled);
 
   useEffect(() => {
-    setTimeout(() => dispatch(fetchRestaurants()), 1000);
-  }, []);
+    dispatch(fetchRestaurants());
+    //setTimeout(() => dispatch(fetchRestaurants()), 1000);
+  }, [msw]);
 
   return (
     <View style={styles.container}>
