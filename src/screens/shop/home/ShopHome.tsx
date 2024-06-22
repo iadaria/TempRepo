@@ -1,22 +1,21 @@
-import { View, Text, Button, FlatList } from 'react-native';
-import React, { useEffect } from 'react';
-import { styles } from './ShopHomeStyle';
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
-import { useSelector } from 'react-redux';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
 import { Restuarant } from '@src/features/shop/shop.types';
-import { selectMswEnabled } from '@src/app/services/msw';
+import React, { useEffect } from 'react';
+import { FlatList, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { styles } from './ShopHomeStyle';
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
-  const msw = useSelector(selectMswEnabled);
+  //const msw = useSelector(selectMswEnabled);
 
   useEffect(() => {
     dispatch(fetchRestaurants());
-    //setTimeout(() => dispatch(fetchRestaurants()), 1000);
-  }, [msw]);
+    //setTimeout(() => dispatch(fetchRestaurants()), 5000);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -48,11 +47,12 @@ export const ShopHome = () => {
  * 2 Show the ShopHome with list of
  *
  * 2.1 Get all the products:
- *
+ *- Add button and show restaurants
  * - refactor handlers and add restaurants handlers
  *
  * - DO the mestake in api: restaurant instead of restaurants
  * - see error in Reactotron: API RESPONSE 404
  * - And then refactoring
  *
+ * 3
  */

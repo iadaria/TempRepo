@@ -1,3 +1,7 @@
+- response error
+- layout for restuarants
+-
+
 - get restuarant and commet
 - refactor and get restaurants
 - refactor fetch
