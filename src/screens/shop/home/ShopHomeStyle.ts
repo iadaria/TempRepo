@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
   },
   box: {
     flex: 1,
-    backgroundColor: colors.primary,
+    paddingTop: 60,
+    paddingHorizontal: 30,
   },
   text: {
     color: 'white',
@@ -18,5 +19,6 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontSize: 31,
     fontFamily: 'benton-sans-bold',
+    //marginTop: 60,
   },
 });

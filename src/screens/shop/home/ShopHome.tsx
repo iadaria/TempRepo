@@ -1,17 +1,46 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
+import { Pattern2 } from '@src/shared/assets/images';
 import React, { FC, useEffect } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import {
+  FlatList,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+
 import { useSelector } from 'react-redux';
 import { styles } from './ShopHomeStyle';
+import Svg, { Image as SvgImage } from 'react-native-svg';
 
 interface BoxProps {
   children: React.ReactNode;
 }
 
 const Box: FC<BoxProps> = ({ children }) => {
-  return <View style={styles.box}>{children}</View>;
+  return (
+    <View style={styles.container}>
+      <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
+        <SvgImage
+          x="0%"
+          y="0%"
+          width="100%"
+          height="100%"
+          preserveAspectRatio="xMinYMin meet"
+          href={Pattern2}
+        />
+      </Svg>
+      <View style={styles.box}>{children}</View>
+      {/*       <ImageBackground
+        style={styles.imgWrapper}
+        imageStyle={styles.background}
+        source={Pattern2}>
+        {children}
+      </ImageBackground> */}
+    </View>
+  );
 };
 
 export const ShopHome = () => {
@@ -24,14 +53,14 @@ export const ShopHome = () => {
 
   return (
     <Box>
-      <Text style={styles.title}>Find your favorite food</Text>
-      <FlatList
+      <Text style={styles.title}>Find Your Favorite Food</Text>
+      {/*     <FlatList
         data={restaurants}
         keyExtractor={(_, index) => `item-${index}`}
         renderItem={({ item }) => (
           <Text style={{ color: 'white' }}>{item.name}</Text>
         )}
-      />
+      /> */}
     </Box>
   );
 };
