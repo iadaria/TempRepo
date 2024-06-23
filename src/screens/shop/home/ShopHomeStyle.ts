@@ -6,6 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
   },
+  box: {
+    flex: 1,
+    backgroundColor: colors.primary,
+  },
   text: {
     color: 'white',
   },

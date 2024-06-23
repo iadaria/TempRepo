@@ -1,10 +1,18 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { styles } from './ShopHomeStyle';
+
+interface BoxProps {
+  children: React.ReactNode;
+}
+
+const Box: FC<BoxProps> = ({ children }) => {
+  return <View style={styles.box}>{children}</View>;
+};
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +23,7 @@ export const ShopHome = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <Box>
       <Text style={styles.title}>Find your favorite food</Text>
       <FlatList
         data={restaurants}
@@ -24,7 +32,7 @@ export const ShopHome = () => {
           <Text style={{ color: 'white' }}>{item.name}</Text>
         )}
       />
-    </View>
+    </Box>
   );
 };
 
