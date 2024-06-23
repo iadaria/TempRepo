@@ -9,13 +9,9 @@ const { shop } = endpoints;
 export const fetchRestaurants = createAsyncThunk<Restuarant[]>(
   'shop/restaurants',
   async () => {
-    try {
-      const response = await request({ endpoint: shop.restaurants });
-      log('[fetchRestaurants]', response);
-      const json = await response.json();
-      return json.data;
-    } catch (error) {
-      logline('fetchRestaurants', error);
-    }
+    const response = await request({ endpoint: shop.restaurants });
+    //log('[fetchRestaurants]', response);
+    const json = await response.json();
+    return json.data;
   },
 );

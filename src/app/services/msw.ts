@@ -14,7 +14,7 @@ export const settingsSlice = createSlice({
   initialState,
   reducers: {
     enableMsw: state => {
-      state.mswEnabled = true;
+      state.mswEnabled = __DEV__ && true;
     },
   },
 });

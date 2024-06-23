@@ -3,14 +3,24 @@ import App from './src/app';
 import {name as appName} from './app.json';
 import { enableReactotron } from '@config/dev.config';
 import { enableMocking } from '@mock/mock.config';
-import { store } from '@src/app/providers/StoreProvider/config/store';
-import { enableMsw } from '@src/app/services/msw';
 
-enableMocking().then(() => {
-  console.log('mws was enabled');
-  store.dispatch(enableMsw());
-});
+// Maybe for dev mode
 enableReactotron().then(() => console.log('reactotron was enabled'))
 
+// We need to delay register app for msw
 
-AppRegistry.registerComponent(appName, () => App)
+function registerAppWithMsw() {
+  AppRegistry.registerRunnable(appName, async initProps => {
+    await enableMocking();
+    AppRegistry.registerComponent(appName, () => App);
+    AppRegistry.runApplication(appName, initProps);
+  });
+}
+
+function registerApp() {
+  AppRegistry.registerComponent(appName, () => App);
+}
+
+const app = __DEV__ ? registerAppWithMsw : registerApp;
+
+app();

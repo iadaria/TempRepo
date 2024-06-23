@@ -8,16 +8,8 @@ const { shop } = endpoints;
 
 export const restaurantsHandlers = [
   http.get(baseUrl(shop.restaurants), () => {
-    return HttpResponse.json(
-      {
-        error: 'Hi there',
-      },
-      { status: 500 },
-    );
-  }),
-  /*  http.get(baseUrl(shop.restaurants), () => {
     return HttpResponse.json({
       data: RESTAURANTS,
     });
-  }), */
+  }),
 ];

@@ -1,3 +1,4 @@
+import { selectMswEnabled } from '@src/app/services/msw';
 import { selectIsAuthenticated } from '@src/features/auth/auth.slice';
 import { AuthScreen } from '@src/screens/auth/login/AuthScreen';
 import { ShopHome } from '@src/screens/shop/home/ShopHome';
@@ -6,5 +7,9 @@ import { useSelector } from 'react-redux';
 
 export const Navigation = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
-  return isAuthenticated ? <ShopHome /> : <AuthScreen />;
+  const msw = useSelector(selectMswEnabled); // TODO move into another component
+
+  const Nav = () => (isAuthenticated ? <ShopHome /> : <AuthScreen />);
+
+  return <Nav />;
 };

@@ -10,11 +10,9 @@ import { styles } from './ShopHomeStyle';
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
-  //const msw = useSelector(selectMswEnabled);
 
   useEffect(() => {
     dispatch(fetchRestaurants());
-    //setTimeout(() => dispatch(fetchRestaurants()), 5000);
   }, []);
 
   return (
@@ -54,5 +52,7 @@ export const ShopHome = () => {
  * - see error in Reactotron: API RESPONSE 404
  * - And then refactoring
  *
- * 3
+ * 3 Add interceptor and show 500 error
+ *
+ * 4 create Layout
  */

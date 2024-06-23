@@ -1,8 +1,13 @@
 import { Alert } from 'react-native';
 
+declare global {
+  var token: string;
+}
+
 const baseHeaders = new Headers();
 baseHeaders.set('Content-Type', 'application/json');
 baseHeaders.set('Accept', 'application/json');
+baseHeaders.set('Authorization', global.token);
 
 export async function _fetch(input: URL, init?: RequestInit) {
   const headers = { ...baseHeaders, ...init?.headers };
