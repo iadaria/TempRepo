@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
 // https://dev.to/mitchiemt11/custom-fonts-in-react-native-pro-tip-4693
 // get info and see full name
 // 4 Create file react-native.config.js
-// 4 npx react-native-reset -> yes
+// 4 npx react-native-asset -> yes
 // 5 Export icon from Login Screen figma as img
 // 5 Create a folder src/shared/assets/images and copy
 /* - add images/index.ts and export the image

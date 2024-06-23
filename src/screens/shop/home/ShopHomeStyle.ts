@@ -9,4 +9,10 @@ export const styles = StyleSheet.create({
   text: {
     color: 'white',
   },
+  title: {
+    color: 'white',
+    textTransform: 'capitalize',
+    fontSize: 31,
+    fontFamily: 'benton-sans-bold',
+  },
 });

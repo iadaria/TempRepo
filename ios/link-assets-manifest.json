@@ -48,6 +48,10 @@
     {
       "path": "assets/fonts/Viga-Regular.ttf",
       "sha1": "bad34f2b54650993d29b6f0a115b9865c336774b"
+    },
+    {
+      "path": "assets/fonts/benton-sans-bold.ttf",
+      "sha1": "0d8a9f449c6c2f53773e254f983bc3a4e1529c08"
     }
   ]
 }

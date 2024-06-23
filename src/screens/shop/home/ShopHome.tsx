@@ -1,7 +1,6 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
-import { Restuarant } from '@src/features/shop/shop.types';
 import React, { useEffect } from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -17,10 +16,10 @@ export const ShopHome = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to the FoodNinja app!</Text>
+      <Text style={styles.title}>Find your favorite food</Text>
       <FlatList
         data={restaurants}
-        keyExtractor={(item: Restuarant, index) => `item-${index}`}
+        keyExtractor={(_, index) => `item-${index}`}
         renderItem={({ item }) => (
           <Text style={{ color: 'white' }}>{item.name}</Text>
         )}
@@ -55,4 +54,11 @@ export const ShopHome = () => {
  * 3 Add interceptor and show 500 error
  *
  * 4 create Layout
+ * font:
+ * https://github.com/kuali/www-theme-kuali/tree/master/fonts/BentonSans
+ * add font
+ * - npx react-native-asset -> yes
+ *
+ *
+ *
  */

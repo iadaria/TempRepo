@@ -27,6 +27,7 @@
 		B923859C95EC4687A70CA302 /* Inter-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2ECC6B17E764672A7706A9F /* Inter-Thin.ttf */; };
 		C31007F12051461F9B782086 /* Inter-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01C995B3DCBD4C60BA958819 /* Inter-Black.ttf */; };
 		D9839B8715134D50941FC300 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E211252779534F29885C46A4 /* Inter-Medium.ttf */; };
+		46548B54BEFC45F69AA98EC7 /* benton-sans-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA1C6B27859249CE8020944E /* benton-sans-bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		E211252779534F29885C46A4 /* Inter-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Medium.ttf"; path = "../assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F377AD3A7582466DA35E9E03 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-ExtraLight.ttf"; path = "../assets/fonts/Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		FA1C6B27859249CE8020944E /* benton-sans-bold.ttf */ = {isa = PBXFileReference; name = "benton-sans-bold.ttf"; path = "../assets/fonts/benton-sans-bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				60ABF86BAAA64D7C88F46081 /* Viga-Regular.ttf */,
 				72A9492B970A44D9829678FD /* BentonSans-Regular.ttf */,
 				BCD979DD1A9B47B9A4C03358 /* BentonSans Medium.otf */,
+				FA1C6B27859249CE8020944E /* benton-sans-bold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -304,6 +307,7 @@
 				4C5BB471F9DD4D19B12E386A /* Viga-Regular.ttf in Resources */,
 				99C60164EA33425DB8567025 /* BentonSans-Regular.ttf in Resources */,
 				6DF434DB853A4E12BC15B2B2 /* BentonSans Medium.otf in Resources */,
+				46548B54BEFC45F69AA98EC7 /* benton-sans-bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
