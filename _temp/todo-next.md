@@ -6,3 +6,4 @@
 - theme
 - detect internet
 - story book
+- add sentry
