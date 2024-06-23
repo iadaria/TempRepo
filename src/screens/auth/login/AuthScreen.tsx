@@ -35,7 +35,6 @@ export const AuthScreen = () => {
 
   return (
     <SafeAreaView style={s.container}>
-      <StatusBar backgroundColor={'transparent'} translucent />
       <Logo />
       <View style={s.interface}>
         <View style={s.group}>
