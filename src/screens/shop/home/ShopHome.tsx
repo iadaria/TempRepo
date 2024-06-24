@@ -1,38 +1,17 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
-import { Pattern2 } from '@src/shared/assets/images';
-import React, { FC, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { Text } from 'react-native';
 
 import { useSelector } from 'react-redux';
 import { styles } from './ShopHomeStyle';
-import Svg, { Image as SvgImage } from 'react-native-svg';
-import { Button } from '@src/shared/ui/Button';
+
 import { Notification } from '@src/shared/assets/icons';
+import { Box } from '@src/shared/ui/Box';
+import { Button } from '@src/shared/ui/Button';
+import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
-
-interface BoxProps {
-  children: React.ReactNode;
-}
-
-const Box: FC<BoxProps> = ({ children }) => {
-  return (
-    <View style={styles.container}>
-      <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
-        <SvgImage
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-          preserveAspectRatio="xMinYMin meet"
-          href={Pattern2}
-        />
-      </Svg>
-      <View style={styles.box}>{children}</View>
-    </View>
-  );
-};
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
@@ -49,6 +28,9 @@ export const ShopHome = () => {
         <Button style={styles.buttonIcon}>
           <Notification />
         </Button>
+      </Row>
+      <Row>
+        <Input control={null} placeholder="What do you want to order?" />
       </Row>
       {/*     <FlatList
         data={restaurants}
