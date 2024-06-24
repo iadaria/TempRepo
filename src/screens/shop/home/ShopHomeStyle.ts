@@ -15,6 +15,6 @@ export const styles = StyleSheet.create({
   },
   buttonIcon: {
     flex: 0,
-    paddingHorizontal: 16,
+    padding: 15,
   },
 });

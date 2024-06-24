@@ -3,3 +3,4 @@ export { default as Facebook } from './facebook.svg';
 export { default as Notification } from './notify.svg';
 export { default as Notified } from './notified.svg';
 export { default as Filter } from './filter.svg';
+export { default as Search } from './search.svg';

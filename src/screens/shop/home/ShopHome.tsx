@@ -2,20 +2,31 @@ import { useAppDispatch } from '@src/app/hooks';
 import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
 import React, { useEffect } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { useSelector } from 'react-redux';
 import { styles } from './ShopHomeStyle';
 
-import { Notification } from '@src/shared/assets/icons';
+import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
+import { useForm } from 'react-hook-form';
+
+type FilterDto = {
+  search?: string;
+  search2?: string;
+};
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
+
+  const {
+    control,
+    formState: {},
+  } = useForm<FilterDto>();
 
   useEffect(() => {
     dispatch(fetchRestaurants());
@@ -23,22 +34,43 @@ export const ShopHome = () => {
 
   return (
     <Box>
-      <Row>
-        <Text style={styles.title}>{`Find Your \nFavorite Food`}</Text>
-        <Button style={styles.buttonIcon}>
-          <Notification />
-        </Button>
-      </Row>
-      <Row>
-        <Input control={null} placeholder="What do you want to order?" />
-      </Row>
-      {/*     <FlatList
-        data={restaurants}
-        keyExtractor={(_, index) => `item-${index}`}
-        renderItem={({ item }) => (
-          <Text style={{ color: 'white' }}>{item.name}</Text>
-        )}
-      /> */}
+      <View style={{ gap: 20 }}>
+        <Row>
+          <Text style={styles.title}>{`Find Your \nFavorite Food`}</Text>
+          <Button style={styles.buttonIcon}>
+            <Notification />
+          </Button>
+        </Row>
+        <Row gap={9}>
+          <Input
+            name="search"
+            control={control}
+            placeholder="What do you want to order?"
+            licon={Search}
+          />
+          <Button style={styles.buttonIcon}>
+            <Filter />
+          </Button>
+        </Row>
+        <Row gap={9}>
+          <Input
+            name="search2"
+            control={control}
+            placeholder="What do you want to order?"
+            licon={Search}
+          />
+          <Button style={styles.buttonIcon}>
+            <Filter />
+          </Button>
+        </Row>
+        {/*     <FlatList
+          data={restaurants}
+          keyExtractor={(_, index) => `item-${index}`}
+          renderItem={({ item }) => (
+            <Text style={{ color: 'white' }}>{item.name}</Text>
+          )}
+        /> */}
+      </View>
     </Box>
   );
 };
