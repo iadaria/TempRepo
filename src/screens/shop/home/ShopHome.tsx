@@ -3,17 +3,14 @@ import { fetchRestaurants } from '@src/features/shop/shop.services';
 import { selectRestaurants } from '@src/features/shop/shop.slice';
 import { Pattern2 } from '@src/shared/assets/images';
 import React, { FC, useEffect } from 'react';
-import {
-  FlatList,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { useSelector } from 'react-redux';
 import { styles } from './ShopHomeStyle';
 import Svg, { Image as SvgImage } from 'react-native-svg';
+import { Button } from '@src/shared/ui/Button';
+import { Notification } from '@src/shared/assets/icons';
+import { Row } from '@src/shared/ui/Row/Row';
 
 interface BoxProps {
   children: React.ReactNode;
@@ -33,12 +30,6 @@ const Box: FC<BoxProps> = ({ children }) => {
         />
       </Svg>
       <View style={styles.box}>{children}</View>
-      {/*       <ImageBackground
-        style={styles.imgWrapper}
-        imageStyle={styles.background}
-        source={Pattern2}>
-        {children}
-      </ImageBackground> */}
     </View>
   );
 };
@@ -53,7 +44,12 @@ export const ShopHome = () => {
 
   return (
     <Box>
-      <Text style={styles.title}>Find Your Favorite Food</Text>
+      <Row>
+        <Text style={styles.title}>{`Find Your \nFavorite Food`}</Text>
+        <Button style={styles.buttonIcon}>
+          <Notification />
+        </Button>
+      </Row>
       {/*     <FlatList
         data={restaurants}
         keyExtractor={(_, index) => `item-${index}`}

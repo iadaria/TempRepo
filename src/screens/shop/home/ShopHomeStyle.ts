@@ -1,3 +1,4 @@
+import { debugStyles } from '@src/shared/consts/debug';
 import { colors } from '@src/shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
@@ -19,6 +20,10 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontSize: 31,
     fontFamily: 'benton-sans-bold',
-    //marginTop: 60,
+    ...debugStyles.blue,
+  },
+  buttonIcon: {
+    flex: 0,
+    paddingHorizontal: 16,
   },
 });
