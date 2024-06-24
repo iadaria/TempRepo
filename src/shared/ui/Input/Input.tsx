@@ -1,17 +1,28 @@
-import { LoginDto } from '@src/features/auth/authSlice';
-import { Control, FieldError, useController } from 'react-hook-form';
+import {
+  Control,
+  FieldError,
+  FieldValues,
+  Path,
+  useController,
+} from 'react-hook-form';
 import { styles as s } from './InputStyle';
 import { Text, TextInput } from 'react-native';
 import { colors } from '@src/shared/lib/theme';
+//import { LoginDto } from '@src/features/auth/auth.types';
 
-interface InputProps {
+interface InputProps<T extends FieldValues> {
   placeholder?: string;
-  name: keyof LoginDto; // the same type as "email" | "password"
-  control: Control<LoginDto>;
+  name: Path<T>; // the same type as "email" | "password"
+  control: Control<T>;
   error?: FieldError;
 }
 
-export const Input = ({ placeholder, name, control, error }: InputProps) => {
+export function Input<T extends FieldValues>({
+  placeholder,
+  name,
+  control,
+  error,
+}: InputProps<T>) {
   const { field } = useController({
     control,
     name,
@@ -35,4 +46,4 @@ export const Input = ({ placeholder, name, control, error }: InputProps) => {
       {error && <Text style={s.error}>{error?.message}</Text>}
     </>
   );
-};
+}

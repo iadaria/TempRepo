@@ -1,6 +1,6 @@
 import { Icons } from '@src/shared/assets';
 import React from 'react';
-import { SafeAreaView, StatusBar, Text, View } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 
 import { useAppDispatch } from '@src/app/hooks';
 import { login } from '@src/features/auth/auth.services';
