@@ -19,3 +19,5 @@ Need to read:
 - https://frontender.info/exploring-the-abyss-of-null-and-undefined-in-javascript/
 
 - url, uri
+
+- useCallback, useMemo,

@@ -1,24 +1,24 @@
-import { View, Text, Image } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import { BANNER } from '@src/mock/handlers/data/banner.data';
-import { getImageSize } from '@src/shared/lib/image/getSize';
 import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
+import { getImageSize } from '@src/shared/lib/image/getSize';
+import React, { memo, useEffect, useMemo, useState } from 'react';
+import { Image } from 'react-native';
 
-export const Banner = () => {
+export const Banner = memo(() => {
   const [size, setSize] = useState({ width: 0, height: 0 });
 
   //const banner = useSelector(selectBanner);
   const banner = BANNER;
 
-  useEffect(() => {
-    getSize(banner.img);
-  }, [banner]);
-
-  const getSize = async (uri: string) => {
-    const imageSize = await getImageSize(uri);
+  const getSize = useMemo(async () => {
+    const imageSize = await getImageSize(banner.img);
     const imageSizeByRatio = getImageSizeByRatio(imageSize);
-    setSize(imageSizeByRatio);
-  };
+    return imageSizeByRatio;
+  }, [banner.img]);
+
+  useEffect(() => {
+    getSize.then(setSize);
+  }, []);
 
   if (!banner?.img) {
     return false;
@@ -31,4 +31,4 @@ export const Banner = () => {
       source={{ uri: banner.img }}
     />
   );
-};
+});
