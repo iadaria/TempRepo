@@ -9,6 +9,8 @@ import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
 import { useForm } from 'react-hook-form';
 import { styles } from './ShopHomeStyle';
+import { getImageSize, getSize } from '@src/shared/lib/image/getSize';
+import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
 
 type FilterDto = {
   search?: string;
@@ -27,21 +29,11 @@ export const ShopHome = () => {
     formState: {},
   } = useForm<FilterDto>();
 
-  function getSize(uri: string) {
-    return Image.getSize(
-      uri,
-      (srcWidth, srcHeight) => {
-        const maxHeight = Dimensions.get('window').height; // or something else
-        const maxWidth = Dimensions.get('window').width - 25 * 2;
-
-        const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
-        setSize({ width: srcWidth * ratio, height: srcHeight * ratio });
-      },
-      error => {
-        console.log('error:', error);
-      },
-    );
-  }
+  const getSize = async (uri: string) => {
+    const imageSize = await getImageSize(uri);
+    const imageSizeByRatio = getImageSizeByRatio(imageSize);
+    setSize(imageSizeByRatio);
+  };
 
   useEffect(() => {
     getSize(banner.img);
