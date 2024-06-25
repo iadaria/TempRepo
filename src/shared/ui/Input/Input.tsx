@@ -55,7 +55,7 @@ export function Input<T extends FieldValues>({
         onChangeText={field.onChange}
         onBlur={() => {
           field.onBlur();
-          setIsShown(!!licon);
+          setIsShown(Boolean(licon));
         }}
         placeholder={placeholder}
         placeholderTextColor={colors.placeholder}
