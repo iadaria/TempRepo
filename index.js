@@ -2,7 +2,7 @@ import {AppRegistry} from 'react-native';
 import App from './src/app';
 import {name as appName} from './app.json';
 import { enableReactotron } from '@config/dev.config';
-import { enableMocking } from '@mock/mock.config';
+import { enableMocking } from 'mock/mock.config';
 
 // Maybe for dev mode
 enableReactotron().then(() => console.log('reactotron was enabled'))

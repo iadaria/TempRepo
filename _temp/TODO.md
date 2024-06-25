@@ -20,4 +20,4 @@ Need to read:
 
 - url, uri
 
-- useCallback, useMemo,
+- useCallback, useMemo, memo

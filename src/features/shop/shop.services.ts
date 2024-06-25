@@ -3,7 +3,7 @@ import { Banner, Restuarant } from './shop.types';
 import { endpoints } from '@src/shared/consts/endpoints';
 import { request } from '@src/shared/lib/api/request';
 import { log, logline } from '@src/shared/lib/debug/log';
-import { BANNER } from '@src/mock/handlers/data/banner.data';
+import { BANNER } from 'mock/handlers/data/banner.data';
 
 const { shop } = endpoints;
 

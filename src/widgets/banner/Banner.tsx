@@ -1,4 +1,4 @@
-import { BANNER } from '@src/mock/handlers/data/banner.data';
+import { BANNER } from 'mock/handlers/data/banner.data';
 import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
 import { getImageSize } from '@src/shared/lib/image/getSize';
 import React, { memo, useEffect, useMemo, useState } from 'react';

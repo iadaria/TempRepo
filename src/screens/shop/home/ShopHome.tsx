@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@src/app/hooks';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Text, View } from 'react-native';
-import { BANNER } from '@src/mock/handlers/data/banner.data';
+import { BANNER } from 'mock/handlers/data/banner.data';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';

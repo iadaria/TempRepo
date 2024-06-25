@@ -1,6 +1,6 @@
 import { Text, Pressable } from 'react-native';
 import React from 'react';
-import { fetchUser } from '../../mock/test';
+import { fetchUser } from '../../../mock/test';
 
 export function MswTestButton() {
   async function fetchAndShowUser() {
