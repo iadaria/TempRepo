@@ -1,3 +1,5 @@
+import { colors } from '@src/shared/lib/theme';
+import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
   Control,
   FieldError,
@@ -5,11 +7,9 @@ import {
   Path,
   useController,
 } from 'react-hook-form';
-import { styles as s, styles } from './InputStyle';
-import { Text, TextInput, View } from 'react-native';
-import { colors } from '@src/shared/lib/theme';
+import { Text, TextInput, View, ViewProps } from 'react-native';
 import { SvgProps } from 'react-native-svg';
-import { useState } from 'react';
+import { styles as s } from './InputStyle';
 //import { LoginDto } from '@src/features/auth/auth.types';
 
 interface InputProps<T extends FieldValues> {
@@ -25,31 +25,37 @@ export function Input<T extends FieldValues>({
   name,
   control,
   error,
-  licon: LeftIcon,
+  licon,
 }: InputProps<T>) {
-  const [leftIcon, setLeftIcon] = useState(Boolean(LeftIcon));
   const { field } = useController({
     control,
     name,
   });
 
+  //const leftIcon = useRef<InputIconDOM>();
+  const [isShown, setIsShown] = useState(Boolean(licon));
+
   const wrapper = {
     ...s.wrapper,
     ...(error && s.errorInput),
-    ...(leftIcon && s.liconwrapper),
+    ...(isShown && s.liconwrapper),
   };
+
+  const LeftIcon = () => licon && isShown && licon({ style: s.licon });
 
   return (
     <View style={wrapper}>
-      {leftIcon && LeftIcon && <LeftIcon style={styles.licon} />}
+      <LeftIcon />
       <TextInput
         style={s.input}
         value={field.value}
-        onFocus={() => setLeftIcon(false)}
+        onFocus={() => {
+          setIsShown(false);
+        }}
         onChangeText={field.onChange}
         onBlur={() => {
           field.onBlur();
-          setLeftIcon(true);
+          setIsShown(!!licon);
         }}
         placeholder={placeholder}
         placeholderTextColor={colors.placeholder}
@@ -58,3 +64,33 @@ export function Input<T extends FieldValues>({
     </View>
   );
 }
+
+/* 
+interface InputIconProps extends ViewProps {
+  icon?: React.FC<SvgProps>;
+}
+
+interface InputIconDOM {
+  show: () => void;
+  hide: () => void;
+}
+
+const InputIcon = forwardRef(({ icon: Icon, style }: InputIconProps, ref) => {
+  console.log('InputIcon', { isShown });
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      hide: () => setIsShown(false),
+      show: () => setIsShown(true),
+    }),
+    [],
+  );
+
+  if (!Icon || !isShown) {
+    return false;
+  }
+
+  return <Icon style={style} />;
+});
+ */

@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.input,
     height: 57,
     borderRadius: 15,
+    alignItems: 'center',
   },
   // http://hex2rgba.devoth.com/
   input: {
