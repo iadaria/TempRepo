@@ -1,18 +1,14 @@
 import { useAppDispatch } from '@src/app/hooks';
-import { fetchRestaurants } from '@src/features/shop/shop.services';
-import { selectRestaurants } from '@src/features/shop/shop.slice';
-import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
-
-import { useSelector } from 'react-redux';
-import { styles } from './ShopHomeStyle';
-
+import React, { useEffect, useState } from 'react';
+import { Dimensions, Image, Text, View } from 'react-native';
+import { BANNER } from '@src/mock/handlers/data/banner.data';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
 import { useForm } from 'react-hook-form';
+import { styles } from './ShopHomeStyle';
 
 type FilterDto = {
   search?: string;
@@ -21,16 +17,37 @@ type FilterDto = {
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
-  const restaurants = useSelector(selectRestaurants);
+  const [size, setSize] = useState({ width: 0, height: 0 });
+  //const restaurants = useSelector(selectRestaurants);
+  //const banner = useSelector(selectBanner);
+  const banner = BANNER;
 
   const {
     control,
     formState: {},
   } = useForm<FilterDto>();
 
+  function getSize(uri: string) {
+    return Image.getSize(
+      uri,
+      (srcWidth, srcHeight) => {
+        const maxHeight = Dimensions.get('window').height; // or something else
+        const maxWidth = Dimensions.get('window').width - 25 * 2;
+
+        const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+        setSize({ width: srcWidth * ratio, height: srcHeight * ratio });
+      },
+      error => {
+        console.log('error:', error);
+      },
+    );
+  }
+
   useEffect(() => {
-    dispatch(fetchRestaurants());
-  }, []);
+    getSize(banner.img);
+    //dispatch(fetchRestaurants());
+    //dispatch(fetchBanner());
+  }, [banner]);
 
   return (
     <Box>
@@ -52,24 +69,19 @@ export const ShopHome = () => {
             <Filter />
           </Button>
         </Row>
-        <Row gap={9}>
-          <Input
-            name="search2"
-            control={control}
-            placeholder="What do you want to order?"
-            licon={Search}
+        {banner && (
+          <Image
+            style={{ width: size.width, height: size.height }}
+            resizeMode="cover"
+            source={{ uri: banner.img }}
           />
-          <Button style={styles.buttonIcon}>
-            <Filter />
-          </Button>
-        </Row>
-        {/*     <FlatList
+        )}
+        {/* <FlatList
           data={restaurants}
           keyExtractor={(_, index) => `item-${index}`}
           renderItem={({ item }) => (
             <Text style={{ color: 'white' }}>{item.name}</Text>
-          )}
-        /> */}
+          )} */}
       </View>
     </Box>
   );

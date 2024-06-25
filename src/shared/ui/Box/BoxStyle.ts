@@ -9,6 +9,6 @@ export const styles = StyleSheet.create({
   box: {
     flex: 1,
     paddingTop: 60,
-    paddingHorizontal: 30,
+    paddingHorizontal: 25,
   },
 });

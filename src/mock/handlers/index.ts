@@ -1,4 +1,4 @@
-import { restaurantsHandlers } from './restaurants';
+import { shopHandlers } from './shop';
 import { userHandlers } from './user';
 
-export const handlers = [...userHandlers, ...restaurantsHandlers];
+export const handlers = [...userHandlers, ...shopHandlers];

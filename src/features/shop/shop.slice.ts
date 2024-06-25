@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Restuarant } from './shop.types';
-import { fetchRestaurants } from './shop.services';
+import { Banner, Restuarant } from './shop.types';
+import { fetchBanner, fetchRestaurants } from './shop.services';
 import { RootState } from '@src/app/providers/StoreProvider/config/store';
 
 type ShopState = {
   restaurants: Restuarant[];
+  banner: Banner | null;
 };
 
 const initialState: ShopState = {
   restaurants: [],
+  banner: null,
 };
 
 const shopSlice = createSlice({
@@ -19,9 +21,14 @@ const shopSlice = createSlice({
     builder.addCase(fetchRestaurants.fulfilled, (state, action) => {
       state.restaurants = action.payload;
     });
+
+    builder.addCase(fetchBanner.fulfilled, (state, action) => {
+      state.banner = action.payload;
+    });
   },
 });
 
 export const shopReducer = shopSlice.reducer;
 
 export const selectRestaurants = (state: RootState) => state.shop.restaurants;
+export const selectBanner = (state: RootState) => state.shop.banner;
