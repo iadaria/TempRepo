@@ -42,6 +42,9 @@ export const colorPallete = {
       900: '#14532d',
       950: '#052e16',
     },
+    orange: {
+      10: '#FF8E4C',
+    },
   },
   dark: {},
 };

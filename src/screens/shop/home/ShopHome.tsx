@@ -7,9 +7,10 @@ import { Row } from '@src/shared/ui/Row/Row';
 import { Banner } from '@src/widgets/banner/Banner';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Pressable, Text, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
+import { log } from '@src/shared/lib/debug/log';
 
 type FilterDto = {
   search?: string;
@@ -28,6 +29,18 @@ export const ShopHome = () => {
   useEffect(() => {
     //dispatch(fetchRestaurants());
   }, []);
+
+  const ListHeader = () => (
+    <View style={styles.wrapperHeader}>
+      <Text style={styles.header}>Nearest Restaurant</Text>
+      <Pressable
+        onPress={() => {
+          log('', 'Cliked View More Restuarants');
+        }}>
+        <Text style={styles.headerLink}>View More</Text>
+      </Pressable>
+    </View>
+  );
 
   return (
     <Box>
@@ -51,9 +64,7 @@ export const ShopHome = () => {
         </Row>
         <Banner />
         <FlatList
-          ListHeaderComponent={
-            <Text style={styles.subtitle}>Nearest Restaurant</Text>
-          }
+          ListHeaderComponent={ListHeader}
           data={restaurants}
           keyExtractor={(_, index) => `item-${index}`}
           renderItem={({ item }) => (

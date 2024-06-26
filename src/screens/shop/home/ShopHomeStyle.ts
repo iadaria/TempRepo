@@ -13,7 +13,18 @@ export const styles = StyleSheet.create({
     fontFamily: 'benton-sans-bold',
     ...debugStyles.blue,
   },
-  subtitle: {
+  wrapperHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  headerLink: {
+    color: colors.orange[10],
+    fontSize: 12,
+    fontFamily: 'BentonSans-Regular',
+  },
+  header: {
     color: 'white',
     textTransform: 'capitalize',
     fontSize: 15,

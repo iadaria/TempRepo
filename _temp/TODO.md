@@ -1,3 +1,5 @@
+! В начале обрати внимание откуда получилось со fontFamilty изменился глобально вдруг
+
 - add memo fro FlatList and For other components
 - https://reactnative.dev/docs/optimizing-flatlist-configuration
 - read all docs about optimization
