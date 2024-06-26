@@ -1,4 +1,5 @@
 ! В начале обрати внимание откуда получилось со fontFamilty изменился глобально вдруг
+Добавить performance во время выполнения
 
 - add memo fro FlatList and For other components
 - https://reactnative.dev/docs/optimizing-flatlist-configuration
@@ -48,3 +49,7 @@ Need to read:
 - https://github.com/timarney/react-app-rewired
 
 - what is a class in js
+
+- RN peformance
+- https://didikmulyadi.medium.com/measurement-react-native-performance-3da2fc7ac201
+- https://semaphoreci.com/blog/react-native-performance-measuring-monitoring-tools

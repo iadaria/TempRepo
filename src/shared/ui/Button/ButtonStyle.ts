@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     columnGap: 21,
-    backgroundColor: colors.interactive,
+    backgroundColor: colors.interface,
     height: 57,
     borderRadius: 15,
   },

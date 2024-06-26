@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 15,
+    //marginBottom: 15,
   },
   headerLink: {
     color: colors.orange[10],
@@ -34,4 +34,22 @@ export const styles = StyleSheet.create({
     flex: 0,
     padding: 15,
   },
+  restCard: {
+    //1
+    width: 147,
+    height: 184,
+    backgroundColor: colors.interface,
+    // 2
+    alignItems: 'center',
+    borderRadius: 15,
+  },
+  name: {
+    // 2
+    color: 'white',
+    fontSize: 16,
+    fontFamily: 'benton-sans-bold',
+    ...debugStyles.blue,
+  },
+  restImg: {},
+  itemContainer: {},
 });

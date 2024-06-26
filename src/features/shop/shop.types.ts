@@ -1,4 +1,4 @@
-export type Restuarant = {
+export type Restaurant = {
   id: string;
   name: string;
   img: string;

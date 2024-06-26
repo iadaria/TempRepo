@@ -1,4 +1,4 @@
 export type ImageSize = {
-  srcWidth: number;
-  srcHeight: number;
+  width: number;
+  height: number;
 };

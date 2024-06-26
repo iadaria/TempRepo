@@ -5,8 +5,8 @@ export const getImageSize = function (uri: string) {
   return new Promise<ImageSize>((resolver, reject) =>
     Image.getSize(
       uri,
-      (srcWidth, srcHeight) => {
-        resolver({ srcWidth, srcHeight });
+      (width, height) => {
+        resolver({ width, height });
       },
       error => reject(error),
     ),

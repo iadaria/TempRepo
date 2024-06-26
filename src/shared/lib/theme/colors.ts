@@ -15,7 +15,7 @@ export const colorPallete = {
     text: '#FFFFFF',
     placeholder: 'rgba(255, 255, 255, 0.3)',
     input: 'rgba(255, 255, 255, 0.1)',
-    interactive: 'rgba(255, 255, 255, 0.1)',
+    interface: 'rgba(255, 255, 255, 0.1)',
     red: {
       50: '#fef2f2',
       100: '#fee2e2',

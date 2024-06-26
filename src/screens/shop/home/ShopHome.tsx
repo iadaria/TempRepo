@@ -5,21 +5,43 @@ import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
 import { Banner } from '@src/widgets/banner/Banner';
-import React, { useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FlatList, Pressable, Text, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  ListRenderItem,
+  Pressable,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { styles } from './ShopHomeStyle';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
 import { log } from '@src/shared/lib/debug/log';
+import { Restaurant } from '@src/features/shop/shop.types';
+import { getImageSize } from '@src/shared/lib/image/getImageSize';
+import { ImageSize } from '@src/shared/lib/image/types';
 
 type FilterDto = {
   search?: string;
 };
 
+interface ItemImageProps {
+  uri: string;
+}
+const ItemImage = ({ uri }: ItemImageProps) => {
+  const [size, setSize] = useState<ImageSize>({ width: 0, height: 0 });
+
+  getImageSize(uri).then(setSize);
+
+  return <Image style={size} source={{ uri }} />;
+};
+
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
-  const restaurants = RESTAURANTS;
+  const restaurants: Restaurant[] = RESTAURANTS;
 
   const {
     control,
@@ -33,14 +55,23 @@ export const ShopHome = () => {
   const ListHeader = () => (
     <View style={styles.wrapperHeader}>
       <Text style={styles.header}>Nearest Restaurant</Text>
-      <Pressable
+      <TouchableOpacity
         onPress={() => {
-          log('', 'Cliked View More Restuarants');
+          log('', 'Cliked View More Restaurants');
         }}>
         <Text style={styles.headerLink}>View More</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
+
+  const renderItem = ({ item }: { item: Restaurant }) => {
+    return (
+      <TouchableOpacity style={styles.restCard}>
+        <ItemImage uri={item.img} />
+        <Text style={styles.name}> {item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <Box>
@@ -62,19 +93,20 @@ export const ShopHome = () => {
             <Filter />
           </Button>
         </Row>
-        <Banner />
+        {/* <Banner /> */}
         <FlatList
+          contentContainerStyle={{ gap: 20 }}
+          //columnWrapperStyle={{ gap: GAP_BETWEEN_COLUMNS }}
           ListHeaderComponent={ListHeader}
           data={restaurants}
           keyExtractor={(_, index) => `item-${index}`}
-          renderItem={({ item }) => (
-            <Text style={{ color: 'white' }}>{item.name}</Text>
-          )}
+          renderItem={renderItem}
         />
       </View>
     </Box>
   );
 };
+/* Rectangle 12 */
 
 /**
  * Step3 Shop screen
