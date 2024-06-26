@@ -1,12 +1,6 @@
-- response error
-- layout for restuarants
--
-
-- get restuarant and commet
-- refactor and get restaurants
-- refactor fetch
-- add error for fetch and show alert
-- thingking about shop and slices
+- add memo fro FlatList and For other components
+- https://reactnative.dev/docs/optimizing-flatlist-configuration
+- read all docs about optimization
 
 Need to read:
 

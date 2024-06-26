@@ -7,8 +7,9 @@ import { Row } from '@src/shared/ui/Row/Row';
 import { Banner } from '@src/widgets/banner/Banner';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
+import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
 
 type FilterDto = {
   search?: string;
@@ -16,8 +17,8 @@ type FilterDto = {
 
 export const ShopHome = () => {
   const dispatch = useAppDispatch();
-
   //const restaurants = useSelector(selectRestaurants);
+  const restaurants = RESTAURANTS;
 
   const {
     control,
@@ -26,7 +27,6 @@ export const ShopHome = () => {
 
   useEffect(() => {
     //dispatch(fetchRestaurants());
-    //dispatch(fetchBanner());
   }, []);
 
   return (
@@ -50,12 +50,16 @@ export const ShopHome = () => {
           </Button>
         </Row>
         <Banner />
-        {/* <FlatList
+        <FlatList
+          ListHeaderComponent={
+            <Text style={styles.subtitle}>Nearest Restaurant</Text>
+          }
           data={restaurants}
           keyExtractor={(_, index) => `item-${index}`}
           renderItem={({ item }) => (
             <Text style={{ color: 'white' }}>{item.name}</Text>
-          )} */}
+          )}
+        />
       </View>
     </Box>
   );
