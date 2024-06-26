@@ -5,8 +5,9 @@ import { selectBanner } from '@src/features/shop/shop.slice';
 import { getImageSize } from '@src/shared/lib/image/getImageSize';
 import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
 import React, { useEffect, useState } from 'react';
-import { Image } from 'react-native';
+import { Image, Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
+import { log } from '@src/shared/lib/debug/log';
 
 export const Banner = () => {
   const dispatch = useAppDispatch();
@@ -35,10 +36,12 @@ export const Banner = () => {
   }
 
   return (
-    <Image
-      style={{ width: size.width, height: size.height }}
-      resizeMode="cover"
-      source={{ uri: banner.img }}
-    />
+    <Pressable onPress={() => log(Banner.name, 'Clicked Banner')}>
+      <Image
+        style={{ width: size.width, height: size.height }}
+        resizeMode="cover"
+        source={{ uri: banner.img }}
+      />
+    </Pressable>
   );
 };
