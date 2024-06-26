@@ -8,7 +8,6 @@
       "@src/*": ["src/*"],
       "@config/*": ["src/shared/config/*"],
       "@lib/*": ["src/shared/lib/*"],
-      "@mock/*": ["mock/*"],
       "@features/*": ["src/features/*"],
       "@screens/*": ["src/screens/*"]
     }

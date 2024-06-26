@@ -1,21 +1,17 @@
 import { useAppDispatch } from '@src/app/hooks';
-import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
-import { BANNER } from 'mock/handlers/data/banner.data';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
-import { useForm } from 'react-hook-form';
-import { styles } from './ShopHomeStyle';
-import { getImageSize, getSize } from '@src/shared/lib/image/getSize';
-import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
 import { Banner } from '@src/widgets/banner/Banner';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { Text, View } from 'react-native';
+import { styles } from './ShopHomeStyle';
 
 type FilterDto = {
   search?: string;
-  search2?: string;
 };
 
 export const ShopHome = () => {

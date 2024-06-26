@@ -1,23 +1,33 @@
 import { BANNER } from 'mock/handlers/data/banner.data';
+import { useAppDispatch } from '@src/app/hooks';
+import { fetchBanner } from '@src/features/shop/shop.services';
+import { selectBanner } from '@src/features/shop/shop.slice';
+import { getImageSize } from '@src/shared/lib/image/getImageSize';
 import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
-import { getImageSize } from '@src/shared/lib/image/getSize';
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
+import { useSelector } from 'react-redux';
 
-export const Banner = memo(() => {
+export const Banner = () => {
+  const dispatch = useAppDispatch();
   const [size, setSize] = useState({ width: 0, height: 0 });
 
   //const banner = useSelector(selectBanner);
   const banner = BANNER;
 
-  const getSize = useMemo(async () => {
-    const imageSize = await getImageSize(banner.img);
-    const imageSizeByRatio = getImageSizeByRatio(imageSize);
-    return imageSizeByRatio;
-  }, [banner.img]);
+  useEffect(() => {
+    async function getSize() {
+      const imageSize = await getImageSize(banner!.img);
+      const imageSizeByRatio = getImageSizeByRatio(imageSize);
+      return imageSizeByRatio;
+    }
+    if (banner) {
+      getSize().then(setSize);
+    }
+  }, [banner]);
 
   useEffect(() => {
-    getSize.then(setSize);
+    dispatch(fetchBanner());
   }, []);
 
   if (!banner?.img) {
@@ -31,4 +41,4 @@ export const Banner = memo(() => {
       source={{ uri: banner.img }}
     />
   );
-});
+};

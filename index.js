@@ -21,7 +21,7 @@ function registerApp() {
   AppRegistry.registerComponent(appName, () => App);
 }
 
-//const app = __DEV__ ? registerAppWithMsw : registerApp;
-const app = registerApp;
+const app = __DEV__ ? registerAppWithMsw : registerApp;
+//const app = registerApp;
 
 app();

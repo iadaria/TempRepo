@@ -21,3 +21,34 @@ Need to read:
 - url, uri
 
 - useCallback, useMemo, memo
+- https://medium.com/geekculture/great-confusion-about-react-memoization-methods-react-memo-usememo-usecallback-a10ebdd3a316
+- https://habr.com/ru/companies/otus/articles/800549/
+- https://semaphoreci.com/blog/react-usecallback-hook#:~:text=Now%20you%20understand%20how%20the%20useCallback%20hook%20can,function%20that%20relies%20on%20external%20data%20or%20state.
+- https://www.youtube.com/watch?v=-yIsQPp31L0&pp=ygURdXNlY2FsbGJhY2sgY2FzZXM%3D
+  -! https://www.youtube.com/watch?v=S1uUQL66hHA
+
+- build your own React lib
+  -! https://www.youtube.com/watch?v=iVFCstAWclU&t=11s
+  - https://www.youtube.com/watch?v=mLMfx8BEt8g&t=1s
+  - https://www.youtube.com/watch?v=PF0TpJOhhB0
+- https://pomb.us/build-your-own-react/
+- https://hackernoon.com/build-your-own-react-48edb8ed350d
+- https://www.youtube.com/watch?v=X51YdL20ubs
+
+- undestanding react source code
+- https://medium.com/@ericchurchill/the-react-source-code-a-beginners-walkthrough-i-7240e86f3030
+- 16.5 Hours Inside React's Source Code
+- https://www.youtube.com/watch?v=nrAt49OS2Q8
+- https://www.youtube.com/watch?v=-XKvVyC6si0
+- https://dev.to/fromaline/deep-dive-into-react-codebase-ep1-prerequisites-33ak
+- https://www.youtube.com/watch?v=za2FZ8QCE18
+
+- react reconcilation
+- https://www.youtube.com/watch?v=O1yXbmz409c&pp=ygUTcmVhY3QgcmVjb25jaWxhdGlvbg%3D%3D
+- https://www.youtube.com/watch?v=cyAbjx0mfKM
+- https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DZ7ysKNFrMqo&ved=2ahUKEwiF0cixivmGAxXWxQIHHUQYATwQtwJ6BAgLEAI&usg=AOvVaw3qooB5WYnR7N-hGms1ijr9
+
+-
+- https://github.com/timarney/react-app-rewired
+
+- what is a class in js

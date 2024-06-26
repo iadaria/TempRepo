@@ -14,7 +14,6 @@ module.exports = {
           '@src': './src',
           '@config': './src/shared/config',
           '@lib': './src/shared/lib',
-          '@mock': './src/mock',
           '@features': './src/features',
           '@screens': './scrc/screens'
 
