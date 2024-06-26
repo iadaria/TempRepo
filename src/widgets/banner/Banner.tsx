@@ -28,7 +28,7 @@ export const Banner = () => {
   }, [banner]);
 
   useEffect(() => {
-    dispatch(fetchBanner());
+    //dispatch(fetchBanner());
   }, []);
 
   if (!banner?.img) {

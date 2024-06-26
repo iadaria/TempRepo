@@ -1,27 +1,18 @@
 import { useAppDispatch } from '@src/app/hooks';
+import { Restaurant } from '@src/features/shop/shop.types';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
+import { log } from '@src/shared/lib/debug/log';
+import { getImageSize } from '@src/shared/lib/image/getImageSize';
+import { ImageSize } from '@src/shared/lib/image/types';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
-import { Banner } from '@src/widgets/banner/Banner';
-import React, { FC, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import {
-  FlatList,
-  Image,
-  ListRenderItem,
-  Pressable,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { styles } from './ShopHomeStyle';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
-import { log } from '@src/shared/lib/debug/log';
-import { Restaurant } from '@src/features/shop/shop.types';
-import { getImageSize } from '@src/shared/lib/image/getImageSize';
-import { ImageSize } from '@src/shared/lib/image/types';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { styles } from './ShopHomeStyle';
 
 type FilterDto = {
   search?: string;
@@ -67,8 +58,10 @@ export const ShopHome = () => {
   const renderItem = ({ item }: { item: Restaurant }) => {
     return (
       <TouchableOpacity style={styles.restCard}>
-        <ItemImage uri={item.img} />
-        <Text style={styles.name}> {item.name}</Text>
+        <View style={styles.itemContainer}>
+          <ItemImage uri={item.img} />
+          <Text style={styles.name}> {item.name}</Text>
+        </View>
       </TouchableOpacity>
     );
   };
