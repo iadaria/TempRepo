@@ -12,7 +12,7 @@ export const colorPallete = {
   light: {
     [TypeColor.Prime]: '#0D0D0D',
     [TypeColor.Second]: '#15BE77',
-    text: '#FFFFFF',
+    text: 'rgba(255, 255, 255, 0.3)',
     placeholder: 'rgba(255, 255, 255, 0.3)',
     input: 'rgba(255, 255, 255, 0.1)',
     interface: 'rgba(255, 255, 255, 0.1)',

@@ -1,18 +1,22 @@
 import { debugStyles } from '@src/shared/consts/debug';
+import { log } from '@src/shared/lib/debug/log';
 import { getImageSize } from '@src/shared/lib/image/getImageSize';
 import { ImageSize } from '@src/shared/lib/image/types';
-import React, { useState } from 'react';
-import { Image as RNImage, StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 
 interface ItemImageProps {
   uri: string;
 }
 
-export const Image = ({ uri }: ItemImageProps) => {
+export const AppImage = ({ uri }: ItemImageProps) => {
   const [size, setSize] = useState<ImageSize>({ width: 0, height: 0 });
 
-  getImageSize(uri).then(setSize);
+  useEffect(() => {
+    getImageSize(uri).then(setSize);
+    log(AppImage.name, 'render' + uri);
+  }, []);
 
   return (
     <FastImage
@@ -20,18 +24,13 @@ export const Image = ({ uri }: ItemImageProps) => {
       style={{ ...size, ...styles.img }}
       resizeMode={FastImage.resizeMode.contain}
     />
-    /* <RNImage
-      style={{ ...size, ...styles.img }}
-      source={{ uri, cache: 'force-cache' }}
-      resizeMode="center"
-    /> */
   );
 };
 
 const styles = StyleSheet.create({
   img: {
-    ...debugStyles.blue,
-    backgroundColor: 'red',
+    //...debugStyles.blue,
+    //backgroundColor: 'red',
   },
 });
 //rm -rf .git/index.lock worked for me too.

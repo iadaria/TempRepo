@@ -1,21 +1,16 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { Restaurant } from '@src/entities/shop/shop.types';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
-import { log } from '@src/shared/lib/debug/log';
-import { getImageSize } from '@src/shared/lib/image/getImageSize';
-import { ImageSize } from '@src/shared/lib/image/types';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
-import { debugStyles } from '@src/shared/consts/debug';
-import { Image } from '@src/shared/ui/Image/Image';
-import FastImage from 'react-native-fast-image';
+import { RestaurantList } from '@src/features/RestaurantList/RestaurantList';
 
 type FilterDto = {
   search?: string;
@@ -34,30 +29,6 @@ export const ShopHome = () => {
   useEffect(() => {
     //dispatch(fetchRestaurants());
   }, []);
-
-  const ListHeader = () => (
-    <View style={styles.wrapperHeader}>
-      <Text style={styles.header}>Nearest Restaurant</Text>
-      <TouchableOpacity
-        onPress={() => {
-          log('', 'Cliked View More Restaurants');
-        }}>
-        <Text style={styles.headerLink}>View More</Text>
-      </TouchableOpacity>
-    </View>
-  );
-
-  const renderItem = ({ item }: { item: Restaurant }) => {
-    return (
-      <TouchableOpacity style={styles.restCard}>
-        <View style={styles.itemContainer}>
-          <Image uri={item.img} />
-
-          <Text style={styles.name}> {item.name}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
 
   return (
     <Box>
@@ -80,14 +51,7 @@ export const ShopHome = () => {
           </Button>
         </Row>
         {/* <Banner /> */}
-        <FlatList
-          contentContainerStyle={{ gap: 20 }}
-          //columnWrapperStyle={{ gap: GAP_BETWEEN_COLUMNS }}
-          ListHeaderComponent={ListHeader}
-          data={restaurants}
-          keyExtractor={(_, index) => `item-${index}`}
-          renderItem={renderItem}
-        />
+        <RestaurantList restaurants={restaurants} />
       </View>
     </Box>
   );
