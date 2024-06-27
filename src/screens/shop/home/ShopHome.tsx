@@ -1,16 +1,18 @@
 import { useAppDispatch } from '@src/app/hooks';
 import { Restaurant } from '@src/entities/shop/shop.types';
+import { RestaurantList } from '@src/features/RestaurantList';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
+import { Banner } from '@src/widgets/banner/Banner';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { ScrollView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
-import { RestaurantList } from '@src/features/RestaurantList/RestaurantList';
+import { PopularMenuList } from '@src/features/PopularMenuList';
 
 type FilterDto = {
   search?: string;
@@ -50,12 +52,14 @@ export const ShopHome = () => {
             <Filter />
           </Button>
         </Row>
-        {/* <Banner /> */}
+        <Banner />
         <RestaurantList restaurants={restaurants} />
+        <PopularMenuList />
       </View>
     </Box>
   );
 };
+
 /* Rectangle 12 */
 
 /**
