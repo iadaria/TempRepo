@@ -53,3 +53,12 @@ Need to read:
 - RN peformance
 - https://didikmulyadi.medium.com/measurement-react-native-performance-3da2fc7ac201
 - https://semaphoreci.com/blog/react-native-performance-measuring-monitoring-tools
+
+Major Questions:
+
+- Default or export?
+
+Image:
+
+- https://github.com/georstat/react-native-image-cache
+- https://github.com/xerdnu/react-native-blasted-image

@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@src/app/hooks';
-import { Restaurant } from '@src/features/shop/shop.types';
+import { Restaurant } from '@src/entities/shop/shop.types';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { log } from '@src/shared/lib/debug/log';
 import { getImageSize } from '@src/shared/lib/image/getImageSize';
@@ -11,22 +11,14 @@ import { Row } from '@src/shared/ui/Row/Row';
 import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
+import { debugStyles } from '@src/shared/consts/debug';
+import { Image } from '@src/shared/ui/Image/Image';
+import FastImage from 'react-native-fast-image';
 
 type FilterDto = {
   search?: string;
-};
-
-interface ItemImageProps {
-  uri: string;
-}
-const ItemImage = ({ uri }: ItemImageProps) => {
-  const [size, setSize] = useState<ImageSize>({ width: 0, height: 0 });
-
-  getImageSize(uri).then(setSize);
-
-  return <Image style={size} source={{ uri }} />;
 };
 
 export const ShopHome = () => {
@@ -59,7 +51,8 @@ export const ShopHome = () => {
     return (
       <TouchableOpacity style={styles.restCard}>
         <View style={styles.itemContainer}>
-          <ItemImage uri={item.img} />
+          <Image uri={item.img} />
+
           <Text style={styles.name}> {item.name}</Text>
         </View>
       </TouchableOpacity>

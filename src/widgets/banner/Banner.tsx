@@ -1,7 +1,7 @@
 import { BANNER } from 'mock/handlers/data/banner.data';
 import { useAppDispatch } from '@src/app/hooks';
-import { fetchBanner } from '@src/features/shop/shop.services';
-import { selectBanner } from '@src/features/shop/shop.slice';
+import { fetchBanner } from '@src/entities/shop/shop.services';
+import { selectBanner } from '@src/entities/shop/shop.slice';
 import { getImageSize } from '@src/shared/lib/image/getImageSize';
 import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
 import React, { useEffect, useState } from 'react';

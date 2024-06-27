@@ -1,5 +1,5 @@
 import { selectMswEnabled } from '@src/app/services/msw';
-import { selectIsAuthenticated } from '@src/features/auth/auth.slice';
+import { selectIsAuthenticated } from '@src/entities/auth/auth.slice';
 import { AuthScreen } from '@src/screens/auth/login/AuthScreen';
 import { ShopHome } from '@src/screens/shop/home/ShopHome';
 import React from 'react';

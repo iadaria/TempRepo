@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
   buttonIcon: {
     flex: 0,
     padding: 15,
+    backgroundColor: 'red',
   },
   restCard: {
     //1

@@ -19,7 +19,7 @@ export const RESTAURANTS = [
     location: { lat: 0, lng: 0 },
     img: `${PATH}/r3.png`,
   },
-  {
+  /*   {
     id: 4,
     name: 'Smart Resto',
     location: { lat: 0, lng: 0 },
@@ -36,5 +36,5 @@ export const RESTAURANTS = [
     name: 'Healthy Food',
     location: { lat: 0, lng: 0 },
     img: `${PATH}/r6.png`,
-  },
+  }, */
 ];

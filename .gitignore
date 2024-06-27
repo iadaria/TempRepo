@@ -3,6 +3,7 @@
 .DS_Store
 **/.xcode.env.local
 **/Pods/
+*.bundle
 # Xcode
 #
 build/
