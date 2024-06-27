@@ -7,7 +7,7 @@ import { styles } from './RestaurantListStyle.ts';
 
 interface RestaurantListProps {
   restaurants: Restaurant[];
-  horizontal: boolean;
+  horizontal?: boolean;
 }
 
 export const RestaurantList = ({

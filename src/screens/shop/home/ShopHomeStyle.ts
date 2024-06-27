@@ -1,4 +1,3 @@
-import { debugStyles } from '@src/shared/consts/debug';
 import { colors } from '@src/shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
@@ -11,7 +10,7 @@ export const styles = StyleSheet.create({
     textTransform: 'capitalize',
     fontSize: 31,
     fontFamily: 'benton-sans-bold',
-    ...debugStyles.blue,
+    //...debugStyles.blue,
   },
   wrapperHeader: {
     flexDirection: 'row',
@@ -48,7 +47,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontFamily: 'benton-sans-bold',
-    ...debugStyles.blue,
+    //...debugStyles.blue,
   },
   restImg: {},
   itemContainer: {},
