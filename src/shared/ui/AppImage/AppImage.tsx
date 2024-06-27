@@ -1,29 +1,26 @@
-import { debugStyles } from '@src/shared/consts/debug';
-import { log } from '@src/shared/lib/debug/log';
 import { getImageSize } from '@src/shared/lib/image/getImageSize';
 import { ImageSize } from '@src/shared/lib/image/types';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image, StyleSheet } from 'react-native';
 
-interface ItemImageProps {
+interface AppImageProps {
   uri: string;
 }
 
-export const AppImage = ({ uri }: ItemImageProps) => {
+export const AppImage = ({ uri }: AppImageProps) => {
   const [size, setSize] = useState<ImageSize>({ width: 0, height: 0 });
 
   useEffect(() => {
     getImageSize(uri).then(setSize);
-    log(AppImage.name, 'render' + uri);
   }, []);
 
   return (
-    <FastImage
-      source={{ uri }}
-      style={{ ...size, ...styles.img }}
-      resizeMode={FastImage.resizeMode.contain}
-    />
+    <Image source={{ uri, cache: 'only-if-cached' }} style={{ ...size }} />
+    // <FastImage
+    //   source={{ uri }}
+    //   style={{ ...size, ...styles.img }}
+    //   resizeMode={FastImage.resizeMode.contain}
+    // />
   );
 };
 
