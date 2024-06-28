@@ -1,4 +1,4 @@
-import { Restaurant } from '@src/entities/shop/shop.types.ts';
+import { Restaurant } from '@src/5 entities/shop/shop.types.ts';
 import { log } from '@src/shared/lib/debug/log.ts';
 import { AppImage } from '@src/shared/ui/AppImage/AppImage.tsx';
 import React, { useCallback } from 'react';

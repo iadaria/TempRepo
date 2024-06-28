@@ -8,7 +8,7 @@
       "@src/*": ["src/*"],
       "@config/*": ["src/shared/config/*"],
       "@lib/*": ["src/shared/lib/*"],
-      "@features/*": ["src/features/*"],
+      "@features/*": ["src/4 features/*"],
       "@screens/*": ["src/2 screens/*"]
     }
   }
