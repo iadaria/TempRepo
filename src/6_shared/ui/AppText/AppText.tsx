@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { styles } from './AppTextStyle';
+import { log } from '@src/6_shared/lib/debug/log';
 
 interface AppTextProps {
   children: React.ReactNode;
@@ -17,8 +18,10 @@ type Font = 'regular' | 'bold' | 'medium';
 type Item = [key: string, value: boolean];
 
 export const AppText = ({ children, ...etc }: AppTextProps) => {
-  const isH = (hs: Item) => hs[0].startsWith('h');
-  const isFont = (_: Item) => !isH;
+  log(AppText.name, children?.toString());
+
+  const isHeader = (hs: Item) => hs[0].startsWith('h');
+  const isFont = (_: Item) => !isHeader;
 
   function find<T>(sort: (item: Item) => Boolean): T {
     const property = Object.entries(etc)
@@ -28,7 +31,15 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
     return property?.[0] as T;
   }
 
-  const getSize = () => {
+  const size = find<TextSize>(isHeader);
+  const font = find<Font>(isFont);
+
+  return (
+    <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>
+  );
+};
+
+/*   const getSize = () => {
     const header = Object.entries(etc)
       .filter(isH)
       .find(h => h[1]);
@@ -41,15 +52,4 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
       .find(font => font[1]);
     return (font?.[0] as Font) || 'regular';
   };
-
-  const size = getSize();
-  const font = getFont();
-
-  return (
-    <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>
-  );
-};
-
-/**
- * Object.values(hs)
  */
