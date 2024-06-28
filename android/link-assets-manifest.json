@@ -2,14 +2,6 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/BentonSans Medium.otf",
-      "sha1": "b1f1ebf2664b3c8d629585f3b9bddc8c7a4cd846"
-    },
-    {
-      "path": "assets/fonts/BentonSans-Regular.ttf",
-      "sha1": "9dc79002a127a937937ed50d93337b14d3360487"
-    },
-    {
       "path": "assets/fonts/Inter-Black.ttf",
       "sha1": "f79fa58ace5f55e338c99bf71e7e0702841df6f2"
     },
@@ -52,6 +44,14 @@
     {
       "path": "assets/fonts/benton-sans-bold.ttf",
       "sha1": "0d8a9f449c6c2f53773e254f983bc3a4e1529c08"
+    },
+    {
+      "path": "assets/fonts/benton-sans-medium.otf",
+      "sha1": "b1f1ebf2664b3c8d629585f3b9bddc8c7a4cd846"
+    },
+    {
+      "path": "assets/fonts/bnton-sans-regular.ttf",
+      "sha1": "9dc79002a127a937937ed50d93337b14d3360487"
     }
   ]
 }

@@ -15,4 +15,13 @@ export const styles = StyleSheet.create({
   h3: {
     fontSize: 15,
   },
+  regular: {
+    fontFamily: 'benton-sans-regular',
+  },
+  bold: {
+    fontFamily: 'benton-sans-bold',
+  },
+  medium: {
+    fontFamily: 'benton-sans-medium',
+  },
 });
