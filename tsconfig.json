@@ -9,7 +9,7 @@
       "@config/*": ["src/shared/config/*"],
       "@lib/*": ["src/shared/lib/*"],
       "@features/*": ["src/features/*"],
-      "@screens/*": ["src/screens/*"]
+      "@screens/*": ["src/2 screens/*"]
     }
   }
 }
