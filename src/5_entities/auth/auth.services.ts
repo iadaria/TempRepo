@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AuthResponse, LoginDto } from './auth.types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AUTH_TOKEN_STORAGE_KEY } from '@src/shared/consts/storageKeys';
-import { endpoints } from '@src/shared/consts/endpoints';
-import { request } from '@src/shared/lib/api/request';
+import { AUTH_TOKEN_STORAGE_KEY } from '@src/6_shared/consts/storageKeys';
+import { endpoints } from '@src/6_shared/consts/endpoints';
+import { request } from '@src/6_shared/lib/api/request';
 
 const { account } = endpoints;
 

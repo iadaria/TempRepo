@@ -1,4 +1,4 @@
-import { Pattern2 } from '@src/shared/assets/images';
+import { Pattern2 } from '@src/6_shared/assets/images';
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Svg, { Image as SvgImage } from 'react-native-svg';

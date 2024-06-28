@@ -1,7 +1,7 @@
 import { Pressable, PressableProps, StyleProp, ViewStyle } from 'react-native';
 import { styles } from './ButtonStyle';
 import { SvgProps } from 'react-native-svg';
-import { log } from '@src/shared/lib/debug/log';
+import { log } from '@src/6_shared/lib/debug/log';
 
 interface ButtonProps extends PressableProps {
   secondary?: boolean;

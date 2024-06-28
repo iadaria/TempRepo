@@ -1,4 +1,4 @@
-import { colors } from '@src/shared/lib/theme';
+import { colors } from '@src/6_shared/lib/theme';
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import {
   Control,

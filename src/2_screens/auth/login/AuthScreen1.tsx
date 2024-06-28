@@ -1,4 +1,4 @@
-import { Icons } from '@src/shared/assets';
+import { Icons } from '@src/6_shared/assets';
 import React from 'react';
 import {
   Image,

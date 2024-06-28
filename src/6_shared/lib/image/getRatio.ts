@@ -1,4 +1,4 @@
-import { HEIGHT, WIDTH } from '@src/shared/consts/dimentsions';
+import { HEIGHT, WIDTH } from '@src/6_shared/consts/dimentsions';
 import { ImageSize } from './types';
 
 export const getImageSizeByRatio = ({ width, height }: ImageSize) => {

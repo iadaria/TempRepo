@@ -1,4 +1,4 @@
-import { selectMswEnabled } from '@src/1 app/services/msw';
+import { selectMswEnabled } from '@src/1_app/services/msw';
 import { selectIsAuthenticated } from '@src/5_entities/auth/auth.slice';
 import { AuthScreen } from '@src/2_screens/auth/login/AuthScreen';
 import { ShopHome } from '@src/2_screens/shop/shop-home/ShopHome';

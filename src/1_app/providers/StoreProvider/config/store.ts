@@ -1,7 +1,7 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import { reactotron } from '@src/shared/config/reactotron.config';
 import { persistedReducer } from './persistedReducer';
 import { persistStore } from 'redux-persist';
+import { reactotron } from '@src/6_shared/config/reactotron.config';
 
 const enhcnaer = __DEV__ ? [reactotron.createEnhancer!()] : [];
 

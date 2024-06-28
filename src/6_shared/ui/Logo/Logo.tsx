@@ -9,8 +9,8 @@ import Svg, {
 } from 'react-native-svg';
 
 import { styles as s } from './LogoStyle';
-import { LogoIcon, Pattern } from '@src/shared/assets/images';
-import { colors } from '@src/shared/lib/theme';
+import { LogoIcon, Pattern } from '@src/6_shared/assets/images';
+import { colors } from '@src/6_shared/lib/theme';
 
 export const Logo = () => {
   const COLOR = colors.primary;

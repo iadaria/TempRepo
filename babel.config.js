@@ -12,10 +12,10 @@ module.exports = {
         root: ['.'],
         alias: {
           '@src': './src',
-          '@config': './src/shared/config',
-          '@lib': './src/shared/lib',
-          '@features': './src/features',
-          '@screens': './scrc/screens'
+          '@config': './src/6_shared/config',
+          '@lib': './src/6_shared/lib',
+          '@features': './src/4_features',
+          '@screens': './scrc/2_screens'
 
         }
       }

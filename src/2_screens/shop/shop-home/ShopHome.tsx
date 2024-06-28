@@ -1,11 +1,11 @@
-import { useAppDispatch } from '@src/app/hooks';
+import { useAppDispatch } from '@src/1_app/hooks';
 import { Restaurant } from '@src/5_entities/shop/shop.types';
 import { RestaurantList } from '@src/4_features/RestaurantList';
-import { Filter, Notification, Search } from '@src/shared/assets/icons';
-import { Box } from '@src/shared/ui/Box';
-import { Button } from '@src/shared/ui/Button';
-import { Input } from '@src/shared/ui/Input';
-import { Row } from '@src/shared/ui/Row/Row';
+import { Filter, Notification, Search } from '@src/6_shared/assets/icons';
+import { Box } from '@src/6_shared/ui/Box';
+import { Button } from '@src/6_shared/ui/Button';
+import { Input } from '@src/6_shared/ui/Input';
+import { Row } from '@src/6_shared/ui/Row/Row';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';

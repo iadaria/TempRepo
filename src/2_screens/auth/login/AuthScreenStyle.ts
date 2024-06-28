@@ -1,4 +1,4 @@
-import { colors } from '@src/shared/lib/theme';
+import { colors } from '@src/6_shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({

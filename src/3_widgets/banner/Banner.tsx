@@ -1,13 +1,13 @@
 import { BANNER } from 'mock/data/banner.data';
-import { useAppDispatch } from '@src/app/hooks';
+import { useAppDispatch } from '@src/1_app/hooks';
 import { fetchBanner } from '@src/5_entities/shop/shop.services';
 import { selectBanner } from '@src/5_entities/shop/shop.slice';
-import { getImageSize } from '@src/shared/lib/image/getImageSize';
-import { getImageSizeByRatio } from '@src/shared/lib/image/getRatio';
+import { getImageSize } from '@src/6_shared/lib/image/getImageSize';
+import { getImageSizeByRatio } from '@src/6_shared/lib/image/getRatio';
 import React, { useEffect, useState } from 'react';
 import { Image, Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
-import { log } from '@src/shared/lib/debug/log';
+import { log } from '@src/6_shared/lib/debug/log';
 
 export const Banner = () => {
   const dispatch = useAppDispatch();

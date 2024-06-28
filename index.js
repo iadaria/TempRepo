@@ -1,5 +1,5 @@
 import {AppRegistry} from 'react-native';
-import App from './src/app';
+import App from './src/1_app';
 import {name as appName} from './app.json';
 import { enableReactotron } from '@config/dev.config';
 import { enableMocking } from 'mock/mock.config';

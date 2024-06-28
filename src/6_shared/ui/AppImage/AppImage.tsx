@@ -1,5 +1,5 @@
-import { getImageSize } from '@src/shared/lib/image/getImageSize';
-import { ImageSize } from '@src/shared/lib/image/types';
+import { getImageSize } from '@src/6_shared/lib/image/getImageSize';
+import { ImageSize } from '@src/6_shared/lib/image/types';
 import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet } from 'react-native';
 

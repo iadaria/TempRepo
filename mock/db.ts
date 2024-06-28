@@ -1,6 +1,6 @@
 import { factory, oneOf, primaryKey } from '@mswjs/data';
 import { RESTAURANTS } from './data/restaurants.data';
-import { log } from '@src/shared/lib/debug/log';
+import { log } from '@src/6_shared/lib/debug/log';
 import { MENUS } from './data/menu.data';
 
 export const db = factory({

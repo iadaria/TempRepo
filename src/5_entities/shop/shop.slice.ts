@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Banner, Restaurant } from './shop.types';
 import { fetchBanner, fetchRestaurants } from './shop.services';
-import { RootState } from '@src/app/providers/StoreProvider/config/store';
+import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
 
 type ShopState = {
   restaurants: Restaurant[];

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Banner, Restaurant } from './shop.types';
-import { endpoints } from '@src/shared/consts/endpoints';
-import { request } from '@src/shared/lib/api/request';
-import { log, logline } from '@src/shared/lib/debug/log';
+import { endpoints } from '@src/6_shared/consts/endpoints';
+import { request } from '@src/6_shared/lib/api/request';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 import { BANNER } from 'mock/data/banner.data';
 
 const { shop } = endpoints;

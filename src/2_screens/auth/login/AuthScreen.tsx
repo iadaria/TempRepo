@@ -1,13 +1,13 @@
-import { Icons } from '@src/shared/assets';
+import { Icons } from '@src/6_shared/assets';
 import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 
-import { useAppDispatch } from '@src/app/hooks';
+import { useAppDispatch } from '@src/1_app/hooks';
 import { login } from '@src/5_entities/auth/auth.services';
 import { LoginDto } from '@src/5_entities/auth/auth.types';
-import { Button } from '@src/shared/ui/Button';
-import { Input } from '@src/shared/ui/Input';
-import { Logo } from '@src/shared/ui/Logo/Logo';
+import { Button } from '@src/6_shared/ui/Button';
+import { Input } from '@src/6_shared/ui/Input';
+import { Logo } from '@src/6_shared/ui/Logo/Logo';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { styles as s } from './AuthScreenStyle';
 

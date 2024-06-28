@@ -1,6 +1,6 @@
 import { Restaurant } from '@src/5_entities/shop/shop.types.ts';
-import { log } from '@src/shared/lib/debug/log.ts';
-import { AppImage } from '@src/shared/ui/AppImage/AppImage.tsx';
+import { log } from '@src/6_shared/lib/debug/log.ts';
+import { AppImage } from '@src/6_shared/ui/AppImage/AppImage.tsx';
 import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './RestaurantListStyle.ts';

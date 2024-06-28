@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { RootState } from '@src/app/providers/StoreProvider/config/store';
+import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
 import { authLogout, initAuth, login } from './auth.services';
 
 type AuthState = {
