@@ -1,4 +1,4 @@
-import { BANNER } from 'mock/handlers/data/banner.data';
+import { BANNER } from 'mock/data/banner.data';
 import { useAppDispatch } from '@src/app/hooks';
 import { fetchBanner } from '@src/entities/shop/shop.services';
 import { selectBanner } from '@src/entities/shop/shop.slice';

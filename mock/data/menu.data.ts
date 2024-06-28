@@ -1,13 +1,13 @@
 import { PATH } from './consts';
 
-export const MENU = [
+export const MENUS = [
   {
     id: 1,
     name: 'Herbal Pancacke',
     price: 7,
     restaurantId: 1,
     uri: `${PATH}/menu/m1.png`,
-    pupular: 1,
+    pupular: true,
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const MENU = [
     price: 5,
     restaurantId: 1,
     uri: `${PATH}/menu/m2.png`,
-    popular: 1,
+    popular: true,
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const MENU = [
     price: 6,
     restaurantId: 1,
     uri: `${PATH}/menu/m3.png`,
-    popular: 1,
+    popular: true,
   },
 ];
 

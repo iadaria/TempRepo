@@ -7,7 +7,7 @@ import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
 import { Banner } from '@src/widgets/banner/Banner';
-import { RESTAURANTS } from 'mock/handlers/data/restaurants.data';
+import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
@@ -92,7 +92,7 @@ export const ShopHome = () => {
  * https://github.com/kuali/www-theme-kuali/tree/master/fonts/BentonSans
  * add font
  * - npx react-native-asset -> yes
- *
+ * 5 Install yarn add @mswjs/data --dev
  *
  *
  */

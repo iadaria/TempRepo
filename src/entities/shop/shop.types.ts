@@ -9,3 +9,13 @@ export type Banner = {
   id: string;
   img: string;
 };
+
+export type Menu = {
+  id: string;
+  name: string;
+  price: number;
+  restaurantId: string;
+  restaurantName: string;
+  uri: string;
+  pupular: boolean;
+};
