@@ -1,7 +1,7 @@
 import { selectMswEnabled } from '@src/1 app/services/msw';
-import { selectIsAuthenticated } from '@src/5 entities/auth/auth.slice';
-import { AuthScreen } from '@src/2 screens/auth/login/AuthScreen';
-import { ShopHome } from '@src/2 screens/shop/shop-home/ShopHome';
+import { selectIsAuthenticated } from '@src/5_entities/auth/auth.slice';
+import { AuthScreen } from '@src/2_screens/auth/login/AuthScreen';
+import { ShopHome } from '@src/2_screens/shop/shop-home/ShopHome';
 import React from 'react';
 import { useSelector } from 'react-redux';
 

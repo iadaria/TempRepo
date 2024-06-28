@@ -3,8 +3,8 @@ import React from 'react';
 import { SafeAreaView, Text, View } from 'react-native';
 
 import { useAppDispatch } from '@src/app/hooks';
-import { login } from '@src/5 entities/auth/auth.services';
-import { LoginDto } from '@src/5 entities/auth/auth.types';
+import { login } from '@src/5_entities/auth/auth.services';
+import { LoginDto } from '@src/5_entities/auth/auth.types';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Logo } from '@src/shared/ui/Logo/Logo';

@@ -1,18 +1,18 @@
 import { useAppDispatch } from '@src/app/hooks';
-import { Restaurant } from '@src/5 entities/shop/shop.types';
-import { RestaurantList } from '@src/4 features/RestaurantList';
+import { Restaurant } from '@src/5_entities/shop/shop.types';
+import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Filter, Notification, Search } from '@src/shared/assets/icons';
 import { Box } from '@src/shared/ui/Box';
 import { Button } from '@src/shared/ui/Button';
 import { Input } from '@src/shared/ui/Input';
 import { Row } from '@src/shared/ui/Row/Row';
-import { Banner } from '@src/3 widgets/banner/Banner';
+import { Banner } from '@src/3_widgets/banner/Banner';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { styles } from './ShopHomeStyle';
-import { PopularMenuList } from '@src/4 features/PopularMenuList';
+import { PopularMenuList } from '@src/4_features/PopularMenuList';
 
 type FilterDto = {
   search?: string;
