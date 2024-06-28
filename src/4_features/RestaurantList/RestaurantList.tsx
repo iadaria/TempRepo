@@ -4,6 +4,7 @@ import { AppImage } from '@src/6_shared/ui/AppImage/AppImage.tsx';
 import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './RestaurantListStyle.ts';
+import { AppText } from '@src/6_shared/ui/AppText/AppText.tsx';
 
 interface RestaurantListProps {
   restaurants: Restaurant[];
@@ -16,7 +17,7 @@ export const RestaurantList = ({
 }: RestaurantListProps) => {
   const ListHeader = () => (
     <View style={styles.wrapperHeader}>
-      <Text style={styles.header}>Nearest Restaurant</Text>
+      <AppText h3>Nearest Restaurant</AppText>
       <TouchableOpacity
         onPress={() => {
           log(RestaurantList.name, 'Cliked View More Restaurants');
@@ -34,7 +35,7 @@ export const RestaurantList = ({
         <AppImage uri={item.img} />
 
         <View style={styles.itemContainer}>
-          <Text style={styles.name}> {item.name}</Text>
+          <AppText h2> {item.name}</AppText>
           <Text style={styles.time}>12 Mins</Text>
         </View>
       </TouchableOpacity>

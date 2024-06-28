@@ -13,6 +13,7 @@ import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
 import { PopularMenuList } from '@src/4_features/PopularMenuList';
+import { AppText } from '@src/6_shared/ui/AppText/AppText';
 
 type FilterDto = {
   search?: string;
@@ -36,7 +37,7 @@ export const ShopHomeScreen = () => {
     <Box>
       <View style={{ gap: 20 }}>
         <Row>
-          <Text style={styles.title}>{`Find Your \nFavorite Food`}</Text>
+          <AppText h1>{`Find Your \nFavorite Food`}</AppText>
           <Button style={styles.buttonIcon}>
             <Notification />
           </Button>
