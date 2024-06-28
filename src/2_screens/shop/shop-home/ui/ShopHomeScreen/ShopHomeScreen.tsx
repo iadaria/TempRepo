@@ -11,14 +11,14 @@ import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
-import { styles } from './ShopHomeStyle';
+import { styles } from './ShopHomeScreenStyle';
 import { PopularMenuList } from '@src/4_features/PopularMenuList';
 
 type FilterDto = {
   search?: string;
 };
 
-export const ShopHome = () => {
+export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
   const restaurants: Restaurant[] = RESTAURANTS;
