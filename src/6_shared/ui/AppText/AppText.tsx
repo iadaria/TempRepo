@@ -23,7 +23,7 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
   const isHeader = (hs: Item) => hs[0].startsWith('h');
   const isFont = (_: Item) => !isHeader;
 
-  function find<T>(sort: (item: Item) => Boolean): T {
+  function find<T>(sort: (item: Item) => Boolean): T | undefined {
     const property = Object.entries(etc)
       .filter(sort)
       .find(p => p[1]);
@@ -31,8 +31,8 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
     return property?.[0] as T;
   }
 
-  const size = find<TextSize>(isHeader);
-  const font = find<Font>(isFont);
+  const size = find<TextSize>(isHeader) || 'h3';
+  const font = find<Font>(isFont) || 'regular';
 
   return (
     <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>
