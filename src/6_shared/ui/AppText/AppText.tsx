@@ -18,10 +18,8 @@ type Font = 'regular' | 'bold' | 'medium';
 type Item = [key: string, value: boolean];
 
 export const AppText = ({ children, ...etc }: AppTextProps) => {
-  log(AppText.name, children?.toString());
-
-  const isHeader = (hs: Item) => hs[0].startsWith('h');
-  const isFont = (_: Item) => !isHeader;
+  const isHeader = (property: Item) => property[0].startsWith('h');
+  const isFont = (property: Item) => !isHeader(property);
 
   function find<T>(sort: (item: Item) => Boolean): T | undefined {
     const property = Object.entries(etc)
@@ -33,6 +31,8 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
 
   const size = find<TextSize>(isHeader) || 'h3';
   const font = find<Font>(isFont) || 'regular';
+
+  log(AppText.name, { size, font });
 
   return (
     <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>

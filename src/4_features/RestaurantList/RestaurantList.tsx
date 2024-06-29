@@ -17,7 +17,9 @@ export const RestaurantList = ({
 }: RestaurantListProps) => {
   const ListHeader = () => (
     <View style={styles.wrapperHeader}>
-      <AppText h3>Nearest Restaurant</AppText>
+      <AppText h3 bold>
+        Nearest Restaurant
+      </AppText>
       <TouchableOpacity
         onPress={() => {
           log(RestaurantList.name, 'Cliked View More Restaurants');
@@ -35,7 +37,9 @@ export const RestaurantList = ({
         <AppImage uri={item.img} />
 
         <View style={styles.itemContainer}>
-          <AppText h2> {item.name}</AppText>
+          <AppText h2 bold>
+            {item.name}
+          </AppText>
           <Text style={styles.time}>12 Mins</Text>
         </View>
       </TouchableOpacity>
