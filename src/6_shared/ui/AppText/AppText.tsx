@@ -32,7 +32,7 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
   const size = find<TextSize>(isHeader) || 'h3';
   const font = find<Font>(isFont) || 'regular';
 
-  log(AppText.name, { size, font });
+  //logline(AppText.name, { size, font });
 
   return (
     <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>
