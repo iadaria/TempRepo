@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@src/1_app/hooks';
-import { Restaurant } from '@src/5_entities/shop/shop.types';
+import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Filter, Notification, Search } from '@src/6_shared/assets/icons';
 import { Box } from '@src/6_shared/ui/Box';
@@ -12,8 +12,9 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
-import { PopularMenuList } from '@src/4_features/PopularMenuList';
+import { MenuList } from '@src/4_features/MenuList';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
+import { MENUS } from 'mock/data/menu.data';
 
 type FilterDto = {
   search?: string;
@@ -23,6 +24,7 @@ export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
   const restaurants: Restaurant[] = RESTAURANTS;
+  const menus: Menu[] = MENUS;
 
   const {
     control,
@@ -55,7 +57,7 @@ export const ShopHomeScreen = () => {
         </Row>
         <Banner />
         <RestaurantList restaurants={restaurants} />
-        <PopularMenuList />
+        <MenuList menus={menus} />
       </View>
     </Box>
   );

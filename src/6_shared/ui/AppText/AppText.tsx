@@ -8,7 +8,7 @@ interface AppTextProps {
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
-  semi?: boolean;
+  medium?: boolean;
   bold?: boolean;
   regular?: boolean;
 }

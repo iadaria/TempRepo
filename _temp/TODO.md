@@ -57,6 +57,7 @@ Need to read:
 Major Questions:
 
 - Default or export?
+- TouchableOpacity vs Pressable?
 
 Image:
 
