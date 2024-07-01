@@ -7,11 +7,13 @@ import { getImageSizeByRatio } from '@src/6_shared/lib/image/getRatio';
 import React, { useEffect, useState } from 'react';
 import { Image, Pressable } from 'react-native';
 import { useSelector } from 'react-redux';
-import { log } from '@src/6_shared/lib/debug/log';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 
 export const Banner = () => {
   const dispatch = useAppDispatch();
   const [size, setSize] = useState({ width: 0, height: 0 });
+
+  logline(Banner.name, 'render');
 
   //const banner = useSelector(selectBanner);
   const banner = BANNER;

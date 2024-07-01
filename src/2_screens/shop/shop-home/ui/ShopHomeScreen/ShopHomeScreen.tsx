@@ -11,11 +11,12 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
 
 import { Menus } from '@src/4_features/menu/Menus';
 import { MENUS } from 'mock/handlers/shop';
+import { logline } from '@src/6_shared/lib/debug/log';
 
 type FilterDto = {
   search?: string;
@@ -33,12 +34,15 @@ export const ShopHomeScreen = () => {
   } = useForm<FilterDto>();
 
   useEffect(() => {
+    logline('', 'render');
     //dispatch(fetchRestaurants());
   }, []);
 
   return (
-    <Box scroll>
-      <View style={{ gap: 20 }}>
+    <Box>
+      <ScrollView
+        contentContainerStyle={{ gap: 20 }}
+        showsVerticalScrollIndicator={false}>
         <Row>
           <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
           <Button style={styles.buttonIcon}>
@@ -59,7 +63,7 @@ export const ShopHomeScreen = () => {
         <Banner />
         <RestaurantList restaurants={restaurants} />
         <Menus menus={menus} />
-      </View>
+      </ScrollView>
     </Box>
   );
 };

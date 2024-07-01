@@ -34,7 +34,11 @@ export const RestaurantList = ({
 
   return (
     <>
-      <ListHeader title="Nearest Restaurant" link="View" onPress={() => {}} />
+      <ListHeader
+        title="Nearest Restaurant"
+        link="View more"
+        onPress={() => {}}
+      />
       <FlatList
         horizontal={horizontal}
         contentContainerStyle={{ gap: 20 }}
