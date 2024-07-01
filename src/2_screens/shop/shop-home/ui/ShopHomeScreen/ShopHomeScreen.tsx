@@ -12,11 +12,11 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Text, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
-import { MenuList } from '@src/4_features/MenuList';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
 
 import { db } from 'mock/db';
 import { MENUS } from 'mock/handlers/shop';
+import { Menus } from '@src/4_features/Menus';
 
 type FilterDto = {
   search?: string;
@@ -59,7 +59,7 @@ export const ShopHomeScreen = () => {
         </Row>
         <Banner />
         <RestaurantList restaurants={restaurants} />
-        <MenuList menus={menus} />
+        <Menus menus={menus} />
       </View>
     </Box>
   );
