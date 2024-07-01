@@ -1,6 +1,6 @@
 import { Pattern2 } from '@src/6_shared/assets/images';
 import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Svg, { Image as SvgImage } from 'react-native-svg';
 import { styles } from './BoxStyle';
 
@@ -11,13 +11,13 @@ export interface BoxProps {
 export const Box: FC<BoxProps> = ({ children }) => {
   return (
     <View style={styles.container}>
-      <Svg height="100%" width="100%" style={StyleSheet.absoluteFillObject}>
+      <Svg style={StyleSheet.absoluteFillObject}>
         <SvgImage
-          x="0%"
+          x="10%"
           y="0%"
-          width="100%"
+          width="90%"
           height="100%"
-          preserveAspectRatio="xMinYMin meet"
+          preserveAspectRatio="xMinYMin"
           href={Pattern2}
         />
       </Svg>
