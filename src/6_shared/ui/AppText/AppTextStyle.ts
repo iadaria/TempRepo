@@ -9,10 +9,14 @@ export const styles = StyleSheet.create({
   h1: {
     fontSize: 31,
   },
+
   h2: {
-    fontSize: 16,
+    fontSize: 22,
   },
   h3: {
+    fontSize: 16,
+  },
+  h4: {
     fontSize: 15,
   },
   regular: {

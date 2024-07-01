@@ -15,6 +15,7 @@ import { styles } from './MenuListStyle';
 interface MenuListProps {
   menus: Menu[];
   horizontal?: boolean;
+  flat?: boolean;
 }
 
 export const MenuList = ({ menus }: MenuListProps) => {
@@ -22,7 +23,12 @@ export const MenuList = ({ menus }: MenuListProps) => {
     return (
       <TouchableOpacity style={styles.item}>
         <Image style={styles.image} source={{ uri: item.uri }} />
-        <AppText medium>{item.name}</AppText>
+        <View style={styles.textAndPriceWrapper}>
+          <AppText medium>{item.name}</AppText>
+          <AppText bold h2>
+            ${item.price}
+          </AppText>
+        </View>
       </TouchableOpacity>
     );
   };
