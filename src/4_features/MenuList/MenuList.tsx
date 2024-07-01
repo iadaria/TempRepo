@@ -11,6 +11,7 @@ import { ListHeader } from '../ListHeader/ListHeader';
 import { Menu } from '@src/5_entities/shop/shop.types';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { styles } from './MenuListStyle';
+import { log } from '@src/6_shared/lib/debug/log';
 
 interface MenuListProps {
   menus: Menu[];
@@ -20,17 +21,20 @@ interface MenuListProps {
 
 export const MenuList = ({ menus }: MenuListProps) => {
   const renderItem = ({ item }: { item: Menu }) => {
-    console.log({ item });
     return (
       <TouchableOpacity style={styles.item}>
         <Image style={styles.image} source={{ uri: item.uri }} />
         <View style={styles.textAndPriceWrapper}>
-          <AppText medium h4>
-            {item.name}
-          </AppText>
+          <View style={styles.column}>
+            <AppText medium h4>
+              {item.name}
+            </AppText>
+            <AppText h4 grey>
+              {item.restaurantName}
+            </AppText>
+          </View>
           <AppText bold h2 orange>
             ${item.price}
-            <AppText>{item.restaurantName}</AppText>
           </AppText>
         </View>
       </TouchableOpacity>

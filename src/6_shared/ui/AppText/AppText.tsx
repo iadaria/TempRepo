@@ -13,6 +13,7 @@ interface AppTextProps {
   bold?: boolean;
   regular?: boolean;
   orange?: boolean;
+  grey?: boolean;
 }
 
 type Item = [key: string, value: boolean];
@@ -20,9 +21,9 @@ type TextSize = 'h1' | 'h2' | 'h3';
 type Font = 'regular' | 'bold' | 'medium';
 
 const fonts = ['medium', 'bold', 'regular'];
-const colors = ['orange'];
+const colors = ['orange', 'grey'];
 
-type Color = 'orange';
+type Color = 'orange' | 'grey';
 
 export const AppText = ({ children, ...etc }: AppTextProps) => {
   const isHeader = (property: Item) => property[0].startsWith('h');

@@ -5,6 +5,6 @@ export const endpoints = {
   shop: {
     restaurants: '/shop/restaurants',
     banner: '/shop/banner',
-    menu: '/shop/menus',
+    menus: '/shop/menus',
   },
 };

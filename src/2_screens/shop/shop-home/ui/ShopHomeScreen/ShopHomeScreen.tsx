@@ -14,7 +14,9 @@ import { Text, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
 import { MenuList } from '@src/4_features/MenuList';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
-import { MENUS } from 'mock/data/menu.data';
+
+import { db } from 'mock/db';
+import { MENUS } from 'mock/handlers/shop';
 
 type FilterDto = {
   search?: string;

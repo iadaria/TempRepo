@@ -25,4 +25,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  column: {
+    flexDirection: 'column',
+  },
 });

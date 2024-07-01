@@ -26,6 +26,9 @@ export const styles = StyleSheet.create({
   orange: {
     color: colors.orange[20],
   },
+  grey: {
+    color: colors.text,
+  },
   regular: {
     fontFamily: 'benton-sans-regular',
   },
