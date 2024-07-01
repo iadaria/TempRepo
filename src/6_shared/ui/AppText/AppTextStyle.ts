@@ -1,3 +1,4 @@
+import { colors } from '@src/6_shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -18,6 +19,12 @@ export const styles = StyleSheet.create({
   },
   h4: {
     fontSize: 15,
+  },
+  white: {
+    color: 'white',
+  },
+  orange: {
+    color: colors.orange[20],
   },
   regular: {
     fontFamily: 'benton-sans-regular',

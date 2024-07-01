@@ -8,18 +8,26 @@ interface AppTextProps {
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
+  h4?: boolean;
   medium?: boolean;
   bold?: boolean;
   regular?: boolean;
+  orange?: boolean;
 }
 
+type Item = [key: string, value: boolean];
 type TextSize = 'h1' | 'h2' | 'h3';
 type Font = 'regular' | 'bold' | 'medium';
-type Item = [key: string, value: boolean];
+
+const fonts = ['medium', 'bold', 'regular'];
+const colors = ['orange'];
+
+type Color = 'orange';
 
 export const AppText = ({ children, ...etc }: AppTextProps) => {
   const isHeader = (property: Item) => property[0].startsWith('h');
-  const isFont = (property: Item) => !isHeader(property);
+  const isFont = (property: Item) => fonts.includes(property[0]);
+  const isColor = (property: Item) => colors.includes(property[0]);
 
   function find<T>(sort: (item: Item) => Boolean): T | undefined {
     const property = Object.entries(etc)
@@ -31,11 +39,13 @@ export const AppText = ({ children, ...etc }: AppTextProps) => {
 
   const size = find<TextSize>(isHeader) || 'h3';
   const font = find<Font>(isFont) || 'regular';
-
+  const color = find<Color>(isColor) || 'white';
   //logline(AppText.name, { size, font });
 
   return (
-    <Text style={[styles.text, styles[size], styles[font]]}>{children}</Text>
+    <Text style={[styles.text, styles[size], styles[font], styles[color]]}>
+      {children}
+    </Text>
   );
 };
 

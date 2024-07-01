@@ -44,6 +44,7 @@ export const colorPallete = {
     },
     orange: {
       10: '#FF8E4C',
+      20: '#FEAD1D',
     },
   },
   dark: {},

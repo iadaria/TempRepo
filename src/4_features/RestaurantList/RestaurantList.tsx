@@ -23,7 +23,7 @@ export const RestaurantList = ({
         <AppImage uri={item.img} />
 
         <View style={styles.itemContainer}>
-          <AppText h2 bold>
+          <AppText h3 bold>
             {item.name}
           </AppText>
           <Text style={styles.time}>12 Mins</Text>

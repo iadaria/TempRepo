@@ -20,13 +20,17 @@ interface MenuListProps {
 
 export const MenuList = ({ menus }: MenuListProps) => {
   const renderItem = ({ item }: { item: Menu }) => {
+    console.log({ item });
     return (
       <TouchableOpacity style={styles.item}>
         <Image style={styles.image} source={{ uri: item.uri }} />
         <View style={styles.textAndPriceWrapper}>
-          <AppText medium>{item.name}</AppText>
-          <AppText bold h2>
+          <AppText medium h4>
+            {item.name}
+          </AppText>
+          <AppText bold h2 orange>
             ${item.price}
+            <AppText>{item.restaurantName}</AppText>
           </AppText>
         </View>
       </TouchableOpacity>

@@ -11,7 +11,7 @@ interface ListHeaderProps {
 
 export const ListHeader = ({ title, link, onPress }: ListHeaderProps) => (
   <View style={styles.wrapperHeader}>
-    <AppText h3 bold>
+    <AppText h4 bold>
       {title}
     </AppText>
     <TouchableOpacity onPress={onPress}>
