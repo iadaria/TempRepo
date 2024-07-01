@@ -38,7 +38,7 @@ export const ShopHomeScreen = () => {
   }, []);
 
   return (
-    <Box>
+    <Box scroll>
       <View style={{ gap: 20 }}>
         <Row>
           <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>

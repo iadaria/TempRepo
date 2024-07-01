@@ -6,11 +6,13 @@ import { styles } from './BoxStyle';
 
 export interface BoxProps {
   children: React.ReactNode;
+  scroll?: boolean;
 }
 
-export const Box: FC<BoxProps> = ({ children }) => {
+export const Box = ({ children, scroll }: BoxProps) => {
+  const Wrapper = scroll ? ScrollView : View;
   return (
-    <View style={styles.container}>
+    <Wrapper style={styles.container}>
       <Svg style={StyleSheet.absoluteFillObject}>
         <SvgImage
           x="10%"
@@ -22,6 +24,6 @@ export const Box: FC<BoxProps> = ({ children }) => {
         />
       </Svg>
       <View style={styles.box}>{children}</View>
-    </View>
+    </Wrapper>
   );
 };
