@@ -1,18 +1,16 @@
 import { Pattern2 } from '@src/6_shared/assets/images';
-import React, { FC } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Svg, { Image as SvgImage } from 'react-native-svg';
 import { styles } from './BoxStyle';
 
 export interface BoxProps {
   children: React.ReactNode;
-  scroll?: boolean;
 }
 
-export const Box = ({ children, scroll }: BoxProps) => {
-  const Wrapper = scroll ? ScrollView : View;
+export const Box = ({ children }: BoxProps) => {
   return (
-    <Wrapper style={styles.container}>
+    <View style={styles.container}>
       <Svg style={StyleSheet.absoluteFillObject}>
         <SvgImage
           x="10%"
@@ -24,6 +22,6 @@ export const Box = ({ children, scroll }: BoxProps) => {
         />
       </Svg>
       <View style={styles.box}>{children}</View>
-    </Wrapper>
+    </View>
   );
 };
