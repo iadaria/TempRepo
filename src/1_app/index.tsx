@@ -1,4 +1,4 @@
-import { Navigation } from '@src/navigation/Navigation';
+import { Navigation } from '@src/1_app/navigations/Navigation';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
