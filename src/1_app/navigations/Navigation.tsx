@@ -4,11 +4,15 @@ import { AuthNavigator } from './AuthNavigator';
 import { ShopNavigator } from './ShopNavigator';
 import { logline } from '@src/6_shared/lib/debug/log';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { BottomNavigator } from './BottomNavigator';
 
 const isAuthenticated = () => store.getState().auth.isAuthenticated;
 const isNotAuthenticated = () => !isAuthenticated;
 
 const RootStack = createNativeStackNavigator({
+  screenOptions: {
+    headerShown: false,
+  },
   screens: {
     LoggedOut: {
       if: isNotAuthenticated,
@@ -16,7 +20,7 @@ const RootStack = createNativeStackNavigator({
     },
     LoggedIn: {
       if: isAuthenticated,
-      screen: ShopNavigator,
+      screen: BottomNavigator,
     },
   },
 });
