@@ -7,8 +7,9 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   box: {
-    flex: 1,
+    //flex: 1,
     paddingTop: 60,
     paddingHorizontal: 25,
+    gap: 20,
   },
 });

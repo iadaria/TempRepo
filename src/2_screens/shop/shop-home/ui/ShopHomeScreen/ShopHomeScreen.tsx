@@ -39,31 +39,27 @@ export const ShopHomeScreen = () => {
   }, []);
 
   return (
-    <Box>
-      <ScrollView
-        contentContainerStyle={{ gap: 20 }}
-        showsVerticalScrollIndicator={false}>
-        <Row>
-          <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
-          <Button style={styles.buttonIcon}>
-            <Notification />
-          </Button>
-        </Row>
-        <Row gap={9}>
-          <Input
-            name="search"
-            control={control}
-            placeholder="What do you want to order?"
-            licon={Search}
-          />
-          <Button style={styles.buttonIcon}>
-            <Filter />
-          </Button>
-        </Row>
-        <Banner />
-        <RestaurantList restaurants={restaurants} />
-        <Menus menus={menus} />
-      </ScrollView>
+    <Box scroll>
+      <Row>
+        <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
+        <Button style={styles.buttonIcon}>
+          <Notification />
+        </Button>
+      </Row>
+      <Row gap={9}>
+        <Input
+          name="search"
+          control={control}
+          placeholder="What do you want to order?"
+          licon={Search}
+        />
+        <Button style={styles.buttonIcon}>
+          <Filter />
+        </Button>
+      </Row>
+      <Banner />
+      <RestaurantList restaurants={restaurants} />
+      <Menus menus={menus} />
     </Box>
   );
 };
