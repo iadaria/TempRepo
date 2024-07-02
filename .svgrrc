@@ -1,5 +1,6 @@
 {
   "replaceAttrValues": {
-    "@fill": "{props.fill}"
+    "@fill": "{props.fill}",
+    "@opacity": "{props.opacity}"
   }
 }

@@ -2,7 +2,14 @@ import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
-import { Filter, Notification, Search } from '@src/6_shared/assets/icons';
+import {
+  CartIcon,
+  Filter,
+  HomeIcon,
+  Notification,
+  ProfileIcon,
+  Search,
+} from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import { Button } from '@src/6_shared/ui/Button';

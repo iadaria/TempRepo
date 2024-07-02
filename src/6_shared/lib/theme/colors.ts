@@ -30,6 +30,8 @@ export const colorPallete = {
       950: '#450a0a',
     },
     green: {
+      10: '#53E88B',
+      20: '#15BE77',
       50: '#f0fdf4',
       100: '#dcfce7',
       200: '#bbf7d0',
