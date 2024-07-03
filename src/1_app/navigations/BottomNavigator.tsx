@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ShopNavigator } from './ShopNavigator';
 import { ProfileNavigator } from './ProfileNavigator';
 import { CartNavigator } from './CartNavigator';
-import { HomeIcon } from '@src/6_shared/assets/icons';
+import { CartIcon, HomeIcon, ProfileIcon } from '@src/6_shared/assets/icons';
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: {
@@ -12,12 +12,24 @@ export const BottomNavigator = createBottomTabNavigator({
     HomeTab: {
       screen: ShopNavigator,
       options: {
-        tabBarLable: 'Home',
+        tabBarLabel: 'Home',
         tabBarIcon: ({ color }) => <HomeIcon />,
       },
     },
-    ProfileTab: ProfileNavigator,
-    CartTab: CartNavigator,
+    ProfileTab: {
+      screen: ProfileNavigator,
+      options: {
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ color }) => <ProfileIcon />,
+      },
+    },
+    CartTab: {
+      screen: CartNavigator,
+      options: {
+        tabBarLabel: 'Cart',
+        tabBarIcon: () => <CartIcon />,
+      },
+    },
   },
 });
 
