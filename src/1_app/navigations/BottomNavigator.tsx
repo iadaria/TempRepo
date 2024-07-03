@@ -3,31 +3,41 @@ import { ShopNavigator } from './ShopNavigator';
 import { ProfileNavigator } from './ProfileNavigator';
 import { CartNavigator } from './CartNavigator';
 import { CartIcon, HomeIcon, ProfileIcon } from '@src/6_shared/assets/icons';
+import { colors } from '@src/6_shared/lib/theme';
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: {
     headerShown: false,
+    tabBarStyle: {
+      backgroundColor: colors.primary,
+    },
   },
   screens: {
     HomeTab: {
       screen: ShopNavigator,
       options: {
         tabBarLabel: 'Home',
-        tabBarIcon: ({ color }) => <HomeIcon />,
+        tabBarIcon: ({ color, focused }) => (
+          <HomeIcon opacity={Number(focused) || 0.5} />
+        ),
       },
     },
     ProfileTab: {
       screen: ProfileNavigator,
       options: {
         tabBarLabel: 'Profile',
-        tabBarIcon: ({ color }) => <ProfileIcon />,
+        tabBarIcon: ({ color, focused }) => (
+          <ProfileIcon opacity={Number(focused) || 0.5} />
+        ),
       },
     },
     CartTab: {
       screen: CartNavigator,
       options: {
         tabBarLabel: 'Cart',
-        tabBarIcon: () => <CartIcon />,
+        tabBarIcon: ({ focused }) => (
+          <CartIcon opacity={Number(focused) || 0.5} />
+        ),
       },
     },
   },
