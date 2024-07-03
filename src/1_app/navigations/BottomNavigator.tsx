@@ -1,22 +1,44 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  BottomTabBarButtonProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import { ShopNavigator } from './ShopNavigator';
 import { ProfileNavigator } from './ProfileNavigator';
 import { CartNavigator } from './CartNavigator';
 import { CartIcon, HomeIcon, ProfileIcon } from '@src/6_shared/assets/icons';
 import { colors } from '@src/6_shared/lib/theme';
+import { Pressable, Text, View } from 'react-native';
+import { WIDTH } from '@src/6_shared/consts/dimentsions';
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: {
     headerShown: false,
     tabBarStyle: {
-      backgroundColor: colors.primary,
+      position: 'absolute',
+      backgroundColor: '#252525',
+      opacity: 1,
+      borderRadius: 15,
+      height: 74,
+      marginBottom: 5,
+      marginHorizontal: 5,
+      borderColor: '#252525',
     },
+
+    tabBarActiveTintColor: 'white',
+    tabBarLabelPosition: 'beside-icon',
+    tabBarActiveBackgroundColor: 'rgba(48, 208, 128, 0.1)',
+
+    tabBarBackground: () => <View></View>,
+    /* tabBarButton: ({ children, ...props }: BottomTabBarButtonProps) => {
+      return <Custom;
+    }, */
   },
   screens: {
     HomeTab: {
       screen: ShopNavigator,
       options: {
-        tabBarLabel: 'Home',
+        tabBarLabel: ({ focused }) => <></>,
+        tabBarLabelStyle: {},
         tabBarIcon: ({ color, focused }) => (
           <HomeIcon opacity={Number(focused) || 0.5} />
         ),
