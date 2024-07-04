@@ -5,25 +5,28 @@ import { CartNavigator } from '../CartNavigator';
 import { ProfileNavigator } from '../ProfileNavigator';
 import { ShopNavigator } from '../ShopNavigator';
 import { TabBarOptions } from './TabBarOptions';
+import { routes } from '@src/6_shared/consts/routes';
+
+const { tabs } = routes;
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: TabBarOptions,
   screens: {
-    HomeTab: {
+    [tabs.Home]: {
       screen: ShopNavigator,
       options: {
         tabBarLabel: 'Home',
         tabBarIcon: ({ focused }) => <HomeIcon opacity={+focused || 0.5} />,
       },
     },
-    ProfileTab: {
+    [tabs.Profile]: {
       screen: ProfileNavigator,
       options: {
         tabBarLabel: 'Profile',
         tabBarIcon: ({ focused }) => <ProfileIcon opacity={+focused || 0.5} />,
       },
     },
-    CartTab: {
+    [tabs.Cart]: {
       screen: CartNavigator,
       options: {
         tabBarLabel: 'Cart',
