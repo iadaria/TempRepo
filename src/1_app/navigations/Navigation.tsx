@@ -4,7 +4,7 @@ import { AuthNavigator } from './AuthNavigator';
 import { ShopNavigator } from './ShopNavigator';
 import { logline } from '@src/6_shared/lib/debug/log';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { BottomNavigator } from './BottomNavigator';
+import { BottomNavigator } from './BottomNavigator/BottomNavigator';
 
 const isAuthenticated = () => store.getState().auth.isAuthenticated;
 const isNotAuthenticated = () => !isAuthenticated;
