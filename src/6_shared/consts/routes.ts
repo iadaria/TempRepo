@@ -4,5 +4,10 @@ export const routes = {
     Profile: 'ProfileTab',
     Cart: 'CartTab',
   },
-  shop: {},
+  shop: {
+    Home: 'ShopHomeScreen',
+    PopularRestorant: 'PopularRestaurantsScreen',
+    PopularMenu: 'PopularMenuScreen',
+    Filter: 'FilterScreen',
+  },
 };
