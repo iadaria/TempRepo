@@ -1,21 +1,11 @@
-import {
-  BottomTabBarButtonProps,
-  createBottomTabNavigator,
-} from '@react-navigation/bottom-tabs';
-import { ShopNavigator } from './ShopNavigator';
-import { ProfileNavigator } from './ProfileNavigator';
-import { CartNavigator } from './CartNavigator';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { CartIcon, HomeIcon, ProfileIcon } from '@src/6_shared/assets/icons';
-import { colors } from '@src/6_shared/lib/theme';
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import { WIDTH } from '@src/6_shared/consts/dimentsions';
 import { debugStyles } from '@src/6_shared/consts/debug';
+import React from 'react';
+import { Pressable, StyleSheet } from 'react-native';
+import { CartNavigator } from './CartNavigator';
+import { ProfileNavigator } from './ProfileNavigator';
+import { ShopNavigator } from './ShopNavigator';
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: {
@@ -29,41 +19,36 @@ export const BottomNavigator = createBottomTabNavigator({
       marginBottom: 5,
       marginHorizontal: 5,
       borderColor: '#252525',
+      paddingHorizontal: 20,
     },
     tabBarActiveTintColor: 'white',
     tabBarLabelPosition: 'beside-icon',
-    //tabBarActiveBackgroundColor: 'rgba(48, 208, 128, 0.1)',
     tabBarButton: ({
-      style,
+      style: _,
       children,
       focusable,
       accessible,
       accessibilityState,
       ...props
     }) => {
-      console.log({ accessibilityState });
-      const style2 = {
-        ...(accessibilityState?.selected && {
-          backgroundColor: 'rgba(48, 208, 128, 0.1)',
-        }),
+      const selected = accessibilityState?.selected || false;
+      const style = {
+        ...styles.button,
+        ...(selected ? styles.selected : styles.unselected),
       };
+      const c = (children as React.ReactElement)?.props.children;
+      const icon = c[0];
+      const label = c[1];
+
       return (
-        <Pressable style={[styles.button, style2]} {...props}>
-          {children}
+        <Pressable style={style} {...props}>
+          {icon}
+          {selected && label}
         </Pressable>
       );
     },
     tabBarItemStyle: { justifyContent: 'center' },
-    //tabBarIconStyle: { ...debugStyles.blue },
-    tabBarLabelStyle: {
-      //...debugStyles.red,
-      alignSelf: 'baseline',
-    },
-
-    //tabBarBackground: () => <View></View>,
-    /* tabBarButton: ({ children, ...props }: BottomTabBarButtonProps) => {
-      return <Custom;
-    }, */
+    //tabBarLabelStyle: { alignSelf: 'baseline' },
   },
   screens: {
     HomeTab: {
@@ -102,11 +87,16 @@ const styles = StyleSheet.create({
   button: {
     //...debugStyles.red,
     flexDirection: 'row',
-    alignContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
     padding: 5,
     paddingHorizontal: 10,
     borderRadius: 15,
+  },
+  selected: {
+    backgroundColor: 'rgba(48, 208, 128, 0.1)',
+  },
+  unselected: {
+    height: '100%',
   },
 });

@@ -13,7 +13,7 @@ export const Banner = () => {
   const dispatch = useAppDispatch();
   const [size, setSize] = useState({ width: 0, height: 0 });
 
-  logline(Banner.name, 'render');
+  //logline(Banner.name, 'render');
 
   //const banner = useSelector(selectBanner);
   const banner = BANNER;
