@@ -7,8 +7,15 @@ import { ProfileNavigator } from './ProfileNavigator';
 import { CartNavigator } from './CartNavigator';
 import { CartIcon, HomeIcon, ProfileIcon } from '@src/6_shared/assets/icons';
 import { colors } from '@src/6_shared/lib/theme';
-import { Pressable, Text, View } from 'react-native';
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { WIDTH } from '@src/6_shared/consts/dimentsions';
+import { debugStyles } from '@src/6_shared/consts/debug';
 
 export const BottomNavigator = createBottomTabNavigator({
   screenOptions: {
@@ -23,12 +30,37 @@ export const BottomNavigator = createBottomTabNavigator({
       marginHorizontal: 5,
       borderColor: '#252525',
     },
-
     tabBarActiveTintColor: 'white',
     tabBarLabelPosition: 'beside-icon',
-    tabBarActiveBackgroundColor: 'rgba(48, 208, 128, 0.1)',
+    //tabBarActiveBackgroundColor: 'rgba(48, 208, 128, 0.1)',
+    tabBarButton: ({
+      style,
+      children,
+      focusable,
+      accessible,
+      accessibilityState,
+      ...props
+    }) => {
+      console.log({ accessibilityState });
+      const style2 = {
+        ...(accessibilityState?.selected && {
+          backgroundColor: 'rgba(48, 208, 128, 0.1)',
+        }),
+      };
+      return (
+        <Pressable style={[styles.button, style2]} {...props}>
+          {children}
+        </Pressable>
+      );
+    },
+    tabBarItemStyle: { justifyContent: 'center' },
+    //tabBarIconStyle: { ...debugStyles.blue },
+    tabBarLabelStyle: {
+      //...debugStyles.red,
+      alignSelf: 'baseline',
+    },
 
-    tabBarBackground: () => <View></View>,
+    //tabBarBackground: () => <View></View>,
     /* tabBarButton: ({ children, ...props }: BottomTabBarButtonProps) => {
       return <Custom;
     }, */
@@ -37,9 +69,8 @@ export const BottomNavigator = createBottomTabNavigator({
     HomeTab: {
       screen: ShopNavigator,
       options: {
-        tabBarLabel: ({ focused }) => <></>,
-        tabBarLabelStyle: {},
-        tabBarIcon: ({ color, focused }) => (
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ focused }) => (
           <HomeIcon opacity={Number(focused) || 0.5} />
         ),
       },
@@ -48,7 +79,7 @@ export const BottomNavigator = createBottomTabNavigator({
       screen: ProfileNavigator,
       options: {
         tabBarLabel: 'Profile',
-        tabBarIcon: ({ color, focused }) => (
+        tabBarIcon: ({ focused }) => (
           <ProfileIcon opacity={Number(focused) || 0.5} />
         ),
       },
@@ -66,3 +97,16 @@ export const BottomNavigator = createBottomTabNavigator({
 });
 
 //https://medium.com/@indrajit.suryakanta.9/customise-tabbar-in-react-native-bottom-tab-navigator-e2ced7419220
+
+const styles = StyleSheet.create({
+  button: {
+    //...debugStyles.red,
+    flexDirection: 'row',
+    alignContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    padding: 5,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+  },
+});
