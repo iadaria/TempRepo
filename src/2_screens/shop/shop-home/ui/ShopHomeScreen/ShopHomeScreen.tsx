@@ -14,19 +14,14 @@ import { useForm } from 'react-hook-form';
 import { styles } from './ShopHomeScreenStyle';
 
 import { Menus } from '@src/4_features/menu/Menus';
-import { logline } from '@src/6_shared/lib/debug/log';
+import { NavigationProps } from '@src/6_shared/config/navigation/types/navigation';
 import { MENUS } from 'mock/handlers/shop';
-import { NativeStackNavigatorProps } from '@react-navigation/native-stack/lib/typescript/src/types';
-import { ParamListBase, StaticScreenProps } from '@react-navigation/native';
-import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 
 type FilterDto = {
   search?: string;
 };
 
-export const ShopHomeScreen = ({
-  navigation,
-}: NativeStackScreenProps<ParamListBase>) => {
+export const ShopHomeScreen = ({ navigation }: NavigationProps) => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
   const restaurants: Restaurant[] = RESTAURANTS;
@@ -61,7 +56,7 @@ export const ShopHomeScreen = ({
         </Button>
       </Row>
       <Banner />
-      <RestaurantList restaurants={restaurants} />
+      <RestaurantList restaurants={restaurants} navigation={navigation} />
       <Menus menus={menus} />
     </Box>
   );

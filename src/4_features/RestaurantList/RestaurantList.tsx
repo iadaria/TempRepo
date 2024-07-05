@@ -1,25 +1,26 @@
 import { Restaurant } from '@src/5_entities/shop/shop.types.ts';
+import { NavigationProps } from '@src/6_shared/config/navigation/types/navigation.ts';
+import { routes } from '@src/6_shared/consts/routes.ts';
 import { AppImage } from '@src/6_shared/ui/AppImage/AppImage.tsx';
 import { AppText } from '@src/6_shared/ui/AppText/AppText.tsx';
 import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { ListHeader } from '../ListHeader/ListHeader.tsx';
 import { styles } from './RestaurantListStyle.ts';
-import { useNavigation } from '@react-navigation/native';
-import { routes } from '@src/6_shared/consts/routes.ts';
 
-interface RestaurantListProps {
+const { shop } = routes;
+
+interface RestaurantListProps extends NavigationProps {
   restaurants: Restaurant[];
   horizontal?: boolean;
 }
 
-const { shop } = routes;
-
 export const RestaurantList = ({
   restaurants,
   horizontal = true,
+  navigation,
 }: RestaurantListProps) => {
-  const navigation = useNavigation();
+  //const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const renderItem = useCallback(({ item }: { item: Restaurant }) => {
     return (
