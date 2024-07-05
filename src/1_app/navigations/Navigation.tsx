@@ -12,6 +12,9 @@ const isNotAuthenticated = () => !isAuthenticated;
 const RootStack = createNativeStackNavigator({
   screenOptions: {
     headerShown: false,
+    contentStyle: {
+      backgroundColor: 'black',
+    },
   },
   screens: {
     LoggedOut: {

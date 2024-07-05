@@ -3,12 +3,9 @@ import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
 import {
-  CartIcon,
   Filter,
-  HomeIcon,
   Notification,
-  ProfileIcon,
-  Search,
+  Search
 } from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
 import { Box } from '@src/6_shared/ui/Box';
@@ -18,12 +15,11 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { ScrollView, View } from 'react-native';
 import { styles } from './ShopHomeScreenStyle';
 
 import { Menus } from '@src/4_features/menu/Menus';
-import { MENUS } from 'mock/handlers/shop';
 import { logline } from '@src/6_shared/lib/debug/log';
+import { MENUS } from 'mock/handlers/shop';
 
 type FilterDto = {
   search?: string;
@@ -41,7 +37,6 @@ export const ShopHomeScreen = () => {
   } = useForm<FilterDto>();
 
   useEffect(() => {
-    logline('', 'render');
     //dispatch(fetchRestaurants());
   }, []);
 
