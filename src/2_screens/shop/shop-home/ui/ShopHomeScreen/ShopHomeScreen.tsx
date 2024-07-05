@@ -2,11 +2,7 @@ import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
-import {
-  Filter,
-  Notification,
-  Search
-} from '@src/6_shared/assets/icons';
+import { Filter, Notification, Search } from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import { Button } from '@src/6_shared/ui/Button';
@@ -20,12 +16,17 @@ import { styles } from './ShopHomeScreenStyle';
 import { Menus } from '@src/4_features/menu/Menus';
 import { logline } from '@src/6_shared/lib/debug/log';
 import { MENUS } from 'mock/handlers/shop';
+import { NativeStackNavigatorProps } from '@react-navigation/native-stack/lib/typescript/src/types';
+import { ParamListBase, StaticScreenProps } from '@react-navigation/native';
+import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 
 type FilterDto = {
   search?: string;
 };
 
-export const ShopHomeScreen = () => {
+export const ShopHomeScreen = ({
+  navigation,
+}: NativeStackScreenProps<ParamListBase>) => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
   const restaurants: Restaurant[] = RESTAURANTS;

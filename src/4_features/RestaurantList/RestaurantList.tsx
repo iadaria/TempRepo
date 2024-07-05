@@ -5,21 +5,25 @@ import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { ListHeader } from '../ListHeader/ListHeader.tsx';
 import { styles } from './RestaurantListStyle.ts';
+import { useNavigation } from '@react-navigation/native';
+import { routes } from '@src/6_shared/consts/routes.ts';
 
 interface RestaurantListProps {
   restaurants: Restaurant[];
   horizontal?: boolean;
 }
 
+const { shop } = routes;
+
 export const RestaurantList = ({
   restaurants,
   horizontal = true,
 }: RestaurantListProps) => {
+  const navigation = useNavigation();
+
   const renderItem = useCallback(({ item }: { item: Restaurant }) => {
     return (
-      <TouchableOpacity
-        style={styles.restCard}
-        onPress={() => console.log('Clicked', item)}>
+      <TouchableOpacity style={styles.restCard} onPress={() => {}}>
         <AppImage uri={item.img} />
 
         <View style={styles.itemContainer}>
@@ -37,7 +41,7 @@ export const RestaurantList = ({
       <ListHeader
         title="Nearest Restaurant"
         link="View more"
-        onPress={() => {}}
+        onPress={() => navigation.navigate(shop.PopularRestorants)}
       />
       <FlatList
         horizontal={horizontal}

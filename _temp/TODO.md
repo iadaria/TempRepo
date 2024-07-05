@@ -1,14 +1,6 @@
-на завтра
-
-- прочитать про цифровых кочевников
-- представить сколько напишу за сегодня
-- представить конечный результат
-- Каролайн
-- SH header
-- Добавить RN navigation
-
 ! В начале обрати внимание откуда получилось со fontFamilty изменился глобально вдруг
 Добавить performance во время выполнения
+! RN изучить нововведения link и тд
 
 - add memo fro FlatList and For other components
 - https://reactnative.dev/docs/optimizing-flatlist-configuration

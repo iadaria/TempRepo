@@ -6,8 +6,8 @@ export const routes = {
   },
   shop: {
     Home: 'ShopHomeScreen',
-    PopularRestorant: 'PopularRestaurantsScreen',
-    PopularMenu: 'PopularMenuScreen',
+    PopularRestorants: 'PopularRestaurantsScreen',
+    PopularMenus: 'PopularMenusScreen',
     Filter: 'FilterScreen',
   },
 };
