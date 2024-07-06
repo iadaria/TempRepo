@@ -2,30 +2,13 @@ import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
-import {
-  BackIcon,
-  Filter,
-  Notification,
-  Search,
-} from '@src/6_shared/assets/icons';
-import { AppText } from '@src/6_shared/ui/AppText/AppText';
 import { Box } from '@src/6_shared/ui/Box';
-import { Button } from '@src/6_shared/ui/Button';
-import { Input } from '@src/6_shared/ui/Input';
-import { Row } from '@src/6_shared/ui/Row/Row';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { styles } from './ShopHomeScreenStyle';
 
+import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
 import { Menus } from '@src/4_features/menu/Menus';
 import { MENUS } from 'mock/handlers/shop';
-import { debugStyles } from '@src/6_shared/consts/debug';
-import IButton from '@src/6_shared/ui/IButton/IButton';
-
-type FilterDto = {
-  search?: string;
-};
 
 export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -33,32 +16,15 @@ export const ShopHomeScreen = () => {
   const restaurants: Restaurant[] = RESTAURANTS;
   const menus: Menu[] = MENUS;
 
-  const {
-    control,
-    formState: {},
-  } = useForm<FilterDto>();
-
   useEffect(() => {
     //dispatch(fetchRestaurants());
   }, []);
 
   return (
     <Box scroll>
-      <Row>
-        <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
-        <IButton icon={Notification} />
-      </Row>
-      <Row gap={9}>
-        <Input
-          name="search"
-          control={control}
-          placeholder="What do you want to order?"
-          licon={Search}
-        />
-        <IButton icon={Filter} />
-      </Row>
+      <FilterHeader />
       <Banner />
-      <RestaurantList restaurants={restaurants} />
+      <RestaurantList restaurants={restaurants} horizontal={true} />
       <Menus menus={menus} />
     </Box>
   );

@@ -7,7 +7,7 @@ interface IButtonProps {
   icon: React.FC<SvgProps>;
 }
 
-export default function IButton({ icon: SvgIcon }: IButtonProps) {
+export function IButton({ icon: SvgIcon }: IButtonProps) {
   return (
     <Button style={styles.buttonIcon}>
       <SvgIcon />
