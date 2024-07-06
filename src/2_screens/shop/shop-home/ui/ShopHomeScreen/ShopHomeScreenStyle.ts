@@ -16,10 +16,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'BentonSans-Regular',
   },
-  buttonIcon: {
-    flex: 0,
-    padding: 15,
-  },
+
   restCard: {
     //1
     width: 147,

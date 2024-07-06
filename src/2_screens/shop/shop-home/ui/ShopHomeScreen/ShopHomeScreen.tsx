@@ -2,7 +2,12 @@ import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
-import { Filter, Notification, Search } from '@src/6_shared/assets/icons';
+import {
+  BackIcon,
+  Filter,
+  Notification,
+  Search,
+} from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import { Button } from '@src/6_shared/ui/Button';
@@ -15,6 +20,8 @@ import { styles } from './ShopHomeScreenStyle';
 
 import { Menus } from '@src/4_features/menu/Menus';
 import { MENUS } from 'mock/handlers/shop';
+import { debugStyles } from '@src/6_shared/consts/debug';
+import IButton from '@src/6_shared/ui/IButton/IButton';
 
 type FilterDto = {
   search?: string;
@@ -39,9 +46,7 @@ export const ShopHomeScreen = () => {
     <Box scroll>
       <Row>
         <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
-        <Button style={styles.buttonIcon}>
-          <Notification />
-        </Button>
+        <IButton icon={Notification} />
       </Row>
       <Row gap={9}>
         <Input
@@ -50,9 +55,7 @@ export const ShopHomeScreen = () => {
           placeholder="What do you want to order?"
           licon={Search}
         />
-        <Button style={styles.buttonIcon}>
-          <Filter />
-        </Button>
+        <IButton icon={Filter} />
       </Row>
       <Banner />
       <RestaurantList restaurants={restaurants} />
