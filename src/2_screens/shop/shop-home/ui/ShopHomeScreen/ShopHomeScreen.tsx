@@ -14,14 +14,13 @@ import { useForm } from 'react-hook-form';
 import { styles } from './ShopHomeScreenStyle';
 
 import { Menus } from '@src/4_features/menu/Menus';
-import { NavigationProps } from '@src/6_shared/config/navigation/types/navigation';
 import { MENUS } from 'mock/handlers/shop';
 
 type FilterDto = {
   search?: string;
 };
 
-export const ShopHomeScreen = ({ navigation }: NavigationProps) => {
+export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
   //const restaurants = useSelector(selectRestaurants);
   const restaurants: Restaurant[] = RESTAURANTS;
@@ -56,7 +55,7 @@ export const ShopHomeScreen = ({ navigation }: NavigationProps) => {
         </Button>
       </Row>
       <Banner />
-      <RestaurantList restaurants={restaurants} navigation={navigation} />
+      <RestaurantList restaurants={restaurants} />
       <Menus menus={menus} />
     </Box>
   );

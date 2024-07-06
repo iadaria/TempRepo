@@ -5,6 +5,7 @@ import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './providers/StoreProvider/config/store';
+import { navigationRef } from './navigations/RootNavigation';
 
 function App(): React.JSX.Element {
   return (
@@ -12,7 +13,7 @@ function App(): React.JSX.Element {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <StatusBar backgroundColor={'transparent'} translucent />
-          <Navigation theme={theme} />
+          <Navigation ref={navigationRef} theme={theme} />
         </PersistGate>
       </Provider>
     </React.StrictMode>

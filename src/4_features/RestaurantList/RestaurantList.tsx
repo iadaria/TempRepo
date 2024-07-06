@@ -1,5 +1,5 @@
+import { navigate } from '@src/1_app/navigations/RootNavigation.ts';
 import { Restaurant } from '@src/5_entities/shop/shop.types.ts';
-import { NavigationProps } from '@src/6_shared/config/navigation/types/navigation.ts';
 import { routes } from '@src/6_shared/consts/routes.ts';
 import { AppImage } from '@src/6_shared/ui/AppImage/AppImage.tsx';
 import { AppText } from '@src/6_shared/ui/AppText/AppText.tsx';
@@ -7,10 +7,12 @@ import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { ListHeader } from '../ListHeader/ListHeader.tsx';
 import { styles } from './RestaurantListStyle.ts';
+import { ParamListBase, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { shop } = routes;
 
-interface RestaurantListProps extends NavigationProps {
+interface RestaurantListProps {
   restaurants: Restaurant[];
   horizontal?: boolean;
 }
@@ -18,7 +20,6 @@ interface RestaurantListProps extends NavigationProps {
 export const RestaurantList = ({
   restaurants,
   horizontal = true,
-  navigation,
 }: RestaurantListProps) => {
   //const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
@@ -42,7 +43,8 @@ export const RestaurantList = ({
       <ListHeader
         title="Nearest Restaurant"
         link="View more"
-        onPress={() => navigation.navigate(shop.PopularRestorants)}
+        //onPress={() => navigation.navigate(shop.PopularRestorants)}
+        onPress={() => navigate(shop.PopularRestorants)}
       />
       <FlatList
         horizontal={horizontal}

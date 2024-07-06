@@ -3,3 +3,7 @@
 - To do height of TextInput 57
 
 - To do svg images equel
+
+- Add back buttons?
+- Add + to menus?
+- padding between menus

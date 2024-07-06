@@ -3,12 +3,25 @@ import { Text } from 'react-native';
 import { styles } from './AppTextStyle';
 import { log } from '@src/6_shared/lib/debug/log';
 
-interface AppTextProps {
+type Item = [key: Font & TextSize & Color, value: boolean];
+
+const fonts = ['medium', 'bold', 'regular'] as const;
+type Font = (typeof fonts)[number];
+
+const headers = ['h1', 'h2', 'h3', 'h4'] as const;
+type TextSize = (typeof headers)[number];
+
+const colors = ['orange', 'grey'] as const;
+type Color = (typeof colors)[number];
+
+type TextSizeProps = Partial<Record<TextSize, boolean>>;
+
+interface AppTextProps extends TextSizeProps {
   children: React.ReactNode;
-  h1?: boolean;
+  /* h1?: boolean;
   h2?: boolean;
   h3?: boolean;
-  h4?: boolean;
+  h4?: boolean; */
   medium?: boolean;
   bold?: boolean;
   regular?: boolean;
@@ -16,17 +29,8 @@ interface AppTextProps {
   grey?: boolean;
 }
 
-type Item = [key: string, value: boolean];
-type TextSize = 'h1' | 'h2' | 'h3';
-type Font = 'regular' | 'bold' | 'medium';
-
-const fonts = ['medium', 'bold', 'regular'];
-const colors = ['orange', 'grey'];
-
-type Color = 'orange' | 'grey';
-
 export const AppText = ({ children, ...etc }: AppTextProps) => {
-  const isHeader = (property: Item) => property[0].startsWith('h');
+  const isHeader = (property: Item) => headers.includes(property[0]); //property[0].startsWith('h');
   const isFont = (property: Item) => fonts.includes(property[0]);
   const isColor = (property: Item) => colors.includes(property[0]);
 

@@ -11,3 +11,8 @@ export const routes = {
     Filter: 'FilterScreen',
   },
 };
+
+/* export const allScreens: string[] = Object.values(routes)
+  .map(Object.values)
+  .flat();
+ */
