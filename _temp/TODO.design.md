@@ -7,3 +7,4 @@
 - Add back buttons?
 - Add + to menus?
 - padding between menus
+- как должен осуществляться этот переход между экрана что блядь должно открываться?

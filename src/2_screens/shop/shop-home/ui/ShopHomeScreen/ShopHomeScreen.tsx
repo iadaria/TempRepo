@@ -9,6 +9,11 @@ import React, { useEffect } from 'react';
 import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
 import { Menus } from '@src/4_features/menu/Menus';
 import { MENUS } from 'mock/handlers/shop';
+import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
+import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { routes } from '@src/6_shared/consts/routes';
+
+const { shop } = routes;
 
 export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +29,11 @@ export const ShopHomeScreen = () => {
     <Box scroll>
       <FilterHeader />
       <Banner />
+      <ListHeader
+        title="Nearest Restaurant"
+        link="View more"
+        onPress={() => navigate(shop.PopularRestorants)}
+      />
       <RestaurantList restaurants={restaurants} horizontal={true} />
       <Menus menus={menus} />
     </Box>
