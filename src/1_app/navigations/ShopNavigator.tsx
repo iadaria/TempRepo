@@ -8,6 +8,7 @@ import { Image } from 'react-native';
 const { shop } = routes;
 
 export const ShopNavigator = createNativeStackNavigator({
+  initialRouteName: shop.PopularRestorants,
   screenOptions: {
     headerShown: false,
   },

@@ -1,4 +1,5 @@
 import { debugStyles } from '@src/6_shared/consts/debug';
+import { BOX_PADDING, GAP, WIDTH } from '@src/6_shared/consts/dimentsions';
 import { colors } from '@src/6_shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
@@ -6,28 +7,9 @@ export const styles = StyleSheet.create({
   text: {
     color: 'white',
   },
-  title: {
-    color: 'white',
-    textTransform: 'capitalize',
-    fontSize: 31,
-    fontFamily: 'benton-sans-bold',
-    ...debugStyles.blue,
-  },
-
-  header: {
-    color: 'white',
-    textTransform: 'capitalize',
-    fontSize: 15,
-    fontFamily: 'benton-sans-bold',
-  },
-  buttonIcon: {
-    flex: 0,
-    padding: 15,
-    backgroundColor: 'red',
-  },
   restCard: {
     //1
-    width: 147,
+    minWidth: (WIDTH - BOX_PADDING * 2 - GAP) / 2,
     height: 184,
     backgroundColor: colors.interface,
     // 2
@@ -52,5 +34,8 @@ export const styles = StyleSheet.create({
   time: {
     color: colors.text,
     fontSize: 13,
+  },
+  bottom: {
+    marginBottom: 184 + GAP + 70,
   },
 });

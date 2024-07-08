@@ -4,6 +4,7 @@ import { AppText } from '@src/6_shared/ui/AppText/AppText.tsx';
 import React, { useCallback } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { styles } from './RestaurantListStyle.ts';
+import { GAP } from '@src/6_shared/consts/dimentsions.ts';
 
 interface RestaurantListProps {
   restaurants: Restaurant[];
@@ -15,6 +16,16 @@ export const RestaurantList = ({
   horizontal = true,
 }: RestaurantListProps) => {
   //const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
+
+  const numColumns = horizontal ? 1 : 2;
+
+  const props = numColumns > 1 && { columnWrapperStyle: { gap: GAP } };
+
+  const ListFooterComponent = horizontal ? null : (
+    <View style={{ height: GAP }} />
+  );
+
+  const style = !horizontal && styles.bottom;
 
   const renderItem = useCallback(({ item }: { item: Restaurant }) => {
     return (
@@ -33,13 +44,16 @@ export const RestaurantList = ({
 
   return (
     <FlatList
+      style={style}
+      numColumns={numColumns}
       horizontal={horizontal}
-      contentContainerStyle={{ gap: 20 }}
-      //columnWrapperStyle={{ gap: 20 }}
+      contentContainerStyle={{ gap: GAP }}
       showsHorizontalScrollIndicator={false}
       data={restaurants}
       keyExtractor={(_, index) => `item-${index}`}
       renderItem={renderItem}
+      ListFooterComponent={ListFooterComponent}
+      {...props}
     />
   );
 };
