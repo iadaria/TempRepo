@@ -1,6 +1,8 @@
 ! В начале обрати внимание откуда получилось со fontFamilty изменился глобально вдруг
 Добавить performance во время выполнения
 ! RN изучить нововведения link и тд
+! Пересмотреть все новые курсы
+! Дизайнера помочь поправить что-то совсем уж конченное, может немного нового дизайна, показать ему что сделала гифку
 
 - add memo fro FlatList and For other components
 - https://reactnative.dev/docs/optimizing-flatlist-configuration

@@ -6,6 +6,7 @@ import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { BANNER } from '../data/banner.data';
 import { logline } from '@src/6_shared/lib/debug/log';
 import { db } from 'mock/db';
+import { FILTERS } from 'mock/data/filter.data';
 
 const { shop } = endpoints;
 
@@ -31,6 +32,8 @@ export const shopHandlers = [
       }),
     });
   }),
+
+  http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),
 ];
 
 export const MENUS = db.menu.getAll().map(menu => {

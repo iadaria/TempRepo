@@ -1,25 +1,26 @@
 import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
-import { Menu, Restaurant } from '@src/5_entities/shop/shop.types';
 import { Box } from '@src/6_shared/ui/Box';
-import { RESTAURANTS } from 'mock/data/restaurants.data';
 import React, { useEffect } from 'react';
 
-import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
-import { Menus } from '@src/4_features/menu/Menus';
-import { MENUS } from 'mock/handlers/shop';
-import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
 import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
+import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
+import { Menus } from '@src/4_features/menu/Menus';
+import {
+  selectMenus,
+  selectRestaurants,
+} from '@src/5_entities/shop/shop.slice';
 import { routes } from '@src/6_shared/consts/routes';
+import { useSelector } from 'react-redux';
 
 const { shop } = routes;
 
 export const ShopHomeScreen = () => {
   const dispatch = useAppDispatch();
-  //const restaurants = useSelector(selectRestaurants);
-  const restaurants: Restaurant[] = RESTAURANTS;
-  const menus: Menu[] = MENUS;
+  const restaurants = useSelector(selectRestaurants);
+  const menus = useSelector(selectMenus);
 
   useEffect(() => {
     //dispatch(fetchRestaurants());

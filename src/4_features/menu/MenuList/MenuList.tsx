@@ -13,6 +13,7 @@ export const MenuList = ({ menus, horizontal }: MenuListProps) => {
 
   return (
     <FlatList
+      style={{ marginBottom: 250 }}
       contentContainerStyle={{ gap: GAP }}
       horizontal={horizontal}
       data={menus}

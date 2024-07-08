@@ -6,5 +6,6 @@ export const endpoints = {
     restaurants: '/shop/restaurants',
     banner: '/shop/banner',
     menus: '/shop/menus',
+    filters: '/shop/filters', //Different filters use their work resources.
   },
 };

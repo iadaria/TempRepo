@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Banner, Restaurant } from './shop.types';
+import { Banner, Filter, Restaurant } from './shop.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { request } from '@src/6_shared/lib/api/request';
 import { log, logline } from '@src/6_shared/lib/debug/log';
@@ -23,3 +23,12 @@ export const fetchBanner = createAsyncThunk<Banner>('shop/banner', async () => {
   const json = await response.json();
   return json.data;
 });
+
+export const fetchFilters = createAsyncThunk<Filter[]>(
+  'shop/filters',
+  async () => {
+    const response = await request({ endpoint: shop.filters });
+    const json = await response.json();
+    return json.data;
+  },
+);

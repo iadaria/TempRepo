@@ -19,3 +19,8 @@ export type Menu = {
   uri: string;
   pupular: boolean;
 };
+
+export type Filter = {
+  name: string;
+  by: string[];
+};
