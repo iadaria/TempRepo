@@ -28,6 +28,7 @@ export const Box = ({ children, scroll }: BoxProps) => {
         />
       </Svg>
       <Container {...style}>{children}</Container>
+      <View style={styles.bottomMenu} />
     </View>
   );
 };
