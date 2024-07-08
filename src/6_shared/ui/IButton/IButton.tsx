@@ -5,11 +5,12 @@ import { styles } from './IButtonStyle';
 
 interface IButtonProps {
   icon: React.FC<SvgProps>;
+  onPress: () => void;
 }
 
-export function IButton({ icon: SvgIcon }: IButtonProps) {
+export function IButton({ icon: SvgIcon, onPress }: IButtonProps) {
   return (
-    <Button style={styles.buttonIcon}>
+    <Button style={styles.buttonIcon} onPress={onPress}>
       <SvgIcon />
     </Button>
   );

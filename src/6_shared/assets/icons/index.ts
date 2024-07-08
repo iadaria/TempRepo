@@ -7,3 +7,4 @@ export { default as Search } from './search.svg';
 export { default as ProfileIcon } from './profile.svg';
 export { default as HomeIcon } from './home.svg';
 export { default as CartIcon } from './cart.svg';
+export { default as BackIcon } from './back.svg';

@@ -5,6 +5,7 @@ import { Input } from '@src/6_shared/ui/Input';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { BackButton } from '../BackButton';
 
 type FilterDto = {
   search?: string;
@@ -19,6 +20,7 @@ export function FilterHeader() {
   return (
     <>
       <Row>
+        <BackButton />
         <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
         <IButton icon={Notification} />
       </Row>
