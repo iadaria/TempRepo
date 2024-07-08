@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ShopHomeScreen } from '@src/2_screens/shop/shop-home';
+import { ShopMenusScreen } from '@src/2_screens/shop/shop-menus/ShopMenusScreen';
 import { ShopRestaurantsScreen } from '@src/2_screens/shop/shop-restaurants/ShopRestaurantsScreen/ShopRestaurantsScreen';
 import { routes } from '@src/6_shared/consts/routes';
 
@@ -13,6 +14,7 @@ export const ShopNavigator = createNativeStackNavigator({
   },
   screens: {
     [shop.Home]: ShopHomeScreen,
-    [shop.PopularRestorants]: ShopRestaurantsScreen,
+    [shop.Restorants]: ShopRestaurantsScreen,
+    [shop.Menus]: ShopMenusScreen,
   },
 });

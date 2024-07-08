@@ -1,4 +1,3 @@
-import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
 import { Menu } from '@src/5_entities/shop/shop.types';
 import React from 'react';
 import { MenuItems } from '../MenuItems';
@@ -12,10 +11,5 @@ export interface MenusProps {
 
 export const Menus = ({ flat, ...props }: MenusProps) => {
   const List = flat ? MenuList : MenuItems;
-  return (
-    <>
-      <ListHeader title="Popular menu" link="View More" onPress={() => {}} />
-      <List {...props} />
-    </>
-  );
+  return <List {...props} />;
 };

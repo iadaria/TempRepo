@@ -32,9 +32,14 @@ export const ShopHomeScreen = () => {
       <ListHeader
         title="Nearest Restaurant"
         link="View more"
-        onPress={() => navigate(shop.PopularRestorants)}
+        onPress={() => navigate(shop.Restorants)}
       />
       <RestaurantList restaurants={restaurants} horizontal={true} />
+      <ListHeader
+        title="Popular menu"
+        link="View More"
+        onPress={() => navigate(shop.Menus)}
+      />
       <Menus menus={menus} />
     </Box>
   );
