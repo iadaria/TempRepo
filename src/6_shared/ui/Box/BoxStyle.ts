@@ -12,5 +12,6 @@ export const styles = StyleSheet.create({
     paddingTop: 60,
     paddingHorizontal: BOX_PADDING,
     gap: GAP,
+    paddingBottom: 150, // for menu
   },
 });
