@@ -35,7 +35,10 @@ export const fetchFilters = createAsyncThunk<Filter[]>(
 export const searchRestaurants = createAsyncThunk<Restaurant[], string>(
   'shop/search',
   async (wants: string) => {
-    const response = await request({ endpoint: shop.search, params: wants });
+    const response = await request({
+      endpoint: shop.search,
+      params: { wants },
+    });
     const json = await response.json();
     return json.data;
   },

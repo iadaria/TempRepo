@@ -33,3 +33,5 @@ MENUS.forEach(({ restaurantId, ...menu }) => {
 
 //log('[db]', db.restaurant.getAll());
 //log('[db]', db.menu.getAll());
+
+// https://github.com/mswjs/data

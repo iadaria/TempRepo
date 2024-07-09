@@ -4,7 +4,7 @@ import { RESTAURANTS } from '../data/restaurants.data';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { BANNER } from '../data/banner.data';
-import { logline } from '@src/6_shared/lib/debug/log';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 import { db } from 'mock/db';
 import { FILTERS } from 'mock/data/filter.data';
 
@@ -35,12 +35,22 @@ export const shopHandlers = [
 
   http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),
 
-  http.get(baseUrl(shop.search + '/:wants'), ({ params }) => {
-    const { wants } = params;
+  //http.get(baseUrl(shop.search + '/:wants'), ({ params }) => {
+  http.get(baseUrl(shop.search), ({ request }) => {
+    const url = new URL(request.url);
+    // Givn "/search?wants=text"
+    const wants = url.searchParams.get('wants') || undefined;
 
-    console.log({ wants });
+    // Simple example
+    const restaurants = db.restaurant.findMany({
+      where: {
+        name: {
+          contains: wants,
+        },
+      },
+    });
 
-    return HttpResponse.json({ data: [db.restaurant.findFirst] });
+    return HttpResponse.json({ data: restaurants });
   }),
 ];
 

@@ -6,8 +6,9 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BackButton } from '../BackButton';
-import { logline } from '@src/6_shared/lib/debug/log';
-import { styles } from './FilterheaderStyle';
+
+import { searchRestaurants } from '@src/5_entities/shop/shop.services';
+import { useAppDispatch } from '@src/1_app/hooks';
 
 // May be todo it without Control, and don't set left icon to Input?
 const debounce = (func: (wants: string) => string, delay: number) => {
@@ -28,10 +29,15 @@ type FilterDto = {
 };
 
 export function FilterHeader() {
+  const dispatch = useAppDispatch();
   const {
     control,
     formState: {},
+    watch,
   } = useForm<FilterDto>();
+
+  const search = (wants: string) => dispatch(searchRestaurants(wants));
+  const debouncedSearch = debounce(search, 1000);
 
   return (
     <>
@@ -46,7 +52,9 @@ export function FilterHeader() {
           control={control}
           placeholder="What do you want to order?"
           licon={Search}
-          //onChange={()}
+          //onChange={search} // 1 See request in Reactotron
+          // 1 add log into request.ts for counting how much requests were sent
+          onChange={debouncedSearch} // GOOD Example !
         />
         <IButton icon={Filter} onPress={() => {}} />
       </Row>
