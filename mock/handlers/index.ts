@@ -1,4 +1,9 @@
+import { shopFilterHandlers } from './shop-filter.handlers';
 import { shopHandlers } from './shop.request';
 import { userHandlers } from './user.request';
 
-export const handlers = [...userHandlers, ...shopHandlers];
+export const handlers = [
+  ...userHandlers,
+  ...shopHandlers,
+  ...shopFilterHandlers,
+];

@@ -32,26 +32,6 @@ export const shopHandlers = [
       }),
     });
   }),
-
-  http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),
-
-  //http.get(baseUrl(shop.search + '/:wants'), ({ params }) => {
-  http.get(baseUrl(shop.search), ({ request }) => {
-    const url = new URL(request.url);
-    // Givn "/search?wants=text"
-    const wants = url.searchParams.get('wants') || undefined;
-
-    // Simple example
-    const restaurants = db.restaurant.findMany({
-      where: {
-        name: {
-          contains: wants,
-        },
-      },
-    });
-
-    return HttpResponse.json({ data: restaurants });
-  }),
 ];
 
 export const MENUS = db.menu.getAll().map(menu => {
