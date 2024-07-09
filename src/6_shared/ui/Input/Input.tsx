@@ -18,6 +18,7 @@ interface InputProps<T extends FieldValues> {
   control: Control<T>;
   licon?: React.FC<SvgProps>;
   error?: FieldError;
+  onChange?: (text: string) => void;
 }
 
 export function Input<T extends FieldValues>({
@@ -26,6 +27,7 @@ export function Input<T extends FieldValues>({
   control,
   error,
   licon,
+  onChange,
 }: InputProps<T>) {
   const { field } = useController({
     control,
@@ -52,7 +54,10 @@ export function Input<T extends FieldValues>({
         onFocus={() => {
           setIsShown(false);
         }}
-        onChangeText={field.onChange}
+        onChangeText={(text: string) => {
+          field.onChange(text);
+          if (onChange) onChange(text);
+        }}
         onBlur={() => {
           field.onBlur();
           setIsShown(Boolean(licon));

@@ -3,6 +3,11 @@
 ! RN изучить нововведения link и тд
 ! Пересмотреть все новые курсы
 ! Дизайнера помочь поправить что-то совсем уж конченное, может немного нового дизайна, показать ему что сделала гифку
+! Попросить тестера в конце перед съемкой видео протестировать апк и сделать апк досутпным
+! ПМ Может быть такая фильтрация?
+! React-hook-form, msw, toolkit read docs and videos, best practice
+
+next: add suspense when searching something
 
 - add memo fro FlatList and For other components
 - https://reactnative.dev/docs/optimizing-flatlist-configuration

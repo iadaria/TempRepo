@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Banner, Filter, Menu, Restaurant } from './shop.types';
-import { fetchBanner, fetchFilters, fetchRestaurants } from './shop.services';
+import {
+  fetchBanner,
+  fetchFilters,
+  fetchRestaurants,
+  searchRestaurants,
+} from './shop.services';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
 import { RESTAURANTS } from 'mock/data/restaurants.data';
-import { MENUS } from 'mock/handlers/shop';
+
 import { FILTERS } from 'mock/data/filter.data';
+import { MENUS } from 'mock/handlers/shop.request';
 
 type ShopState = {
   restaurants: Restaurant[];
@@ -35,6 +41,10 @@ const shopSlice = createSlice({
 
     builder.addCase(fetchFilters.fulfilled, (state, action) => {
       state.filters = action.payload;
+    });
+
+    builder.addCase(searchRestaurants.fulfilled, (state, action) => {
+      state.restaurants = action.payload;
     });
   },
 });

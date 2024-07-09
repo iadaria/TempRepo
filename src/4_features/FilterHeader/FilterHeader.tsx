@@ -6,6 +6,22 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BackButton } from '../BackButton';
+import { logline } from '@src/6_shared/lib/debug/log';
+import { styles } from './FilterheaderStyle';
+
+// May be todo it without Control, and don't set left icon to Input?
+const debounce = (func: (wants: string) => string, delay: number) => {
+  //let timeoutId // After show an error
+  let timeoutId: NodeJS.Timeout;
+
+  return (wants: string) => {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      func.apply(this, [wants]);
+    }, delay);
+  };
+};
 
 type FilterDto = {
   search?: string;
@@ -22,7 +38,7 @@ export function FilterHeader() {
       <Row>
         <BackButton />
         <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
-        <IButton icon={Notification} />
+        <IButton icon={Notification} onPress={() => {}} />
       </Row>
       <Row gap={9}>
         <Input
@@ -30,8 +46,9 @@ export function FilterHeader() {
           control={control}
           placeholder="What do you want to order?"
           licon={Search}
+          //onChange={()}
         />
-        <IButton icon={Filter} />
+        <IButton icon={Filter} onPress={() => {}} />
       </Row>
     </>
   );

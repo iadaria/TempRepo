@@ -34,6 +34,14 @@ export const shopHandlers = [
   }),
 
   http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),
+
+  http.get(baseUrl(shop.search + '/:wants'), ({ params }) => {
+    const { wants } = params;
+
+    console.log({ wants });
+
+    return HttpResponse.json({ data: [db.restaurant.findFirst] });
+  }),
 ];
 
 export const MENUS = db.menu.getAll().map(menu => {

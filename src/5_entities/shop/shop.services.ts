@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Banner, Filter, Restaurant } from './shop.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { request } from '@src/6_shared/lib/api/request';
-import { log, logline } from '@src/6_shared/lib/debug/log';
-import { BANNER } from 'mock/data/banner.data';
 
 const { shop } = endpoints;
 
@@ -28,6 +26,16 @@ export const fetchFilters = createAsyncThunk<Filter[]>(
   'shop/filters',
   async () => {
     const response = await request({ endpoint: shop.filters });
+    const json = await response.json();
+    return json.data;
+  },
+);
+
+//Why are my wants so fathomless?
+export const searchRestaurants = createAsyncThunk<Restaurant[], string>(
+  'shop/search',
+  async (wants: string) => {
+    const response = await request({ endpoint: shop.search, params: wants });
     const json = await response.json();
     return json.data;
   },
