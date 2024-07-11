@@ -3,10 +3,20 @@ import { MenuItem } from '../MenuItem';
 import { MenusProps } from '../Menus';
 import { Menu } from '@src/5_entities/shop/shop.types';
 import { GAP } from '@src/6_shared/consts/dimentsions';
+import { AppText } from '@src/6_shared/ui/AppText';
+import { styles } from './MenuListStyle';
 
 interface MenuListProps extends MenusProps {}
 
 export const MenuList = ({ menus, horizontal }: MenuListProps) => {
+  const isEmpty = menus.length < 1;
+
+  const EmptyComponent = (
+    <AppText h4 grey>
+      Nothing Was Found
+    </AppText>
+  );
+
   const renderItem = ({ item }: { item: Menu }) => (
     <MenuItem menu={item} onPress={() => {}} />
   );
@@ -14,11 +24,12 @@ export const MenuList = ({ menus, horizontal }: MenuListProps) => {
   return (
     <FlatList
       style={{ marginBottom: 250 }}
-      contentContainerStyle={{ gap: GAP }}
+      contentContainerStyle={{ gap: GAP, ...(isEmpty && styles.empty) }}
       horizontal={horizontal}
       data={menus}
       keyExtractor={(_, index) => `item-${index}`}
       renderItem={renderItem}
+      ListEmptyComponent={EmptyComponent}
     />
   );
 };

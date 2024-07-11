@@ -19,10 +19,8 @@ export const RestaurantList = ({
   //const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
 
   const numColumns = horizontal ? 1 : 2;
-
-  const isEmpty = restaurants.length < 1;
-
   const props = numColumns > 1 && { columnWrapperStyle: { gap: GAP } };
+  const isEmpty = restaurants.length < 1;
 
   const ListFooterComponent = horizontal ? null : (
     <View style={{ height: GAP }} />
