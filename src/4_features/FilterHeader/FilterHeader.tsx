@@ -34,11 +34,6 @@ type FilterDto = {
 export function FilterHeader() {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchRestaurants());
-    dispatch(fetchMenus());
-  }, []);
-
   const {
     control,
     formState: {},

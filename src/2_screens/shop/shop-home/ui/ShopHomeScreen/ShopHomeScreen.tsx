@@ -4,7 +4,7 @@ import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Box } from '@src/6_shared/ui/Box';
 import React, { useEffect } from 'react';
 
-import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { useNavigation } from '@react-navigation/native';
 import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
 import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
 import { Menus } from '@src/4_features/menu/Menus';
@@ -12,19 +12,20 @@ import {
   selectMenus,
   selectRestaurants,
 } from '@src/5_entities/shop/shop.slice';
+import { NavigationProp } from '@src/6_shared/config/navigation/navigation.types';
 import { routes } from '@src/6_shared/consts/routes';
 import { useSelector } from 'react-redux';
 
 const { shop } = routes;
 
 export const ShopHomeScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
   const menus = useSelector(selectMenus);
 
-  useEffect(() => {
-    //dispatch(fetchRestaurants());
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <Box scroll>
@@ -33,13 +34,14 @@ export const ShopHomeScreen = () => {
       <ListHeader
         title="Nearest Restaurant"
         link="View more"
-        onPress={() => navigate(shop.Restorants)}
+        // onPress={() => navigate(shop.Restorants)}
+        onPress={() => navigation.navigate(shop.Restorants)}
       />
       <RestaurantList restaurants={restaurants} horizontal={true} />
       <ListHeader
         title="Popular menu"
         link="View More"
-        onPress={() => navigate(shop.Menus)}
+        onPress={() => navigation.navigate(shop.Menus)}
       />
       <Menus menus={menus} />
     </Box>
