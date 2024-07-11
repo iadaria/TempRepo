@@ -3,6 +3,7 @@ import { AppText } from '@src/6_shared/ui/AppText';
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { styles } from './MenuItemStyle';
+import { logline } from '@src/6_shared/lib/debug/log';
 
 interface MenuItemProps {
   onPress: () => void;

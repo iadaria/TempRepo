@@ -41,8 +41,6 @@ export const RestaurantList = ({
     </AppText>
   );
 
-  console.log([isEmpty]);
-
   const renderItem = useCallback(({ item }: { item: Restaurant }) => {
     return (
       <TouchableOpacity style={styles.restCard} onPress={() => {}}>
