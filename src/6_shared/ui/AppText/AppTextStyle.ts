@@ -1,3 +1,4 @@
+import { debugStyles } from '@src/6_shared/consts/debug';
 import { colors } from '@src/6_shared/lib/theme';
 import { StyleSheet } from 'react-native';
 
@@ -37,5 +38,9 @@ export const styles = StyleSheet.create({
   },
   medium: {
     fontFamily: 'benton-sans-medium',
+  },
+  center: {
+    textAlign: 'center',
+    ...debugStyles.red,
   },
 });

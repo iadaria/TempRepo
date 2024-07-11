@@ -38,4 +38,5 @@ export const styles = StyleSheet.create({
   bottom: {
     marginBottom: 184 + GAP + 70,
   },
+  empty: { flex: 1, justifyContent: 'center' },
 });
