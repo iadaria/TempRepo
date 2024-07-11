@@ -26,7 +26,7 @@ export const shopFilterHandlers = [
     const found = types.reduce((toReturn, type, index) => {
       console.log({ type, wants });
       const rows = db[type].findMany({ where: { name: { contains: wants } } });
-      console.log({ found });
+      console.log({ rows });
       return { ...toReturn, [type]: rows };
     }, {});
 

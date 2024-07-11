@@ -16,6 +16,13 @@ export const fetchRestaurants = createAsyncThunk<Restaurant[]>(
   },
 );
 
+export const fetchMenus = createAsyncThunk<Menu[]>('shop/menus', async () => {
+  const response = await request({ endpoint: shop.menus });
+  //log('[fetchRestaurants]', response);
+  const json = await response.json();
+  return json.data;
+});
+
 export const fetchBanner = createAsyncThunk<Banner>('shop/banner', async () => {
   //console.log('* fetchBanner');
   const response = await request({ endpoint: shop.banner });

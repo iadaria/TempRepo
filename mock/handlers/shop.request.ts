@@ -3,10 +3,8 @@ import { RESTAURANTS } from '../data/restaurants.data';
 
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
-import { BANNER } from '../data/banner.data';
-import { log, logline } from '@src/6_shared/lib/debug/log';
 import { db } from 'mock/db';
-import { FILTERS } from 'mock/data/filter.data';
+import { BANNER } from '../data/banner.data';
 
 const { shop } = endpoints;
 

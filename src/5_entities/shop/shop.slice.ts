@@ -4,6 +4,7 @@ import { RESTAURANTS } from 'mock/data/restaurants.data';
 import {
   fetchBanner,
   fetchFilters,
+  fetchMenus,
   fetchRestaurants,
   search,
 } from './shop.services';
@@ -21,8 +22,8 @@ export type ShopState = {
 };
 
 const initialState: ShopState = {
-  restaurants: RESTAURANTS, //[]
-  menus: MENUS, //[]
+  restaurants: [],
+  menus: [],
   banner: null,
   filters: FILTERS, //[],
   //params: { type: [FilterType.Restaurant, FilterType.Menu] },
@@ -39,6 +40,9 @@ const shopSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(fetchRestaurants.fulfilled, (state, action) => {
       state.restaurants = action.payload;
+    });
+    builder.addCase(fetchMenus.fulfilled, (state, action) => {
+      state.menus = action.payload;
     });
 
     builder.addCase(fetchBanner.fulfilled, (state, action) => {
