@@ -15,17 +15,23 @@ import {
 import { NavigationProp } from '@src/6_shared/config/navigation/navigation.types';
 import { routes } from '@src/6_shared/consts/routes';
 import { useSelector } from 'react-redux';
+import { focusShopHomeScreen } from '@src/5_entities/shop/shop.services';
 
 const { shop } = routes;
 
 export const ShopHomeScreen = () => {
+  const dispatch = useAppDispatch();
   const navigation = useNavigation<NavigationProp>();
 
-  const dispatch = useAppDispatch();
   const restaurants = useSelector(selectRestaurants);
   const menus = useSelector(selectMenus);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      dispatch(focusShopHomeScreen());
+    });
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <Box scroll>

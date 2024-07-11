@@ -39,6 +39,14 @@ export const fetchFilters = createAsyncThunk<Filter[]>(
   },
 );
 
+export const focusShopHomeScreen = createAsyncThunk(
+  'shop/focusHomeScreen',
+  (_, { dispatch }) => {
+    dispatch(fetchRestaurants());
+    dispatch(fetchMenus());
+  },
+);
+
 //Why are my wants so fathomless?
 export const search = createAsyncThunk<
   { restaurant: Restaurant[]; menu: Menu[] },
