@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 export function ShopMenusScreen() {
   const menus = useSelector(selectMenus);
+
   return (
     <Box>
       <FilterHeader />

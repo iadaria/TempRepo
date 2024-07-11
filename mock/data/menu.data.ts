@@ -25,6 +25,14 @@ export const MENUS = [
     uri: `${PATH}/menu/m3.png`,
     popular: true,
   },
+  {
+    id: 4,
+    name: 'Herbal Good Pancacke',
+    price: 7,
+    restaurantId: 1,
+    uri: `${PATH}/menu/m1.png`,
+    pupular: true,
+  },
 ];
 
 // https://medium.com/admitad-tech/mocks-without-roadblocks-the-magic-of-mswjs-faker-js-306541458c2a

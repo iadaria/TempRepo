@@ -24,3 +24,8 @@ export type Filter = {
   name: string;
   by: string[];
 };
+
+export enum FilterType {
+  Restaurant = 'restaurant',
+  Menu = 'menu',
+}

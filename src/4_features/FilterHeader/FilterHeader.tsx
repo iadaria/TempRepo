@@ -6,12 +6,11 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { BackButton } from '../BackButton';
-
-import { searchRestaurants } from '@src/5_entities/shop/shop.services';
 import { useAppDispatch } from '@src/1_app/hooks';
+import { search } from '@src/5_entities/shop/shop.services';
 
 // May be todo it without Control, and don't set left icon to Input?
-const debounce = (func: (wants: string) => string, delay: number) => {
+const debounce = (func: (wants: string) => void, delay: number) => {
   //let timeoutId // After show an error
   let timeoutId: NodeJS.Timeout;
 
@@ -33,11 +32,11 @@ export function FilterHeader() {
   const {
     control,
     formState: {},
-    watch,
   } = useForm<FilterDto>();
 
-  const search = (wants: string) => dispatch(searchRestaurants(wants));
-  const debouncedSearch = debounce(search, 1000);
+  const searchByPhrase = (wants: string) => dispatch(search(wants));
+
+  const debouncedSearch = debounce(searchByPhrase, 1000);
 
   return (
     <>
