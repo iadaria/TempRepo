@@ -30,11 +30,18 @@ export const RestaurantList = ({
     ...(!horizontal && styles.bottom),
   };
 
+  const contentStyle = {
+    gap: GAP,
+    ...(isEmpty && horizontal && styles.empty),
+  };
+
   const EmptyComponent = (
     <AppText h4 grey>
       Nothing was found
     </AppText>
   );
+
+  console.log([isEmpty]);
 
   const renderItem = useCallback(({ item }: { item: Restaurant }) => {
     return (
@@ -56,7 +63,7 @@ export const RestaurantList = ({
       style={style}
       numColumns={numColumns}
       horizontal={horizontal}
-      contentContainerStyle={{ gap: GAP, ...(isEmpty && styles.empty) }}
+      contentContainerStyle={contentStyle}
       showsHorizontalScrollIndicator={false}
       data={restaurants}
       keyExtractor={(_, index) => `item-${index}`}

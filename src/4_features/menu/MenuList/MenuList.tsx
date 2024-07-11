@@ -9,8 +9,6 @@ import { styles } from './MenuListStyle';
 interface MenuListProps extends MenusProps {}
 
 export const MenuList = ({ menus, horizontal }: MenuListProps) => {
-  const isEmpty = menus.length < 1;
-
   const EmptyComponent = (
     <AppText h4 grey>
       Nothing Was Found
@@ -24,7 +22,7 @@ export const MenuList = ({ menus, horizontal }: MenuListProps) => {
   return (
     <FlatList
       style={{ marginBottom: 250 }}
-      contentContainerStyle={{ gap: GAP, ...(isEmpty && styles.empty) }}
+      contentContainerStyle={{ gap: GAP }}
       horizontal={horizontal}
       data={menus}
       keyExtractor={(_, index) => `item-${index}`}
