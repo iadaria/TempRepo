@@ -12,6 +12,7 @@ import {
   fetchRestaurants,
   search,
 } from '@src/5_entities/shop/shop.services';
+import { controller } from '@src/6_shared/lib/api/_fetch';
 
 // May be todo it without Control, and don't set left icon to Input?
 const debounce = (func: (wants: string) => void, delay: number) => {
@@ -61,6 +62,7 @@ export function FilterHeader() {
           onChange={text => {
             if (text) debouncedSearch(text);
             if (!text) {
+              controller.abort();
               dispatch(fetchRestaurants());
               dispatch(fetchMenus());
             } // show all records

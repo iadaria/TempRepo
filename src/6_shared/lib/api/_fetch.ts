@@ -19,3 +19,5 @@ export async function _fetch(input: URL, init?: RequestInit) {
 
   return response;
 }
+
+export const controller = new AbortController();

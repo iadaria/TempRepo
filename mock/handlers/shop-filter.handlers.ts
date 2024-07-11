@@ -21,12 +21,8 @@ export const shopFilterHandlers = [
     const wants = url.searchParams.get('wants') || undefined;
     const types = url.searchParams.get('type') || ['restaurant', 'menu'];
 
-    console.log({ types });
-
     const found = types.reduce((toReturn, type, index) => {
-      console.log({ type, wants });
       const rows = db[type].findMany({ where: { name: { contains: wants } } });
-      console.log({ rows });
       return { ...toReturn, [type]: rows };
     }, {});
 

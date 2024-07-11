@@ -9,6 +9,7 @@ type RequestProps = {
   body?: any;
   params?: any;
   headers?: Headers;
+  signal?: AbortSignal;
 };
 
 export const request = ({
@@ -16,11 +17,12 @@ export const request = ({
   method = 'get',
   body,
   params,
+  signal,
   headers,
 }: RequestProps) => {
   const url = new URL(endpoint, API_BASE_URL);
   url.search = new URLSearchParams(params).toString();
   //log('request', { url}); // Good example for debounce search
 
-  return _fetch(url, { headers, method, body });
+  return _fetch(url, { headers, method, body, signal });
 };

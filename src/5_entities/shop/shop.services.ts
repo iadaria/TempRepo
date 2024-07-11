@@ -3,6 +3,7 @@ import { Banner, Filter, Menu, Restaurant } from './shop.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { request } from '@src/6_shared/lib/api/request';
 import { ShopState } from './shop.slice';
+import { controller } from '@src/6_shared/lib/api/_fetch';
 
 const { shop } = endpoints;
 
@@ -54,9 +55,11 @@ export const search = createAsyncThunk<
   { state: { shop: ShopState } }
 >('shop/search', async (wants: string, { getState }) => {
   const { params } = getState().shop;
+  const signal = controller.signal;
   const response = await request({
     endpoint: shop.search,
     params: { ...params, wants },
+    signal,
   });
   const json = await response.json();
   return json.data;
