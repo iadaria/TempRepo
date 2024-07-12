@@ -5,7 +5,7 @@ import { HttpResponse, http } from 'msw';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { FILTERS } from 'mock/data/filter.data';
-import { db } from 'mock/db';
+import { dataByType, db } from 'mock/db';
 import { log, logline } from '@src/6_shared/lib/debug/log';
 
 const { shop } = endpoints;
@@ -31,7 +31,7 @@ export const shopFilterHandlers = [
 
     const found = types.reduce((toReturn: object, type: any) => {
       log;
-      const rows = db[type].findMany({
+      const rows = dataByType(type).findMany({
         where: { name: { contains: wants } },
       });
       return { ...toReturn, [type]: rows };
