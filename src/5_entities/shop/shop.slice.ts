@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
-import { RESTAURANTS } from 'mock/data/restaurants.data';
+import { FILTERS } from 'mock/data/filter.data';
 import {
   fetchBanner,
   fetchFilters,
@@ -10,15 +10,13 @@ import {
 } from './shop.services';
 import { Banner, Filter, FilterType, Menu, Restaurant } from './shop.types';
 
-import { FILTERS } from 'mock/data/filter.data';
-import { MENUS } from 'mock/handlers/shop.request';
-
 export type ShopState = {
   restaurants: Restaurant[];
   menus: Menu[];
   banner: Banner | null;
   filters: Filter[];
-  params: URLSearchParams;
+  //params: Array<string[]>;
+  params: object;
 };
 
 const initialState: ShopState = {
@@ -26,11 +24,11 @@ const initialState: ShopState = {
   menus: [],
   banner: null,
   filters: FILTERS, //[],
-  //params: { type: [FilterType.Restaurant, FilterType.Menu] },
-  params: new URLSearchParams([
-    ['type', FilterType.Menu],
+  params: { type: [FilterType.Restaurant, FilterType.Menu] },
+  /* params: [
     ['type', FilterType.Restaurant],
-  ]),
+    ['type', FilterType.Menu],
+  ], */
 };
 
 const shopSlice = createSlice({
@@ -54,9 +52,11 @@ const shopSlice = createSlice({
     });
 
     builder.addCase(search.fulfilled, (state, action) => {
-      const { restaurant, menu } = action.payload;
-      if (restaurant) state.restaurants = restaurant;
-      if (menu) state.menus = menu;
+      const { restaurant = [], menu = [] } = action.payload;
+      // wrong if (restaurant) state.restaurants = restaurant;
+      state.restaurants = restaurant;
+      // was wrong if (menu) state.menus = menu;
+      state.menus = menu;
     });
   },
 });

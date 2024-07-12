@@ -4,6 +4,7 @@ import { endpoints } from '@src/6_shared/consts/endpoints';
 import { request } from '@src/6_shared/lib/api/request';
 import { ShopState } from './shop.slice';
 import { controller } from '@src/6_shared/lib/api/_fetch';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 
 const { shop } = endpoints;
 
@@ -54,10 +55,17 @@ export const search = createAsyncThunk<
   string,
   { state: { shop: ShopState } }
 >('shop/search', async (wants: string, { getState }) => {
+  //log('shop.servcies/search', getState().shop);
+
   const { params } = getState().shop;
+
+  //logline('shop.services', { params });
+  //ogline('shop.services', { params: { ...params, wants } });
+
   const signal = controller.signal;
   const response = await request({
     endpoint: shop.search,
+    //params,
     params: { ...params, wants },
     signal,
   });

@@ -6,6 +6,7 @@ import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { FILTERS } from 'mock/data/filter.data';
 import { db } from 'mock/db';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 
 const { shop } = endpoints;
 
@@ -17,12 +18,22 @@ export const shopFilterHandlers = [
   // Simple example
   http.get(baseUrl(shop.search), ({ request }) => {
     const url = new URL(request.url);
+    //log('handlers', { url });
     // Givn "/search?wants=text"
     const wants = url.searchParams.get('wants') || undefined;
-    const types = url.searchParams.get('type') || ['restaurant', 'menu'];
+    //log('handlers', { wants });
+    const types = url.searchParams.get('type')?.split(',') || [
+      'restaurant',
+      'menu',
+    ];
 
-    const found = types.reduce((toReturn, type, index) => {
-      const rows = db[type].findMany({ where: { name: { contains: wants } } });
+    logline('shop-filter.handlers', { types });
+
+    const found = types.reduce((toReturn: object, type: any) => {
+      log;
+      const rows = db[type].findMany({
+        where: { name: { contains: wants } },
+      });
       return { ...toReturn, [type]: rows };
     }, {});
 

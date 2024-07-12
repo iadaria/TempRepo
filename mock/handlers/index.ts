@@ -1,4 +1,4 @@
-import { shopFilterHandlers } from './shop-filter.handlers';
+import { shopFilterHandlers } from './filter.handlers';
 import { shopHandlers } from './shop.handlers';
 import { userHandlers } from './user.handlers';
 
