@@ -6,7 +6,7 @@ import { Box } from '@src/6_shared/ui/Box';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-export const ShopRestaurantsScreen = () => {
+export const RestaurantsScreen = () => {
   const restaurants = useSelector(selectRestaurants);
 
   return (

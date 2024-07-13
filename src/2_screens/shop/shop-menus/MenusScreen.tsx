@@ -7,7 +7,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 
-export function ShopMenusScreen() {
+export function MenusScreen() {
   const menus = useSelector(selectMenus);
 
   return (
