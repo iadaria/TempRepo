@@ -17,7 +17,7 @@ export type ShopState = {
   banner: Banner | null;
   filters: Filter[];
   //params: Array<string[]>;
-  params: { type: string[]; wants?: string };
+  params: { type: Array<FilterType>; wants?: string };
 };
 
 const initialState: ShopState = {
@@ -36,6 +36,15 @@ const shopSlice = createSlice({
   name: 'shop',
   initialState,
   reducers: {
+    lookBoth: state => {
+      state.params = { ...state.params, type: initialState.params.type };
+    },
+    lookRestaurant: state => {
+      state.params = { ...state.params, type: [FilterType.Restaurant] };
+    },
+    lookMenu: state => {
+      state.params = { ...state.params, type: [FilterType.Menu] };
+    },
     want: (state, action) => {
       if (!action.payload) delete state.params?.wants;
       else state.params = { ...state.params, wants: action.payload };
@@ -69,7 +78,7 @@ const shopSlice = createSlice({
 
 export const shopReducer = shopSlice.reducer;
 
-export const { want } = shopSlice.actions;
+export const { want, lookBoth, lookRestaurant, lookMenu } = shopSlice.actions;
 
 export const selectRestaurants = (state: RootState) => state.shop.restaurants;
 export const selectMenus = (state: RootState) => state.shop.menus;

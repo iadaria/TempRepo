@@ -1,13 +1,14 @@
-import { useAppDispatch } from '@src/1_app/hooks';
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Box } from '@src/6_shared/ui/Box';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useNavigation } from '@react-navigation/native';
+import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
 import { FilterHeader } from '@src/4_features/FilterHeader/FilterHeader';
 import { ListHeader } from '@src/4_features/ListHeader/ListHeader';
 import { Menus } from '@src/4_features/menu/Menus';
+import { focusShopHomeScreen } from '@src/5_entities/shop/shop.services';
 import {
   selectMenus,
   selectRestaurants,
@@ -15,23 +16,16 @@ import {
 import { NavigationProp } from '@src/6_shared/config/navigation/navigation.types';
 import { routes } from '@src/6_shared/consts/routes';
 import { useSelector } from 'react-redux';
-import { focusShopHomeScreen } from '@src/5_entities/shop/shop.services';
 
 const { shop } = routes;
 
 export const ShopHomeScreen = () => {
-  const dispatch = useAppDispatch();
   const navigation = useNavigation<NavigationProp>();
 
   const restaurants = useSelector(selectRestaurants);
   const menus = useSelector(selectMenus);
 
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      dispatch(focusShopHomeScreen());
-    });
-    return unsubscribe;
-  }, [navigation]);
+  useFocus(focusShopHomeScreen);
 
   return (
     <Box scroll>

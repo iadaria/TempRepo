@@ -1,11 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Banner, Filter, Menu, Restaurant } from './shop.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
-import { request } from '@src/6_shared/lib/api/request';
-import { ShopState } from './shop.slice';
 import { controller } from '@src/6_shared/lib/api/_fetch';
-import { log, logline } from '@src/6_shared/lib/debug/log';
-import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
+import { request } from '@src/6_shared/lib/api/request';
+import { lookBoth, lookMenu, lookRestaurant, ShopState } from './shop.slice';
+import { Banner, Filter, Menu, Restaurant } from './shop.types';
 
 const { shop } = endpoints;
 
@@ -65,6 +63,20 @@ export const search = createAsyncThunk<
 export const focusShopHomeScreen = createAsyncThunk(
   'shop/focusHomeScreen',
   (_, { dispatch }) => {
+    dispatch<any>(lookBoth());
     dispatch<any>(search());
+  },
+);
+
+export const focusRestaurantScreen = createAsyncThunk(
+  'shop/focusRestaurants',
+  (_, { dispatch }) => {
+    dispatch<any>(lookRestaurant());
+  },
+);
+export const focusMenusScreen = createAsyncThunk(
+  'shop/focusMenus',
+  (_, { dispatch }) => {
+    dispatch<any>(lookMenu());
   },
 );
