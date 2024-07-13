@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FilterScreen } from '@src/2_screens/shop/filter/FilterScreen';
 import { ShopHomeScreen } from '@src/2_screens/shop/shop-home';
 import { MenusScreen } from '@src/2_screens/shop/shop-menus/MenusScreen';
 import { RestaurantsScreen } from '@src/2_screens/shop/shop-restaurants/RestaurantsScreen/RestaurantsScreen';
@@ -16,5 +17,6 @@ export const ShopNavigator = createNativeStackNavigator({
     [shop.Home]: ShopHomeScreen,
     [shop.Restorants]: RestaurantsScreen,
     [shop.Menus]: MenusScreen,
+    [shop.Filter]: FilterScreen,
   },
 });

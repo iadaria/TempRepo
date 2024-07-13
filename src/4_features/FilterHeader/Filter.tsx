@@ -14,6 +14,8 @@ import { logline } from '@src/6_shared/lib/debug/log';
 import { controller } from '@src/6_shared/lib/api/_fetch';
 import { selectWants, want } from '@src/5_entities/shop/shop.slice';
 import { useSelector } from 'react-redux';
+import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { routes } from '@src/6_shared/consts/routes';
 
 //const debounce = (func: (wants: string) => void, delay: number) => {
 const debounce = (func: () => void, delay: number) => {
@@ -92,7 +94,7 @@ export function Filter() {
           placeholderTextColor={colors.placeholder}
         />
       </View>
-      <IButton icon={FilterIcon} onPress={() => {}} />
+      <IButton icon={FilterIcon} onPress={() => navigate(routes.shop.Filter)} />
     </>
   );
 }
