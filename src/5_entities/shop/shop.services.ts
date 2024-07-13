@@ -5,6 +5,7 @@ import { request } from '@src/6_shared/lib/api/request';
 import { ShopState } from './shop.slice';
 import { controller } from '@src/6_shared/lib/api/_fetch';
 import { log, logline } from '@src/6_shared/lib/debug/log';
+import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
 
 const { shop } = endpoints;
 
@@ -41,35 +42,29 @@ export const fetchFilters = createAsyncThunk<Filter[]>(
   },
 );
 
-export const focusShopHomeScreen = createAsyncThunk(
-  'shop/focusHomeScreen',
-  (_, { dispatch }) => {
-    dispatch(fetchRestaurants());
-    dispatch(fetchMenus());
-  },
-);
-
 //Why are my wants so fathomless?
 export const search = createAsyncThunk<
   { restaurant: Restaurant[]; menu: Menu[] },
-  string,
+  void,
   { state: { shop: ShopState } }
->('shop/search', async (wants: string, { getState }) => {
-  //>('shop/search', async (_, { getState }) => {
-  //log('shop.servcies/search', getState().shop);
-
+  //>('shop/search', async (wants: string, { getState }) => {
+>('shop/search', async (_, { getState }) => {
   const { params } = getState().shop;
-
-  //logline('shop.services', { params });
-  //ogline('shop.services', { params: { ...params, wants } });
 
   const signal = controller.signal;
   const response = await request({
     endpoint: shop.search,
-    params: { ...params, wants },
-    // params,
+    //params: { ...params, wants },
+    params,
     signal,
   });
   const json = await response.json();
   return json.data;
 });
+
+export const focusShopHomeScreen = createAsyncThunk(
+  'shop/focusHomeScreen',
+  (_, { dispatch }) => {
+    dispatch<any>(search());
+  },
+);

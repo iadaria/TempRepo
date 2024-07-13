@@ -37,8 +37,8 @@ const shopSlice = createSlice({
   initialState,
   reducers: {
     want: (state, action) => {
-      if (!action.payload) state.params = initialState.params;
-      state.params = { ...state.params, wants: action.payload };
+      if (!action.payload) delete state.params?.wants;
+      else state.params = { ...state.params, wants: action.payload };
     },
   },
   extraReducers: builder => {

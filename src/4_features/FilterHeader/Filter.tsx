@@ -12,27 +12,32 @@ import {
 } from '@src/5_entities/shop/shop.services';
 import { logline } from '@src/6_shared/lib/debug/log';
 import { controller } from '@src/6_shared/lib/api/_fetch';
+import { selectWants, want } from '@src/5_entities/shop/shop.slice';
+import { useSelector } from 'react-redux';
 
-const debounce = (func: (wants: string) => void, delay: number) => {
+//const debounce = (func: (wants: string) => void, delay: number) => {
+const debounce = (func: () => void, delay: number) => {
   //let timeoutId // After show an error
   let timeoutId: NodeJS.Timeout;
 
-  return (wants: string) => {
+  //return (wants: string) => {
+  return () => {
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(() => {
-      func.apply(this, [wants]);
+      func.apply(this);
     }, delay);
   };
 };
 
-const useDebounce = (callback: (wants: string) => void) => {
+const useDebounce = (callback: () => void) => {
   const ref = useRef(callback);
   ref.current = callback;
 
   const debouncedCallback = useMemo(() => {
     const func = (watns: string) => {
-      ref.current?.(watns);
+      ref.current?.();
+      //ref.current?.(watns);
     };
 
     return debounce(func, 1000);
@@ -45,24 +50,21 @@ const useDebounce = (callback: (wants: string) => void) => {
 //https://www.developerway.com/posts/debouncing-in-react
 export function Filter() {
   const dispatch = useAppDispatch();
-  //const wants = useSelector(selectWants);
+  const wants = useSelector(selectWants);
 
   const [isShown, setIsShown] = useState(true);
-  const [value, setValue] = useState('');
 
-  const searchByPhrase = (wants: string) => dispatch(search(wants));
+  //const searchByPhrase = (wants: string) => dispatch(search());
+  const searchByPhrase = () => dispatch(search());
   const debouncedSearch = useDebounce(searchByPhrase);
 
   const onChangeText = (text: string) => {
-    setValue(text);
-    if (text) {
-      debouncedSearch(text);
-    }
+    dispatch(want(text));
+    debouncedSearch();
+
     if (!text) {
       logline('FilterHeader', 'aborted');
       controller.abort();
-      dispatch(fetchRestaurants());
-      dispatch(fetchMenus());
     } // show all records
   }; // GOOD Example !
 
@@ -78,7 +80,7 @@ export function Filter() {
         <LeftIcon />
         <TextInput
           style={s.input}
-          value={value}
+          value={wants}
           onFocus={() => {
             setIsShown(false);
           }}

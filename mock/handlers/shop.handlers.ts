@@ -30,10 +30,3 @@ export const shopHandlers = [
     });
   }),
 ];
-
-/* export const MENUS = db.menu.getAll().map(menu => {
-  const restaurant = menu.restaurant;
-  delete menu.restaurant;
-  return { ...menu, restaurantName: restaurant?.name };
-});
- */
