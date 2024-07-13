@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import { GAP } from '@src/6_shared/consts/dimentsions';
 import { colors } from '@src/6_shared/lib/theme';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   item: {
@@ -8,5 +8,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
     backgroundColor: colors.interface,
     borderRadius: 15,
+  },
+  items: {
+    flexDirection: 'row',
+    gap: GAP,
+    flexWrap: 'wrap',
   },
 });

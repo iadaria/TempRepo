@@ -1,49 +1,48 @@
-import { View, Text, Pressable, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { Box } from '@src/6_shared/ui/Box';
 import { FilterHeader } from '@src/4_features/FilterHeader';
+import { Filter } from '@src/5_entities/shop/shop.types';
 import { AppText } from '@src/6_shared/ui/AppText';
-import { Filter, FilterType } from '@src/5_entities/shop/shop.types';
+import { Box } from '@src/6_shared/ui/Box';
+import React, { Fragment } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 
-import { log, logline } from '@src/6_shared/lib/debug/log';
-import { GAP } from '@src/6_shared/consts/dimentsions';
-import { styles } from './FilterScreenStyle';
-import { useSelector } from 'react-redux';
 import { selectFilters } from '@src/5_entities/shop/shop.slice';
+import { GAP } from '@src/6_shared/consts/dimentsions';
+import { log } from '@src/6_shared/lib/debug/log';
+import { useSelector } from 'react-redux';
+import { styles } from './FilterScreenStyle';
 
-const Types = ({ types }: { types: string[] }) =>
-  types.map((type, index) => (
+const Items = ({ items }: { items: string[] }) =>
+  items.map((item, index) => (
     <TouchableOpacity key={`item-${index}`} style={styles.item}>
       <AppText h5 grey>
-        {type}
+        {item}
       </AppText>
     </TouchableOpacity>
   ));
 
-const FilterItems = ({ filter }: { filter: Filter }) => {};
+const Filters = ({ filters }: { filters: Filter[] }) =>
+  filters.map((filter, index) => {
+    const { name, by } = filter;
+    return (
+      <Fragment key={`item-${index}`}>
+        <AppText h4 bold>
+          {name}
+        </AppText>
+        <View style={styles.items}>
+          <Items items={by} />
+        </View>
+      </Fragment>
+    );
+  });
 
 export const FilterScreen = () => {
   const filters = useSelector(selectFilters);
   log('FilterScreen', filters);
 
-  const types = Object.values(FilterType);
-
   return (
     <Box>
       <FilterHeader />
-
-      {/*  <AppText h4 bold>
-        Type
-      </AppText>
-      <View style={{ flexDirection: 'row', gap: GAP }}>
-        <Types types={types} />
-      </View>
-      <AppText h4 bold>
-        Location
-      </AppText>
-      <AppText h4 bold>
-        Food
-      </AppText> */}
+      <Filters filters={filters} />
     </Box>
   );
 };

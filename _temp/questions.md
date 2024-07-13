@@ -1,2 +1,4 @@
 - название return (...args: any[]) =>
 - Каррирование
+- Fragment, for what?
+- default, or export
