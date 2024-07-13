@@ -9,8 +9,8 @@ import { BackButton } from '../BackButton';
 import { Search } from './search/Search';
 
 export function FilterHeader() {
-  const route = navigationRef.getCurrentRoute();
-  const isFilterScreen = route?.name === routes.shop.Filter;
+  const route = navigationRef?.getCurrentRoute();
+  const isFilterScreen = route && route.name === routes.shop.Filter;
 
   return (
     <>

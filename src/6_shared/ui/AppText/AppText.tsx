@@ -8,7 +8,7 @@ type Item = [key: Font & TextSize & Color, value: boolean];
 const fonts = ['medium', 'bold', 'regular'] as const;
 type Font = (typeof fonts)[number];
 
-const headers = ['h1', 'h2', 'h3', 'h4'] as const;
+const headers = ['h1', 'h2', 'h3', 'h4', 'h5'] as const;
 type TextSize = (typeof headers)[number];
 
 const colors = ['orange', 'grey'] as const;

@@ -21,6 +21,10 @@ export const styles = StyleSheet.create({
   h4: {
     fontSize: 15,
   },
+  h5: {
+    fontSize: 12,
+    letterSpacing: 0.43,
+  },
   white: {
     color: 'white',
   },
