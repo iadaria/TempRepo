@@ -1,4 +1,4 @@
-import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { navigate, navigationRef } from '@src/1_app/navigations/RootNavigation';
 import { FilterIcon, Notification } from '@src/6_shared/assets/icons';
 import { routes } from '@src/6_shared/consts/routes';
 import { AppText } from '@src/6_shared/ui/AppText';
@@ -9,6 +9,9 @@ import { BackButton } from '../BackButton';
 import { Search } from './search/Search';
 
 export function FilterHeader() {
+  const route = navigationRef.getCurrentRoute();
+  const isFilterScreen = route?.name === routes.shop.Filter;
+
   return (
     <>
       <Row>
@@ -18,10 +21,12 @@ export function FilterHeader() {
       </Row>
       <Row gap={9}>
         <Search />
-        <IButton
-          icon={FilterIcon}
-          onPress={() => navigate(routes.shop.Filter)}
-        />
+        {!isFilterScreen && (
+          <IButton
+            icon={FilterIcon}
+            onPress={() => navigate(routes.shop.Filter)}
+          />
+        )}
       </Row>
     </>
   );
