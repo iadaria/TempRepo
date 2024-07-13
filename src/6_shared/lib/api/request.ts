@@ -22,7 +22,7 @@ export const request = ({
 }: RequestProps) => {
   const url = new URL(endpoint, API_BASE_URL);
   url.search = new URLSearchParams(params).toString();
-  //log('request', { url}); // Good example for debounce search
+  log('request', { url }); // Good example for debounce search
 
   return _fetch(url, { headers, method, body, signal });
 };

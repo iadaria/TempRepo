@@ -9,6 +9,7 @@ import {
   search,
 } from './shop.services';
 import { Banner, Filter, FilterType, Menu, Restaurant } from './shop.types';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 
 export type ShopState = {
   restaurants: Restaurant[];
@@ -16,7 +17,7 @@ export type ShopState = {
   banner: Banner | null;
   filters: Filter[];
   //params: Array<string[]>;
-  params: object;
+  params: { type: string[]; wants?: string };
 };
 
 const initialState: ShopState = {
@@ -34,7 +35,12 @@ const initialState: ShopState = {
 const shopSlice = createSlice({
   name: 'shop',
   initialState,
-  reducers: {},
+  reducers: {
+    want: (state, action) => {
+      if (!action.payload) state.params = initialState.params;
+      state.params = { ...state.params, wants: action.payload };
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchRestaurants.fulfilled, (state, action) => {
       state.restaurants = action.payload;
@@ -63,7 +69,10 @@ const shopSlice = createSlice({
 
 export const shopReducer = shopSlice.reducer;
 
+export const { want } = shopSlice.actions;
+
 export const selectRestaurants = (state: RootState) => state.shop.restaurants;
 export const selectMenus = (state: RootState) => state.shop.menus;
 export const selectFilters = (state: RootState) => state.shop.filters;
 export const selectBanner = (state: RootState) => state.shop.banner;
+export const selectWants = (state: RootState) => state.shop.params.wants;

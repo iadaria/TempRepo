@@ -55,6 +55,7 @@ export const search = createAsyncThunk<
   string,
   { state: { shop: ShopState } }
 >('shop/search', async (wants: string, { getState }) => {
+  //>('shop/search', async (_, { getState }) => {
   //log('shop.servcies/search', getState().shop);
 
   const { params } = getState().shop;
@@ -65,8 +66,8 @@ export const search = createAsyncThunk<
   const signal = controller.signal;
   const response = await request({
     endpoint: shop.search,
-    //params,
     params: { ...params, wants },
+    // params,
     signal,
   });
   const json = await response.json();

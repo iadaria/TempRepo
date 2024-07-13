@@ -5,3 +5,5 @@ RN images:
 Debounced:
 
 - https://sugandsingh5566.medium.com/mastering-throttle-and-debounce-functions-in-react-native-with-javascript-a03965240829
+
+!Read - https://www.developerway.com/posts/debouncing-in-react

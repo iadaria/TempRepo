@@ -27,7 +27,7 @@ export const shopFilterHandlers = [
       'menu',
     ];
 
-    logline('shop-filter.handlers', { types });
+    //logline('shop-filter.handlers', { types });
 
     const found = types.reduce((toReturn: object, type: any) => {
       log;

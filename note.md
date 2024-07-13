@@ -1,2 +1,1 @@
-- Enter 'Good' in search input then delete
-- Got an error data because last request with G finishing after an empty request
+- Refactor debounce
