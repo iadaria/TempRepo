@@ -62,10 +62,10 @@ export function Filter() {
     dispatch(want(text));
     debouncedSearch();
 
-    if (!text) {
-      logline('FilterHeader', 'aborted');
-      controller.abort();
-    } // show all records
+    // if (!text) {
+    //   logline('FilterHeader', 'aborted');
+    //   controller.abort();
+    // } // show all records
   }; // GOOD Example !
 
   const wrapper = {

@@ -20,11 +20,11 @@ export const shopFilterHandlers = [
     const url = new URL(request.url);
     //log('handlers', { url });
     const wants = url.searchParams.get('wants');
-    //log('handlers', { wants });
     const types = url.searchParams.get('type')?.split(',') || [
       'restaurant',
       'menu',
     ];
+    log('handlers', { wants, types });
 
     if (!wants) {
       return HttpResponse.json({
