@@ -1,10 +1,12 @@
-import { Notification } from '@src/6_shared/assets/icons';
+import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { FilterIcon, Notification } from '@src/6_shared/assets/icons';
+import { routes } from '@src/6_shared/consts/routes';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { IButton } from '@src/6_shared/ui/IButton';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { BackButton } from '../BackButton';
-import { Filter } from './Filter';
+import { Search } from './search/Search';
 
 export function FilterHeader() {
   return (
@@ -15,7 +17,11 @@ export function FilterHeader() {
         <IButton icon={Notification} onPress={() => {}} />
       </Row>
       <Row gap={9}>
-        <Filter />
+        <Search />
+        <IButton
+          icon={FilterIcon}
+          onPress={() => navigate(routes.shop.Filter)}
+        />
       </Row>
     </>
   );
