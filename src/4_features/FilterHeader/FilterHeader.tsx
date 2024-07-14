@@ -10,7 +10,7 @@ import { Search } from './search/Search';
 
 export function FilterHeader() {
   const route = navigationRef?.getCurrentRoute();
-  const isFilterScreen = route && route.name === routes.shop.Filter;
+  const isFilterScreen = Boolean(route) && route?.name === routes.shop.Filter;
 
   return (
     <>

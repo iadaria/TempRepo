@@ -1,14 +1,14 @@
 export const FILTERS = [
   {
-    name: 'Type',
-    by: ['Restaurant', 'Menu'],
+    name: 'type',
+    by: ['restaurant', 'menu'],
   },
   {
-    name: 'Location',
+    name: 'location',
     by: ['1 Km', '>10 Km', '<10 Km'],
   },
   {
-    name: 'Food',
-    by: ['Cake', 'Soup', 'Main Course', 'Appetizer', 'Dessert'],
+    name: 'food',
+    by: ['cake', 'soup', 'main course', 'appetizer', 'dessert'],
   },
 ];

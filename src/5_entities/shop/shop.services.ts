@@ -3,7 +3,8 @@ import { endpoints } from '@src/6_shared/consts/endpoints';
 import { controller } from '@src/6_shared/lib/api/_fetch';
 import { request } from '@src/6_shared/lib/api/request';
 import { lookBoth, lookMenu, lookRestaurant, ShopState } from './shop.slice';
-import { Banner, Filter, Menu, Restaurant } from './shop.types';
+import { Banner, Filter, FilterDto, Menu, Restaurant } from './shop.types';
+import { log } from '@src/6_shared/lib/debug/log';
 
 const { shop } = endpoints;
 
@@ -31,7 +32,7 @@ export const fetchBanner = createAsyncThunk<Banner>('shop/banner', async () => {
   return json.data;
 });
 
-export const fetchFilters = createAsyncThunk<Filter[]>(
+export const fetchFilters = createAsyncThunk<FilterDto[]>(
   'shop/filters',
   async () => {
     const response = await request({ endpoint: shop.filters });
@@ -69,14 +70,25 @@ export const focusShopHomeScreen = createAsyncThunk(
 );
 
 export const focusRestaurantScreen = createAsyncThunk(
-  'shop/focusRestaurants',
+  'shop/focusRestaurantsScreen',
   (_, { dispatch }) => {
     dispatch<any>(lookRestaurant());
   },
 );
 export const focusMenusScreen = createAsyncThunk(
-  'shop/focusMenus',
+  'shop/focusMenusScreen',
   (_, { dispatch }) => {
     dispatch<any>(lookMenu());
   },
 );
+
+export const focusFilterScreen = createAsyncThunk<
+  void,
+  void,
+  { state: { shop: ShopState } }
+>('shop/focusFilterScreen', (_, { getState, dispatch }) => {
+  dispatch(fetchFilters());
+  const { filters, params } = getState().shop;
+  log('focusFilterScreen', { params });
+  log('focusFilterScreen', { filters });
+});

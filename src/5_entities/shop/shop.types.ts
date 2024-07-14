@@ -22,6 +22,11 @@ export type Menu = {
 
 export type Filter = {
   name: string;
+  by: { item: string; selected: boolean }[];
+};
+
+export type FilterDto = {
+  name: string;
   by: string[];
 };
 

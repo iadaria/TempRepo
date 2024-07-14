@@ -16,15 +16,17 @@ export type ShopState = {
   menus: Menu[];
   banner: Banner | null;
   filters: Filter[];
-  //params: Array<string[]>;
-  params: { type: Array<FilterType>; wants?: string };
+  params: {
+    [key: string]: Array<string> | string;
+  };
+  //params: { type: Array<FilterType>; wants?: string };
 };
 
 const initialState: ShopState = {
   restaurants: [],
   menus: [],
   banner: null,
-  filters: FILTERS, //[],
+  filters: [], //[],
   params: { type: [FilterType.Restaurant, FilterType.Menu] },
   /* params: [
     ['type', FilterType.Restaurant],
@@ -63,7 +65,16 @@ const shopSlice = createSlice({
     });
 
     builder.addCase(fetchFilters.fulfilled, (state, action) => {
-      state.filters = action.payload;
+      //const filters = action.payload;
+      state.filters = action.payload.reduce<Filter[]>((prev, current) => {
+        const { name, by } = current;
+        const items = by.map(item => {
+          const alreadySelectedItems = state.params?.[name] || [];
+          const selected = alreadySelectedItems.includes(item);
+          return { item, selected };
+        });
+        return [...prev, { name, by: items }];
+      }, []);
     });
 
     builder.addCase(search.fulfilled, (state, action) => {
@@ -85,3 +96,4 @@ export const selectMenus = (state: RootState) => state.shop.menus;
 export const selectFilters = (state: RootState) => state.shop.filters;
 export const selectBanner = (state: RootState) => state.shop.banner;
 export const selectWants = (state: RootState) => state.shop.params.wants;
+export const selectParams = (state: RootState) => state.shop.params;

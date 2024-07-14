@@ -2,3 +2,6 @@
 - Каррирование
 - Fragment, for what?
 - default, or export
+- react jsx best practice
+- react awesome best practice examples where see items
+- I don't like my Filter component may be to change?

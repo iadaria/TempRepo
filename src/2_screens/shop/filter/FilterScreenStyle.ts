@@ -14,4 +14,7 @@ export const styles = StyleSheet.create({
     gap: GAP,
     flexWrap: 'wrap',
   },
+  selected: {
+    backgroundColor: 'rgba(48, 208, 128, 0.4)',
+  },
 });
