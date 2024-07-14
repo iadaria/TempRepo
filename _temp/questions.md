@@ -5,3 +5,5 @@
 - react jsx best practice
 - react awesome best practice examples where see items
 - I don't like my Filter component may be to change?
+- ask review from top react developer
+- how to write, could i redownload youtube video

@@ -1,5 +1,3 @@
-import { FilterHeader } from '@src/4_features/FilterHeader';
-import { Filter } from '@src/5_entities/shop/shop.types';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import React from 'react';
@@ -7,19 +5,40 @@ import { TouchableOpacity, View } from 'react-native';
 
 import { useAppDispatch } from '@src/1_app/hooks';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
+import { FilterHeader } from '@src/4_features/FilterHeader';
 import { focusFilterScreen } from '@src/5_entities/shop/shop.services';
-import { selectFilters } from '@src/5_entities/shop/shop.slice';
-import { log } from '@src/6_shared/lib/debug/log';
+import {
+  selectFilters2,
+  selectParams,
+  setParam,
+} from '@src/5_entities/shop/shop.slice';
 import { useSelector } from 'react-redux';
 import { styles } from './FilterScreenStyle';
 
-const Item = ({ item, selected }: { item: string; selected: boolean }) => {
+interface ItemProps {
+  item: string;
+  selected: boolean;
+  name: string;
+}
+
+const Item = ({ item, name }: { item: string; name: string }) => {
+  const dispatch = useAppDispatch();
+  const params = useSelector(selectParams);
+
+  const checkedParams = params[name] || [];
+  const isSelected = checkedParams.includes(item);
+
+  function onPress() {
+    dispatch(setParam({ name, item, toDelete: isSelected }));
+  }
+
   const style = {
     ...styles.item,
-    ...(selected && styles.selected),
+    ...(isSelected && styles.selected),
   };
+
   return (
-    <TouchableOpacity style={style}>
+    <TouchableOpacity onPress={onPress} style={style}>
       <AppText h5 grey>
         {item}
       </AppText>
@@ -27,45 +46,36 @@ const Item = ({ item, selected }: { item: string; selected: boolean }) => {
   );
 };
 
-const FilterItems = ({ filter }: { filter: Filter }) => {
-  const { name, by } = filter;
-  const Items = () => {
-    return by.map((item, index) => {
-      return <Item key={`item-${index}`} {...item} />;
-    });
-  };
+const FilterItems = ({ filter }: { filter: [string, string[]] }) => {
+  const [name, by] = filter;
+
+  const items = by.map((item, index) => {
+    return <Item key={`item-${index}`} item={item} name={name} />;
+  });
 
   return (
     <>
       <AppText h4 bold>
         {name}
       </AppText>
-      <View style={styles.items}>
-        <Items />
-      </View>
+      <View style={styles.items}>{items}</View>
     </>
   );
 };
 
-const Filters = () => {
-  const dispatch = useAppDispatch();
-  const filters = useSelector(selectFilters);
+export const FilterScreen = () => {
+  const filters = useSelector(selectFilters2);
 
-  //log('FiltersScreen', { params });
-  log('FilterScreen', { filters });
+  useFocus(focusFilterScreen);
 
-  //return null;
-  return filters.map((filter, index) => (
+  const filterItems = Object.entries(filters).map((filter, index) => (
     <FilterItems key={`key-${index}`} filter={filter} />
   ));
-};
 
-export const FilterScreen = () => {
-  useFocus(focusFilterScreen);
   return (
     <Box>
       <FilterHeader />
-      <Filters />
+      {filterItems}
     </Box>
   );
 };
