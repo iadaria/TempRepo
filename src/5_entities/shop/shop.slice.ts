@@ -8,15 +8,12 @@ import {
   search,
 } from './shop.services';
 import { Banner, Filter, FilterType, Menu, Restaurant } from './shop.types';
-import { log, logline } from '@src/6_shared/lib/debug/log';
-import { Filter2, FILTERS_2 } from 'mock/data/filter.data';
 
 export type ShopState = {
   restaurants: Restaurant[];
   menus: Menu[];
   banner: Banner | null;
-  filters: Filter[];
-  filters2: Filter2;
+  filters: Filter;
   params: {
     [key: string]: Array<string>; // what about whats?
   };
@@ -27,9 +24,8 @@ const initialState: ShopState = {
   restaurants: [],
   menus: [],
   banner: null,
-  filters: [], //[],
   params: { type: [FilterType.Restaurant, FilterType.Menu] },
-  filters2: FILTERS_2,
+  filters: { type: [], food: [], location: [] },
   /* params: [
     ['type', FilterType.Restaurant],
     ['type', FilterType.Menu],
@@ -80,23 +76,12 @@ const shopSlice = createSlice({
     });
 
     builder.addCase(fetchFilters.fulfilled, (state, action) => {
-      //const filters = action.payload;
-      state.filters = action.payload.reduce<Filter[]>((prev, current) => {
-        const { name, by } = current;
-        const items = by.map(item => {
-          const alreadySelectedItems = state.params?.[name] || [];
-          const selected = alreadySelectedItems.includes(item);
-          return { item, selected };
-        });
-        return [...prev, { name, by: items }];
-      }, []);
+      state.filters = action.payload;
     });
 
     builder.addCase(search.fulfilled, (state, action) => {
       const { restaurant = [], menu = [] } = action.payload;
-      // wrong if (restaurant) state.restaurants = restaurant;
       state.restaurants = restaurant;
-      // was wrong if (menu) state.menus = menu;
       state.menus = menu;
     });
   },
@@ -110,7 +95,6 @@ export const { want, lookBoth, lookRestaurant, lookMenu, setParam } =
 export const selectRestaurants = (state: RootState) => state.shop.restaurants;
 export const selectMenus = (state: RootState) => state.shop.menus;
 export const selectFilters = (state: RootState) => state.shop.filters;
-export const selectFilters2 = (state: RootState) => state.shop.filters2;
 export const selectBanner = (state: RootState) => state.shop.banner;
 export const selectWants = (state: RootState) => state.shop.params.wants;
 export const selectParams = (state: RootState) => state.shop.params;
@@ -143,3 +127,13 @@ export const selectParams = (state: RootState) => state.shop.params;
 
 // params = left.length ? {[name]: left} : {}
 //state.params = {...others, ...(left.length && {[name]: left})}
+
+/* state.filters = action.payload.reduce<Filter[]>((prev, current) => {
+  const { name, by } = current;
+  const items = by.map(item => {
+    const alreadySelectedItems = state.params?.[name] || [];
+    const selected = alreadySelectedItems.includes(item);
+    return { item, selected };
+  });
+  return [...prev, { name, by: items }];
+}, []); */

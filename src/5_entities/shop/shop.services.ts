@@ -32,7 +32,7 @@ export const fetchBanner = createAsyncThunk<Banner>('shop/banner', async () => {
   return json.data;
 });
 
-export const fetchFilters = createAsyncThunk<FilterDto[]>(
+export const fetchFilters = createAsyncThunk<Filter>(
   'shop/filters',
   async () => {
     const response = await request({ endpoint: shop.filters });
@@ -88,7 +88,5 @@ export const focusFilterScreen = createAsyncThunk<
   { state: { shop: ShopState } }
 >('shop/focusFilterScreen', (_, { getState, dispatch }) => {
   dispatch(fetchFilters());
-  const { filters, params } = getState().shop;
-  log('focusFilterScreen', { params });
-  log('focusFilterScreen', { filters });
+  //const { filters, params } = getState().shop;
 });

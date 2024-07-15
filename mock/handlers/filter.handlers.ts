@@ -24,18 +24,24 @@ export const shopFilterHandlers = [
       'restaurant',
       'menu',
     ];
-    log('handlers', { wants, types });
+    const food = url.searchParams.get('food')?.split(',') || [];
+    const fooded = food.length;
+    const isMenu = (type: string) => type === 'menu';
 
-    if (!wants) {
+    log('handlers', { wants, types, food });
+
+    if (!wants && !fooded) {
       return HttpResponse.json({
         data: { restaurant: restaurants, menu: menus },
       });
     }
 
     const found = types.reduce((toReturn: object, type: any) => {
-      log;
       const rows = dataByType(type).findMany({
-        where: { name: { contains: wants } },
+        where: {
+          ...(wants && { name: { contains: wants } }),
+          ...(type === 'menu' && fooded && { category: { in: food } }),
+        },
       });
       return { ...toReturn, [type]: rows };
     }, {});

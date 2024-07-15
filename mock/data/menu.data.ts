@@ -8,6 +8,7 @@ export const MENUS = [
     restaurantId: 1,
     uri: `${PATH}/menu/m1.png`,
     pupular: true,
+    category: 'soup',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const MENUS = [
     restaurantId: 1,
     uri: `${PATH}/menu/m2.png`,
     popular: true,
+    category: 'soup',
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ export const MENUS = [
     restaurantId: 1,
     uri: `${PATH}/menu/m3.png`,
     popular: true,
+    category: 'main course',
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ export const MENUS = [
     restaurantId: 1,
     uri: `${PATH}/menu/m1.png`,
     pupular: true,
+    category: 'dessert',
   },
 ];
 

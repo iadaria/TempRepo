@@ -6,14 +6,16 @@ import { TouchableOpacity, View } from 'react-native';
 import { useAppDispatch } from '@src/1_app/hooks';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
 import { FilterHeader } from '@src/4_features/FilterHeader';
-import { focusFilterScreen } from '@src/5_entities/shop/shop.services';
+import { focusFilterScreen, search } from '@src/5_entities/shop/shop.services';
 import {
+  selectFilters,
   selectFilters2,
   selectParams,
   setParam,
 } from '@src/5_entities/shop/shop.slice';
 import { useSelector } from 'react-redux';
 import { styles } from './FilterScreenStyle';
+import { Button } from '@src/6_shared/ui/Button';
 
 interface ItemProps {
   item: string;
@@ -64,7 +66,8 @@ const FilterItems = ({ filter }: { filter: [string, string[]] }) => {
 };
 
 export const FilterScreen = () => {
-  const filters = useSelector(selectFilters2);
+  const dispatch = useAppDispatch();
+  const filters = useSelector(selectFilters);
 
   useFocus(focusFilterScreen);
 
@@ -72,10 +75,18 @@ export const FilterScreen = () => {
     <FilterItems key={`key-${index}`} filter={filter} />
   ));
 
+  function onSearch() {
+    dispatch(search());
+  }
+
   return (
-    <Box>
+    <Box scroll>
       <FilterHeader />
       {filterItems}
+
+      <Button onPress={onSearch} secondary>
+        <AppText>Search</AppText>
+      </Button>
     </Box>
   );
 };

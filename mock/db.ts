@@ -19,6 +19,7 @@ const db = factory({
     pupular: Boolean,
     restaurantName: String,
     restaurant: oneOf('restaurant'), //
+    category: String,
   },
 });
 

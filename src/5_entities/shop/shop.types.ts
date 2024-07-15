@@ -18,16 +18,13 @@ export type Menu = {
   restaurantName: string;
   uri: string;
   pupular: boolean;
+  category: string;
 };
 
 export type Filter = {
-  name: string;
-  by: { item: string; selected: boolean }[];
-};
-
-export type FilterDto = {
-  name: string;
-  by: string[];
+  type: string[];
+  location: string[];
+  food: string[];
 };
 
 export enum FilterType {
