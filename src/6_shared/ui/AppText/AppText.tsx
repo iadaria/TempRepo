@@ -45,7 +45,7 @@ export const AppText = ({ center, children, ...etc }: AppTextProps) => {
 
   const size = find<TextSize>(isHeader) || 'h3';
   const font = find<Font>(isFont) || 'regular';
-  const color = find<Color>(isColor) || 'white';
+  const color = find<Color>(isColor) || 'rgba(255, 255, 255, 0.5)';
   //logline(AppText.name, { size, font });
 
   const style = {

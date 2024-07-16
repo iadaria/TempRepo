@@ -40,7 +40,8 @@ export const shopFilterHandlers = [
       const rows = dataByType(type).findMany({
         where: {
           ...(wants && { name: { contains: wants } }),
-          ...(type === 'menu' && fooded && { category: { in: food } }),
+          ...(isMenu(type) && fooded && { category: { in: food } }),
+          ...(!isMenu(type) && { name: { lte: '' } }),
         },
       });
       return { ...toReturn, [type]: rows };

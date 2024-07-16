@@ -9,7 +9,6 @@ import { FilterHeader } from '@src/4_features/FilterHeader';
 import { focusFilterScreen, search } from '@src/5_entities/shop/shop.services';
 import {
   selectFilters,
-  selectFilters2,
   selectParams,
   setParam,
 } from '@src/5_entities/shop/shop.slice';
@@ -41,9 +40,7 @@ const Item = ({ item, name }: { item: string; name: string }) => {
 
   return (
     <TouchableOpacity onPress={onPress} style={style}>
-      <AppText h5 grey>
-        {item}
-      </AppText>
+      <AppText h5>{item}</AppText>
     </TouchableOpacity>
   );
 };
