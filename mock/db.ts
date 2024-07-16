@@ -7,7 +7,8 @@ const db = factory({
   restaurant: {
     id: primaryKey(Number),
     name: String,
-    location: { lat: Number, lng: Number },
+    //location: { lat: Number, lng: Number },
+    location: Number,
     img: String,
     menu: manyOf('menu'),
   },

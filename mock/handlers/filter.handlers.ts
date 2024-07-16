@@ -5,7 +5,7 @@ import { HttpResponse, http } from 'msw';
 
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
-import { FILTERS } from 'mock/data/filter.data';
+import { FILTERS, operatorByDistance } from 'mock/data/filter.data';
 import { dataByType, db, menus, restaurants } from 'mock/db';
 import { log, logline } from '@src/6_shared/lib/debug/log';
 
@@ -17,20 +17,20 @@ export const shopFilterHandlers = [
   http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),
 
   http.get(baseUrl(shop.search), ({ request }) => {
+    const getParams = (name: string) => url.searchParams.get(name)?.split(',');
+    const isMenu = (type: string) => type === 'menu';
+
     const url = new URL(request.url);
     //log('handlers', { url });
     const wants = url.searchParams.get('wants');
-    const types = url.searchParams.get('type')?.split(',') || [
-      'restaurant',
-      'menu',
-    ];
-    const food = url.searchParams.get('food')?.split(',') || [];
+    const types = getParams('type') || ['restaurant', 'menu'];
+    const food = getParams('food') || [];
     const fooded = food.length;
-    const isMenu = (type: string) => type === 'menu';
+    const distance = url.searchParams.get('location');
 
-    log('handlers', { wants, types, food });
+    log('handlers', { wants, types, food, distance });
 
-    if (!wants && !fooded) {
+    if (!wants && !fooded && !distance) {
       return HttpResponse.json({
         data: { restaurant: restaurants, menu: menus },
       });
@@ -41,7 +41,8 @@ export const shopFilterHandlers = [
         where: {
           ...(wants && { name: { contains: wants } }),
           ...(isMenu(type) && fooded && { category: { in: food } }),
-          ...(!isMenu(type) && { name: { lte: '' } }),
+          ...(!isMenu(type) &&
+            distance && { location: operatorByDistance(distance) }),
         },
       });
       return { ...toReturn, [type]: rows };
