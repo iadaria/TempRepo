@@ -1,1 +1,1 @@
-- dont like filters layout
+- at first try without reset

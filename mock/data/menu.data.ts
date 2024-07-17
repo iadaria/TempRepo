@@ -37,6 +37,15 @@ export const MENUS = [
     pupular: true,
     category: 'dessert',
   },
+  {
+    id: 5,
+    name: 'Herbal Good Pancacke',
+    price: 7,
+    restaurantId: 2,
+    uri: `${PATH}/menu/m1.png`,
+    pupular: true,
+    category: 'dessert',
+  },
 ];
 
 // https://medium.com/admitad-tech/mocks-without-roadblocks-the-magic-of-mswjs-faker-js-306541458c2a

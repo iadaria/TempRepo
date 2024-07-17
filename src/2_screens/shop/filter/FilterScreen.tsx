@@ -10,13 +10,18 @@ import { focusFilterScreen, search } from '@src/5_entities/shop/shop.services';
 import {
   addParam,
   deleteParam,
+  ParamName,
   selectFilters,
   selectParams,
-  setParam,
 } from '@src/5_entities/shop/shop.slice';
+import { Button } from '@src/6_shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { styles } from './FilterScreenStyle';
-import { Button } from '@src/6_shared/ui/Button';
+import { navigate, navReset } from '@src/1_app/navigations/RootNavigation';
+import { routes } from '@src/6_shared/consts/routes';
+import { logline } from '@src/6_shared/lib/debug/log';
+import { FilterType } from '@src/5_entities/shop/shop.types';
+import { tags } from 'react-native-svg/lib/typescript/xml';
 
 interface ItemProps {
   item: string;
@@ -24,7 +29,7 @@ interface ItemProps {
   name: string;
 }
 
-const Item = ({ item, name }: { item: string; name: string }) => {
+const Item = ({ item, name }: { item: string; name: ParamName }) => {
   const dispatch = useAppDispatch();
   const params = useSelector(selectParams);
 
@@ -70,6 +75,7 @@ const FilterItems = ({ filter }: { filter: [string, string[]] }) => {
 export const FilterScreen = () => {
   const dispatch = useAppDispatch();
   const filters = useSelector(selectFilters);
+  const params = useSelector(selectParams);
 
   useFocus(focusFilterScreen);
 
@@ -79,11 +85,27 @@ export const FilterScreen = () => {
 
   function onSearch() {
     dispatch(search());
+
+    const type = params?.type;
+    const selected = type?.length;
+    // try without reset and you see back button in Header
+    if ([undefined, 2].includes(selected)) navReset(routes.shop.Home);
+    // TODO Refactoring
+    /* else {
+      const route = `${type![0]}s`;
+      navigate
+    } */
+    if (type![0] === FilterType.Menu) {
+      navigate(routes.shop.Menus);
+    }
+    if (type![0] === FilterType.Restaurant) {
+      navigate(routes.shop.Restorants);
+    }
   }
 
   return (
     <Box scroll>
-      <FilterHeader />
+      <FilterHeader openned={true} />
       {filterItems}
 
       <Button onPress={onSearch} secondary>

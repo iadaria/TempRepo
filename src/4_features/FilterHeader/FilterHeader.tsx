@@ -8,9 +8,13 @@ import React from 'react';
 import { BackButton } from '../BackButton';
 import { Search } from './search/Search';
 
-export function FilterHeader() {
-  const route = navigationRef?.getCurrentRoute();
-  const isFilterScreen = Boolean(route) && route?.name === routes.shop.Filter;
+interface FilterHeaderProps {
+  openned?: boolean;
+}
+
+export function FilterHeader({ openned = false }: FilterHeaderProps) {
+  //const route = navigationRef?.getCurrentRoute();
+  //const isFilterScreen = Boolean(route) && route?.name === routes.shop.Filter;
 
   return (
     <>
@@ -21,7 +25,7 @@ export function FilterHeader() {
       </Row>
       <Row gap={9}>
         <Search />
-        {!isFilterScreen && (
+        {!openned && (
           <IButton
             icon={FilterIcon}
             onPress={() => navigate(routes.shop.Filter)}

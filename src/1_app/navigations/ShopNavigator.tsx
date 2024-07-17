@@ -8,7 +8,7 @@ import { routes } from '@src/6_shared/consts/routes';
 const { shop } = routes;
 
 export const ShopNavigator = createNativeStackNavigator({
-  initialRouteName: shop.Filter,
+  //initialRouteName: shop.Filter,
   screenOptions: {
     headerShown: false,
     animation: 'slide_from_left',

@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
+import { routes } from '@src/6_shared/consts/routes';
 import {
   fetchBanner,
   fetchFilters,
@@ -15,10 +16,15 @@ export type ShopState = {
   banner: Banner | null;
   filters: Filter;
   params: {
-    [key: string]: Array<string>; // what about whats?
+    type?: FilterType[];
+    location?: string[];
+    food?: string[];
+    wants?: string;
+    //[key: string]: Array<string>; // what about whats?
   };
-  //params: { type: Array<FilterType>; wants?: string };
 };
+
+export type ParamName = 'type' | 'location' | 'food';
 
 const initialState: ShopState = {
   restaurants: [],
@@ -49,28 +55,21 @@ const shopSlice = createSlice({
       if (!action.payload) delete state.params?.wants;
       else state.params = { ...state.params, wants: action.payload };
     },
-    setParam: (state, action) => {
-      const { name, item, toDelete } = action.payload;
-
-      const { [name]: items, ...others } = state.params;
-
-      if (toDelete) {
-        const left = items.filter(param => param != item);
-        state.params = { ...others, ...(left.length && { [name]: left }) };
-      } else {
-        const newItems = items ? [...items, item] : [item];
-        state.params = { ...others, ...{ [name]: newItems } };
-      }
-    },
-    deleteParam: (state, action) => {
+    deleteParam: (
+      state,
+      action: PayloadAction<{ name: ParamName; item: string }>,
+    ) => {
       const { name, item: itemToDelete } = action.payload;
       const { [name]: items, ...others } = state.params;
 
-      const left = items.filter(item => item != itemToDelete);
+      const left = items?.filter(item => item != itemToDelete);
 
-      state.params = { ...others, ...(left.length && { [name]: left }) };
+      state.params = { ...others, ...(left?.length && { [name]: left }) };
     },
-    addParam: (state, action) => {
+    addParam: (
+      state,
+      action: PayloadAction<{ name: ParamName; item: string }>,
+    ) => {
       const { name, item } = action.payload;
       if (name === 'location') delete state.params[name];
 
@@ -111,7 +110,7 @@ export const {
   lookBoth,
   lookRestaurant,
   lookMenu,
-  setParam,
+  //setParam,
   deleteParam,
   addParam,
 } = shopSlice.actions;
@@ -161,3 +160,17 @@ export const selectParams = (state: RootState) => state.shop.params;
   });
   return [...prev, { name, by: items }];
 }, []); */
+/* 
+setParam: (state, action) => {
+  const { name, item, toDelete } = action.payload;
+
+  const { [name]: items, ...others } = state.params;
+
+  if (toDelete) {
+    const left = items.filter(param => param != item);
+    state.params = { ...others, ...(left.length && { [name]: left }) };
+  } else {
+    const newItems = items ? [...items, item] : [item];
+    state.params = { ...others, ...{ [name]: newItems } };
+  }
+}, */

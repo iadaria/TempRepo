@@ -29,7 +29,7 @@ export const shopFilterHandlers = [
     //const isBoth = types.length > 1;
     const onlyRest = types.length === 1 && types[0] === FilterType.Restaurant;
 
-    log('handlers', { wants, types, food, distance });
+    //log('handlers', { wants, types, food, distance });
 
     if (!wants && !food.length && !distance) {
       return HttpResponse.json({
@@ -47,7 +47,7 @@ export const shopFilterHandlers = [
       },
     });
 
-    console.log({ ids: restaurants.map(rest => rest.id) });
+    //console.log({ ids: restaurants.map(rest => rest.id) });
 
     const menus = dataByType(FilterType.Menu).findMany({
       where: {
@@ -58,10 +58,10 @@ export const shopFilterHandlers = [
         }),
       },
     });
-    console.log({ menuIds: menus.map(m => m.id) });
+    //console.log({ menuIds: menus.map(m => m.id) });
 
-    const restIds = menus.map(menu => menu.restaurantId);
-    console.log({ restIds });
+    const restIds = menus.map((menu: any) => menu.restaurantId);
+    //console.log({ restIds });
 
     return HttpResponse.json({
       data: {
