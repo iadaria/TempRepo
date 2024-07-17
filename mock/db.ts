@@ -18,6 +18,7 @@ const db = factory({
     price: Number,
     uri: String,
     pupular: Boolean,
+    restaurantsId: Number,
     restaurantName: String,
     restaurant: oneOf('restaurant'), //
     category: String,
@@ -33,7 +34,12 @@ for (const menu of MENUS) {
     where: { id: { equals: menu.restaurantId } },
   });
   if (restaurant) {
-    db.menu.create({ ...menu, restaurantName: restaurant.name, restaurant });
+    db.menu.create({
+      ...menu,
+      restaurantsId: restaurant.id,
+      restaurantName: restaurant.name,
+      restaurant,
+    });
   }
 }
 

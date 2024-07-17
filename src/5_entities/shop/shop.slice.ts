@@ -97,9 +97,9 @@ const shopSlice = createSlice({
     });
 
     builder.addCase(search.fulfilled, (state, action) => {
-      const { restaurant = [], menu = [] } = action.payload;
-      state.restaurants = restaurant;
-      state.menus = menu;
+      const { restaurants = [], menus = [] } = action.payload;
+      state.restaurants = restaurants;
+      state.menus = menus;
     });
   },
 });

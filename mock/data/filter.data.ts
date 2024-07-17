@@ -4,7 +4,7 @@ export const FILTERS = {
   food: ['cake', 'soup', 'main course', 'appetizer', 'dessert'],
 };
 
-export function operatorByDistance(distance: string) {
+export function operator(distance: string) {
   switch (distance) {
     case '1 Km':
       return { lte: 1 };

@@ -3,8 +3,7 @@ import { endpoints } from '@src/6_shared/consts/endpoints';
 import { controller } from '@src/6_shared/lib/api/_fetch';
 import { request } from '@src/6_shared/lib/api/request';
 import { lookBoth, lookMenu, lookRestaurant, ShopState } from './shop.slice';
-import { Banner, Filter, FilterDto, Menu, Restaurant } from './shop.types';
-import { log } from '@src/6_shared/lib/debug/log';
+import { Banner, Filter, Menu, Restaurant } from './shop.types';
 
 const { shop } = endpoints;
 
@@ -43,7 +42,7 @@ export const fetchFilters = createAsyncThunk<Filter>(
 
 //Why are my wants so fathomless?
 export const search = createAsyncThunk<
-  { restaurant: Restaurant[]; menu: Menu[] },
+  { restaurants: Restaurant[]; menus: Menu[] },
   void,
   { state: { shop: ShopState } }
   //>('shop/search', async (wants: string, { getState }) => {
