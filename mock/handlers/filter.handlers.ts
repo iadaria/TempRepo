@@ -19,13 +19,15 @@ export const shopFilterHandlers = [
 
   http.get(baseUrl(shop.search), ({ request }) => {
     const getParams = (name: string) => url.searchParams.get(name)?.split(',');
+    //const isMenu = (type: string) => type === FilterType.Menu
     const url = new URL(request.url);
     //log('handlers', { url });
     const wants = url.searchParams.get('wants');
     const types = getParams('type') || [FilterType.Restaurant, FilterType.Menu];
     const food = getParams('food') || [];
     const distance = url.searchParams.get('location');
-    const isBoth = types.length > 1;
+    //const isBoth = types.length > 1;
+    const onlyRest = types.length === 1 && types[0] === FilterType.Restaurant;
 
     log('handlers', { wants, types, food, distance });
 
@@ -40,21 +42,32 @@ export const shopFilterHandlers = [
 
     const restaurants = dataByType(FilterType.Restaurant).findMany({
       where: {
-        ...(!isBoth && wants && { name: { contains: wants } }), // maybe not to do
+        ...(!onlyRest && wants && { name: { contains: wants } }), // maybe not to do
         ...(distance && { location: operator(distance) }),
       },
     });
+
+    console.log({ ids: restaurants.map(rest => rest.id) });
 
     const menus = dataByType(FilterType.Menu).findMany({
       where: {
         ...(wants && { name: { contains: wants } }),
         ...(food.length && { category: { in: food } }),
         ...(distance && {
-          restaurantsId: { in: restaurants.map(rest => rest.id) },
+          restaurantId: { in: restaurants.map(rest => rest.id) },
         }),
       },
     });
+    console.log({ menuIds: menus.map(m => m.id) });
 
-    return HttpResponse.json({ data: { restaurants, menus } });
+    const restIds = menus.map(menu => menu.restaurantId);
+    console.log({ restIds });
+
+    return HttpResponse.json({
+      data: {
+        restaurants: restaurants.filter(r => restIds.includes(r.id)),
+        menus,
+      },
+    });
   }),
 ];

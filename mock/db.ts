@@ -10,7 +10,7 @@ const db = factory({
     //location: { lat: Number, lng: Number },
     location: Number,
     img: String,
-    menu: manyOf('menu'),
+    menus: manyOf('menu'),
   },
   menu: {
     id: primaryKey(Number),
@@ -18,7 +18,7 @@ const db = factory({
     price: Number,
     uri: String,
     pupular: Boolean,
-    restaurantsId: Number,
+    restaurantId: Number,
     restaurantName: String,
     restaurant: oneOf('restaurant'), //
     category: String,
@@ -34,9 +34,9 @@ for (const menu of MENUS) {
     where: { id: { equals: menu.restaurantId } },
   });
   if (restaurant) {
-    db.menu.create({
+    const dbMenu = db.menu.create({
       ...menu,
-      restaurantsId: restaurant.id,
+      restaurantId: restaurant.id,
       restaurantName: restaurant.name,
       restaurant,
     });
@@ -51,8 +51,8 @@ export const restaurants = db.restaurant.getAll();
 export function dataByType(type: 'menu' | 'restaurant') {
   return db[type];
 }
-
-// log('[db] restaurants', db.restaurant.getAll());
+//console.log(restaurants);
+//log('[db] restaurants', db.restaurant.getAll());
 // log('[db] menus', db.menu.getAll());
 
 // https://github.com/mswjs/data
