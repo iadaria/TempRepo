@@ -39,8 +39,8 @@ const initialState: ShopState = {
   banner: null,
   params: {
     [FilterItem.Type]: [FilterType.Restaurant, FilterType.Menu],
-    [FilterItem.Location]: [Location.OneKm],
-    [FilterItem.Food]: [Food.Appetizer, Food.Cake],
+    //[FilterItem.Location]: [Location.OneKm],
+    //[FilterItem.Food]: [Food.Appetizer, Food.Cake],
   },
   filters: { type: [], food: [], location: [] },
   /* params: [

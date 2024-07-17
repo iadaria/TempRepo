@@ -13,9 +13,11 @@ export function navigate(screen: string, params?: object) {
   }
 }
 
-export function navReset(screen: string) {
-  logline('navigate to', { screen });
+export function navReset(screen: string, secondScreen?: string) {
+  logline('navReset to', { screen });
+  const routes = [{ name: screen }];
+  if (secondScreen) routes.push({ name: secondScreen });
   if (navigationRef.isReady()) {
-    navigationRef.reset({ index: 0, routes: [{ name: screen }] });
+    navigationRef.reset({ index: 0, routes });
   }
 }

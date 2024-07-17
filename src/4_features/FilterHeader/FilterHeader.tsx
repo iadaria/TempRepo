@@ -1,4 +1,6 @@
+import { useAppDispatch } from '@src/1_app/hooks';
 import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { search } from '@src/5_entities/shop/shop.services';
 import { deleteParam, selectParams } from '@src/5_entities/shop/shop.slice';
 import {
   FilterItem,
@@ -10,7 +12,6 @@ import {
   FilterIcon,
   Notification,
 } from '@src/6_shared/assets/icons';
-import { GAP } from '@src/6_shared/consts/dimentsions';
 import { routes } from '@src/6_shared/consts/routes';
 import { colors } from '@src/6_shared/lib/theme';
 import { AppText } from '@src/6_shared/ui/AppText';
@@ -21,7 +22,6 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { BackButton } from '../BackButton';
 import { Search } from './search/Search';
-import { useAppDispatch } from '@src/1_app/hooks';
 
 export const styles = StyleSheet.create({
   item: {
@@ -47,6 +47,7 @@ const Item = ({ item, name }: { item: FilterKey; name: FilterName }) => {
 
   function onPress() {
     dispatch(deleteParam({ name, item }));
+    dispatch(search());
   }
   return (
     <View style={styles.item}>

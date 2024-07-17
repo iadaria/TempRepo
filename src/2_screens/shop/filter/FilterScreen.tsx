@@ -26,6 +26,8 @@ import { Button } from '@src/6_shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { styles } from './FilterScreenStyle';
 
+const { shop } = routes;
+
 const Item = ({ item, name }: { item: FilterKey; name: FilterName }) => {
   const dispatch = useAppDispatch();
   const params = useSelector(selectParams);
@@ -86,17 +88,16 @@ export const FilterScreen = () => {
     const type = params?.type;
     const selected = type?.length;
     // try without reset and you see back button in Header
-    if ([undefined, 2].includes(selected)) navReset(routes.shop.Home);
+    if ([undefined, 2].includes(selected)) return navReset(shop.Home);
     // TODO Refactoring
     /* else {
       const route = `${type![0]}s`;
       navigate
     } */
     if (type![0] === FilterType.Menu) {
-      navigate(routes.shop.Menus);
-    }
-    if (type![0] === FilterType.Restaurant) {
-      navigate(routes.shop.Restorants);
+      return navReset(shop.Home, shop.Menus);
+    } else if (type![0] === FilterType.Restaurant) {
+      navReset(shop.Home, shop.Restorants);
     }
   }
 
