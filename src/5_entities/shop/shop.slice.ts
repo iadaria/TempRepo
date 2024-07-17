@@ -62,6 +62,23 @@ const shopSlice = createSlice({
         state.params = { ...others, ...{ [name]: newItems } };
       }
     },
+    deleteParam: (state, action) => {
+      const { name, item: itemToDelete } = action.payload;
+      const { [name]: items, ...others } = state.params;
+
+      const left = items.filter(item => item != itemToDelete);
+
+      state.params = { ...others, ...(left.length && { [name]: left }) };
+    },
+    addParam: (state, action) => {
+      const { name, item } = action.payload;
+      if (name === 'location') delete state.params[name];
+
+      const { [name]: items, ...others } = state.params;
+
+      const newItems = items ? [...items, item] : [item];
+      state.params = { ...others, ...{ [name]: newItems } };
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchRestaurants.fulfilled, (state, action) => {
@@ -89,8 +106,15 @@ const shopSlice = createSlice({
 
 export const shopReducer = shopSlice.reducer;
 
-export const { want, lookBoth, lookRestaurant, lookMenu, setParam } =
-  shopSlice.actions;
+export const {
+  want,
+  lookBoth,
+  lookRestaurant,
+  lookMenu,
+  setParam,
+  deleteParam,
+  addParam,
+} = shopSlice.actions;
 
 export const selectRestaurants = (state: RootState) => state.shop.restaurants;
 export const selectMenus = (state: RootState) => state.shop.menus;

@@ -8,6 +8,8 @@ import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
 import { FilterHeader } from '@src/4_features/FilterHeader';
 import { focusFilterScreen, search } from '@src/5_entities/shop/shop.services';
 import {
+  addParam,
+  deleteParam,
   selectFilters,
   selectParams,
   setParam,
@@ -30,7 +32,10 @@ const Item = ({ item, name }: { item: string; name: string }) => {
   const isSelected = checkedParams.includes(item);
 
   function onPress() {
-    dispatch(setParam({ name, item, toDelete: isSelected }));
+    if (isSelected) dispatch(deleteParam({ name, item }));
+    if (!isSelected) dispatch(addParam({ name, item }));
+
+    //dispatch(setParam({ name, item, toDelete: isSelected }));
   }
 
   const style = {
