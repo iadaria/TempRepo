@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
-import { routes } from '@src/6_shared/consts/routes';
 import {
   fetchBanner,
   fetchFilters,
@@ -8,7 +7,17 @@ import {
   fetchRestaurants,
   search,
 } from './shop.services';
-import { Banner, Filter, FilterType, Menu, Restaurant } from './shop.types';
+import {
+  Banner,
+  Filter,
+  FilterItem,
+  FilterName,
+  FilterType,
+  Food,
+  Location,
+  Menu,
+  Restaurant,
+} from './shop.types';
 
 export type ShopState = {
   restaurants: Restaurant[];
@@ -16,21 +25,23 @@ export type ShopState = {
   banner: Banner | null;
   filters: Filter;
   params: {
-    type?: FilterType[];
-    location?: string[];
-    food?: string[];
+    [FilterItem.Type]?: FilterType[];
+    [FilterItem.Location]?: Location[];
+    [FilterItem.Food]?: Food[];
     wants?: string;
     //[key: string]: Array<string>; // what about whats?
   };
 };
 
-export type ParamName = 'type' | 'location' | 'food';
-
 const initialState: ShopState = {
   restaurants: [],
   menus: [],
   banner: null,
-  params: { type: [FilterType.Restaurant, FilterType.Menu] },
+  params: {
+    [FilterItem.Type]: [FilterType.Restaurant, FilterType.Menu],
+    [FilterItem.Location]: [Location.OneKm],
+    [FilterItem.Food]: [Food.Appetizer, Food.Cake],
+  },
   filters: { type: [], food: [], location: [] },
   /* params: [
     ['type', FilterType.Restaurant],
@@ -57,7 +68,7 @@ const shopSlice = createSlice({
     },
     deleteParam: (
       state,
-      action: PayloadAction<{ name: ParamName; item: string }>,
+      action: PayloadAction<{ name: FilterName; item: string }>,
     ) => {
       const { name, item: itemToDelete } = action.payload;
       const { [name]: items, ...others } = state.params;
@@ -68,7 +79,7 @@ const shopSlice = createSlice({
     },
     addParam: (
       state,
-      action: PayloadAction<{ name: ParamName; item: string }>,
+      action: PayloadAction<{ name: FilterName; item: string }>,
     ) => {
       const { name, item } = action.payload;
       if (name === 'location') delete state.params[name];

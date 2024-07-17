@@ -5,31 +5,28 @@ import { TouchableOpacity, View } from 'react-native';
 
 import { useAppDispatch } from '@src/1_app/hooks';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
+import { navigate, navReset } from '@src/1_app/navigations/RootNavigation';
 import { FilterHeader } from '@src/4_features/FilterHeader';
 import { focusFilterScreen, search } from '@src/5_entities/shop/shop.services';
 import {
   addParam,
   deleteParam,
-  ParamName,
   selectFilters,
   selectParams,
 } from '@src/5_entities/shop/shop.slice';
+import {
+  FilterKey,
+  FilterName,
+  Filters,
+  FilterType,
+  ParamName,
+} from '@src/5_entities/shop/shop.types';
+import { routes } from '@src/6_shared/consts/routes';
 import { Button } from '@src/6_shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { styles } from './FilterScreenStyle';
-import { navigate, navReset } from '@src/1_app/navigations/RootNavigation';
-import { routes } from '@src/6_shared/consts/routes';
-import { logline } from '@src/6_shared/lib/debug/log';
-import { FilterType } from '@src/5_entities/shop/shop.types';
-import { tags } from 'react-native-svg/lib/typescript/xml';
 
-interface ItemProps {
-  item: string;
-  selected: boolean;
-  name: string;
-}
-
-const Item = ({ item, name }: { item: string; name: ParamName }) => {
+const Item = ({ item, name }: { item: FilterKey; name: FilterName }) => {
   const dispatch = useAppDispatch();
   const params = useSelector(selectParams);
 
@@ -55,7 +52,7 @@ const Item = ({ item, name }: { item: string; name: ParamName }) => {
   );
 };
 
-const FilterItems = ({ filter }: { filter: [string, string[]] }) => {
+const FilterItems = ({ filter }: { filter: [FilterKey, Filters] }) => {
   const [name, by] = filter;
 
   const items = by.map((item, index) => {
