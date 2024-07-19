@@ -4,7 +4,7 @@ import { HttpResponse, http } from 'msw';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 
-let token = nanoid();
+export const token = '28Zb1iJA92kbv9FQTEbDy';
 
 export const userHandlers = [
   http.post(baseUrl(endpoints.account.login), () => {

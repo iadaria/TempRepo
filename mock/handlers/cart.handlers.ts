@@ -7,11 +7,14 @@ import { http, HttpResponse } from 'msw';
 
 const { shop } = endpoints;
 
+interface ResolverProps {
+  request: { userId: number };
+}
+
 export const cartHandlers = [
   http.get(
     baseUrl(shop.cart),
-    withAuth(() => {
-      const userId = 1;
+    withAuth(({ request: { userId } }: ResolverProps) => {
       return HttpResponse.json({
         data: db.cart.findMany({ where: { userId: { equals: userId } } }),
       });

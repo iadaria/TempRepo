@@ -24,5 +24,5 @@ export const request = ({
   url.search = new URLSearchParams(params).toString();
   log('request', { url }); // Good example for debounce search
 
-  return _fetch(url, { headers, method, body, signal });
+  return _fetch(url, { method, body, signal });
 };

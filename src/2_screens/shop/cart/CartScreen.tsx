@@ -14,8 +14,6 @@ export const CartScreen = () => {
     dispatch(fetchCart());
   }, []);
 
-  log(CartScreen.name, { cartItems });
-
   return (
     <View>
       <Text>CartScreen</Text>

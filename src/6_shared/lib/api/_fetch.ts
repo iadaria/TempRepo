@@ -1,18 +1,20 @@
 import { Alert } from 'react-native';
+import { log } from '../debug/log';
 
 declare global {
   var token: string;
 }
 
-const baseHeaders = new Headers();
-baseHeaders.set('Content-Type', 'application/json');
-baseHeaders.set('Accept', 'application/json');
-baseHeaders.set('Authorization', global.token);
+const baseHeaders = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+  //baseHeaders.set('Authorization', global.token);
+  Authorization: '28Zb1iJA92kbv9FQTEbDy',
+};
 
 export async function _fetch(input: URL, init?: RequestInit) {
   const headers = { ...baseHeaders, ...init?.headers };
   const response = await fetch(input, { ...init, headers });
-
   if (response.status == 401) {
     Alert.alert('Authorize, please');
   }
