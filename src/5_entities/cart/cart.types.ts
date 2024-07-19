@@ -1,5 +1,10 @@
-import { Menu } from '../shop/shop.types';
-
-export type CartState = {
-  items: Menu[];
+export type CartItem = {
+  id: string;
+  productId: string;
+  name: string;
+  quantity: number;
+  categoryName: string;
+  uri: string;
+  price: number;
+  totalPrice: number;
 };

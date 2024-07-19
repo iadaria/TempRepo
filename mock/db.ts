@@ -1,12 +1,11 @@
 import { factory, manyOf, oneOf, primaryKey } from '@mswjs/data';
-import { RESTAURANTS } from './data/restaurants.data';
-import { log, logline } from '@src/6_shared/lib/debug/log';
-import { MENUS } from './data/menu.data';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
+import { MENUS } from './data/menu.data';
+import { RESTAURANTS } from './data/restaurants.data';
 
 const db = factory({
   user: {
-    id: primaryKey(() => '1'),
+    id: primaryKey(() => 1),
     firstName: () => 'John',
     lastName: () => 'Maverick',
   },
@@ -28,6 +27,17 @@ const db = factory({
     restaurant: oneOf('restaurant'), //
     category: String,
   },
+  cart: {
+    id: primaryKey(Number),
+    userId: Number,
+    productId: Number,
+    name: String,
+    category: String,
+    uri: String,
+    price: Number,
+    quantity: Number,
+    totalPrice: Number,
+  },
 });
 
 for (const rest of RESTAURANTS) {
@@ -48,7 +58,16 @@ for (const menu of MENUS) {
   }
 }
 
-export { db };
+db.cart.create({
+  ...MENUS[0],
+  id: 1,
+  productId: MENUS[0].id,
+  quantity: 2,
+  totalPrice: 2 * MENUS[0].price,
+  userId: 1,
+});
+
+//export { db };
 
 export const menus = db.menu.getAll();
 export const restaurants = db.restaurant.getAll();
@@ -63,11 +82,11 @@ export const restaurantHandlers = db.restaurant.toHandlers(
   'rest',
   baseUrl('/shop'),
 );
-
 export const menuHandlers = db.menu.toHandlers('rest', baseUrl('/shop'));
+export const cartHandlers = db.cart.toHandlers('rest', baseUrl('/shop'));
 
 //console.log(restaurants);
 //log('[db] restaurants', db.restaurant.getAll());
-// log('[db] menus', db.menu.getAll());
+//log('[db] menus', db.menu.getAll());
 
-// https://github.com/mswjs/data
+//https://github.com/mswjs/data
