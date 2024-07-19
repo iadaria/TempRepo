@@ -8,25 +8,25 @@ import { BANNER } from '../data/banner.data';
 const { shop } = endpoints;
 
 export const shopHandlers = [
-  http.get(baseUrl(shop.restaurants), () => {
+  /* http.get(baseUrl(shop.restaurants), () => {
     //await delay(100)
 
     return HttpResponse.json({
       data: restaurants,
     });
-  }),
+  }), */
 
   http.get(baseUrl(shop.banner), async () => {
     return HttpResponse.json({
       data: BANNER,
     });
   }),
-
+  /* 
   http.get(baseUrl(shop.menus), () => {
     return HttpResponse.json({
       data: menus.map(({ restaurant, ...menu }) => {
         return { ...menu, restaurantName: restaurant?.name };
       }),
     });
-  }),
+  }), */
 ];

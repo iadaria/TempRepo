@@ -2,13 +2,18 @@ import { factory, manyOf, oneOf, primaryKey } from '@mswjs/data';
 import { RESTAURANTS } from './data/restaurants.data';
 import { log, logline } from '@src/6_shared/lib/debug/log';
 import { MENUS } from './data/menu.data';
+import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 
 const db = factory({
+  user: {
+    id: primaryKey(() => '1'),
+    firstName: () => 'John',
+    lastName: () => 'Maverick',
+  },
   restaurant: {
     id: primaryKey(Number),
     name: String,
-    //location: { lat: Number, lng: Number },
-    location: Number,
+    location: Number, //location: { lat: Number, lng: Number },
     img: String,
     menus: manyOf('menu'),
   },
@@ -51,6 +56,16 @@ export const restaurants = db.restaurant.getAll();
 export function dataByType(type: 'menu' | 'restaurant') {
   return db[type];
 }
+
+console.log({ baseUrl: baseUrl('/shop') });
+
+export const restaurantHandlers = db.restaurant.toHandlers(
+  'rest',
+  baseUrl('/shop'),
+);
+
+export const menuHandlers = db.menu.toHandlers('rest', baseUrl('/shop'));
+
 //console.log(restaurants);
 //log('[db] restaurants', db.restaurant.getAll());
 // log('[db] menus', db.menu.getAll());
