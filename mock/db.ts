@@ -5,9 +5,10 @@ import { RESTAURANTS } from './data/restaurants.data';
 
 const db = factory({
   user: {
-    id: primaryKey(() => 1),
-    firstName: () => 'John',
-    lastName: () => 'Maverick',
+    id: primaryKey(Number),
+    firstName: String,
+    lastName: String,
+    email: String,
   },
   restaurant: {
     id: primaryKey(Number),
@@ -57,6 +58,12 @@ for (const menu of MENUS) {
     });
   }
 }
+db.user.create({
+  id: 1,
+  firstName: 'Daria',
+  lastName: 'iakimova',
+  email: 'email@gmail.com',
+});
 
 db.cart.create({
   ...MENUS[0],
@@ -67,7 +74,16 @@ db.cart.create({
   userId: 1,
 });
 
-//export { db };
+db.cart.create({
+  ...MENUS[1],
+  id: 2,
+  productId: MENUS[1].id,
+  quantity: 1,
+  totalPrice: 1 * MENUS[1].price,
+  userId: 1,
+});
+
+export { db };
 
 export const menus = db.menu.getAll();
 export const restaurants = db.restaurant.getAll();
@@ -76,14 +92,11 @@ export function dataByType(type: 'menu' | 'restaurant') {
   return db[type];
 }
 
-console.log({ baseUrl: baseUrl('/shop') });
-
 export const restaurantHandlers = db.restaurant.toHandlers(
   'rest',
   baseUrl('/shop'),
 );
 export const menuHandlers = db.menu.toHandlers('rest', baseUrl('/shop'));
-export const cartHandlers = db.cart.toHandlers('rest', baseUrl('/shop'));
 
 //console.log(restaurants);
 //log('[db] restaurants', db.restaurant.getAll());

@@ -45,14 +45,12 @@ export const search = createAsyncThunk<
   { restaurants: Restaurant[]; menus: Menu[] },
   void,
   { state: { shop: ShopState } }
-  //>('shop/search', async (wants: string, { getState }) => {
 >('shop/search', async (_, { getState }) => {
   const { params } = getState().shop;
 
   const signal = controller.signal;
   const response = await request({
     endpoint: shop.search,
-    //params: { ...params, wants },
     params,
     signal,
   });

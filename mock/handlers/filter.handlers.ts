@@ -3,16 +3,13 @@
 
 import { HttpResponse, http } from 'msw';
 
+import { FilterType } from '@src/5_entities/shop/shop.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
-import { log } from '@src/6_shared/lib/debug/log';
 import { FILTERS, operator } from 'mock/data/filter.data';
-import { dataByType, db } from 'mock/db';
-import { FilterType } from '@src/5_entities/shop/shop.types';
+import { dataByType } from 'mock/db';
 
 const { shop } = endpoints;
-
-type Type = 'restaurant' | 'menu';
 
 export const shopFilterHandlers = [
   http.get(baseUrl(shop.filters), () => HttpResponse.json({ data: FILTERS })),

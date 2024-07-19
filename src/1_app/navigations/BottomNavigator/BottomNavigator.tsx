@@ -10,6 +10,7 @@ import { routes } from '@src/6_shared/consts/routes';
 const { tabs } = routes;
 
 export const BottomNavigator = createBottomTabNavigator({
+  initialRouteName: tabs.Cart,
   screenOptions: TabBarOptions,
   screens: {
     [tabs.Home]: {
