@@ -31,5 +31,6 @@ export const focusCartScreen = createAsyncThunk(
   'cart/focusStreen',
   (_, { dispatch }) => {
     dispatch(fetchCartAmount());
+    dispatch(fetchCart());
   },
 );
