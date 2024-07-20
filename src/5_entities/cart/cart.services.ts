@@ -15,3 +15,21 @@ export const fetchCart = createAsyncThunk<CartItem[]>(
     return json.data;
   },
 );
+
+export const fetchCartAmount = createAsyncThunk<number>(
+  'cart/count',
+  async () => {
+    const response = await request({
+      endpoint: shop.cartQuantity,
+    });
+    const json = await response.json();
+    return json.data;
+  },
+);
+
+export const focusCartScreen = createAsyncThunk(
+  'cart/focusStreen',
+  (_, { dispatch }) => {
+    dispatch(fetchCartAmount());
+  },
+);

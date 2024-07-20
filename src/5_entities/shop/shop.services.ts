@@ -61,7 +61,7 @@ export const search = createAsyncThunk<
 export const focusShopHomeScreen = createAsyncThunk(
   'shop/focusHomeScreen',
   (_, { dispatch }) => {
-    dispatch<any>(lookBoth());
+    dispatch(lookBoth());
     dispatch<any>(search());
   },
 );
@@ -69,13 +69,13 @@ export const focusShopHomeScreen = createAsyncThunk(
 export const focusRestaurantScreen = createAsyncThunk(
   'shop/focusRestaurantsScreen',
   (_, { dispatch }) => {
-    dispatch<any>(lookRestaurant());
+    dispatch(lookRestaurant());
   },
 );
 export const focusMenusScreen = createAsyncThunk(
   'shop/focusMenusScreen',
   (_, { dispatch }) => {
-    dispatch<any>(lookMenu());
+    dispatch(lookMenu());
   },
 );
 
