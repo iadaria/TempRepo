@@ -10,3 +10,5 @@
 - как должен осуществляться этот переход между экрана что блядь должно открываться?
 
 - Nothing was found for restaurant and menu
+
+- badge fontsize to 14

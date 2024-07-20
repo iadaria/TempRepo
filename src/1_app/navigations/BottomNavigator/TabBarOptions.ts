@@ -18,4 +18,7 @@ export const TabBarOptions: BottomTabNavigationOptions = {
   tabBarLabelPosition: 'beside-icon',
   tabBarButton: TabBarButton,
   tabBarItemStyle: { justifyContent: 'center' },
+  /*   tabBarBadgeStyle: {
+    fontSize: 14,
+  }, */
 };

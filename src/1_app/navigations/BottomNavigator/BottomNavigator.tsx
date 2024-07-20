@@ -6,8 +6,11 @@ import { ProfileNavigator } from '../ProfileNavigator';
 import { ShopNavigator } from '../ShopNavigator';
 import { TabBarOptions } from './TabBarOptions';
 import { routes } from '@src/6_shared/consts/routes';
+import { store } from '@src/1_app/providers/StoreProvider/config/store';
 
 const { tabs } = routes;
+
+const cartAmount = store.getState().cart.amount;
 
 export const BottomNavigator = createBottomTabNavigator({
   initialRouteName: tabs.Cart,
@@ -30,6 +33,7 @@ export const BottomNavigator = createBottomTabNavigator({
     [tabs.Cart]: {
       screen: CartNavigator,
       options: {
+        tabBarBadge: cartAmount,
         tabBarLabel: 'Cart',
         tabBarIcon: ({ focused }) => <CartIcon opacity={+focused || 0.5} />,
       },

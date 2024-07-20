@@ -31,3 +31,4 @@ const cartSlice = createSlice({
 export const cartReducer = cartSlice.reducer;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
+export const selectCartAmount = (state: RootState) => state.cart.amount;
