@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { MenuItem } from '../MenuItem';
 import { MenusProps } from '../Menus';
 import { Menu } from '@src/5_entities/shop/shop.types';
@@ -8,7 +8,12 @@ import { styles } from './MenuListStyle';
 
 interface MenuListProps extends MenusProps {}
 
-export const MenuList = ({ menus, horizontal }: MenuListProps) => {
+export const MenuList = ({
+  menus,
+  horizontal,
+  footer,
+  footerStyle,
+}: MenuListProps) => {
   const EmptyComponent = (
     <AppText h4 grey>
       Nothing Was Found
@@ -21,13 +26,15 @@ export const MenuList = ({ menus, horizontal }: MenuListProps) => {
 
   return (
     <FlatList
-      style={{ marginBottom: 250 }}
+      style={{ marginBottom: 150 }}
       contentContainerStyle={{ gap: GAP }}
       horizontal={horizontal}
       data={menus}
       keyExtractor={(_, index) => `item-${index}`}
       renderItem={renderItem}
       ListEmptyComponent={EmptyComponent}
+      ListFooterComponent={footer}
+      ListFooterComponentStyle={footerStyle}
     />
   );
 };

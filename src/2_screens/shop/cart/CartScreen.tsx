@@ -5,6 +5,7 @@ import { Header } from '@src/4_features/Header';
 import { Menus } from '@src/4_features/menu/Menus';
 import { focusCartScreen } from '@src/5_entities/cart/cart.services';
 import { selectCartItems } from '@src/5_entities/cart/cart.slice';
+import { AppText } from '@src/6_shared/ui/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import React from 'react';
 import { Text } from 'react-native';
@@ -16,10 +17,12 @@ export const CartScreen = () => {
 
   useFocus(focusCartScreen);
 
+  const footer = <AppText>Hi</AppText>;
+
   return (
     <Box>
       <Header text="Order details" />
-      <Menus flat menus={cartItems} />
+      <Menus flat menus={cartItems} footer={footer} />
     </Box>
   );
 };
