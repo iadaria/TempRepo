@@ -9,3 +9,5 @@ Debounced:
 !Read - https://www.developerway.com/posts/debouncing-in-react
 
 - add state from another slice: https://stackoverflow.com/questions/62451320/how-can-i-access-state-of-another-slice-in-redux-with-redux-toolkit
+
+- caseReducers: https://redux-toolkit.js.org/usage/usage-with-typescript#createslice

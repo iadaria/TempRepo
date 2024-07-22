@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import { styles } from './CartScreenStyles';
 
 const OrderPriceAndPlace = () => {
+  const dispatch = useAppDispatch();
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
     devModeChecks: { stabilityCheck: 'never' },
   });

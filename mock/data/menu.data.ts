@@ -49,11 +49,31 @@ export const MENUS = [
     name: 'Herbal Good Pancacke',
     price: 7,
     restaurantId: 2,
-    uri: `${PATH}/menu/m1.png`,
+    uri: `${PATH}/menu/m4.png`,
     pupular: true,
     category: 'dessert',
 
     discount: 2,
+  },
+  {
+    id: 6,
+    name: 'Spacy fresh crab',
+    price: 35,
+    restaurantId: 1,
+    uri: `${PATH}/menu/m5.png`,
+    pupular: true,
+    category: 'soup',
+    discount: 0,
+  },
+  {
+    id: 7,
+    name: 'Herbal soup',
+    price: 17,
+    restaurantId: 1,
+    uri: `${PATH}/menu/m6.png`,
+    pupular: true,
+    category: 'soup',
+    discount: 0,
   },
 ];
 

@@ -8,6 +8,8 @@ import { IButton } from '@src/6_shared/ui/IButton';
 import { MinusIcon, PlusIcon } from '@src/6_shared/assets/icons';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import { CartItem } from '@src/5_entities/cart/cart.types';
+import { useAppDispatch } from '@src/1_app/hooks';
+import { increment } from '@src/5_entities/cart/cart.slice';
 
 interface MenuItemProps {
   onPress: () => void;
@@ -15,6 +17,7 @@ interface MenuItemProps {
 }
 
 export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
+  const dispatch = useAppDispatch();
   return (
     <TouchableOpacity style={styles.item} onPress={onPress}>
       <Image style={styles.image} source={{ uri: menu.uri }} />
@@ -31,9 +34,16 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
           </AppText>
         </View>
         <Row style={{ width: 115 }}>
-          <IButton icon={MinusIcon} onPress={() => {}} />
+          <IButton
+            icon={MinusIcon}
+            onPress={() => dispatch(increment(menu.id))}
+          />
           <AppText>{menu.quantity}</AppText>
-          <IButton icon={PlusIcon} onPress={() => {}} secondary />
+          <IButton
+            icon={PlusIcon}
+            onPress={() => dispatch(increment(menu.id))}
+            secondary
+          />
         </Row>
         {/*<AppText bold h2 orange>${menu.price}</AppText> */}
       </View>
