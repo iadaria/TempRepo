@@ -43,3 +43,7 @@ export const cartReducer = cartSlice.reducer;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
 export const selectCartAmount = (state: RootState) => state.cart.amount;
+export const selectPrices = (state: RootState) => {
+  const { items, amount, ...others } = state.cart;
+  return others;
+};

@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   group: { rowGap: 12 },
   // http://hex2rgba.devoth.com/
   input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'a(255, 255, 255, 0.1)',
     height: 57,
     paddingVertical: 21,
     paddingHorizontal: 28,

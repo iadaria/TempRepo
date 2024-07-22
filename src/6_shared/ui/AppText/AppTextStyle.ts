@@ -34,6 +34,9 @@ export const styles = StyleSheet.create({
   grey: {
     color: colors.text,
   },
+  green: {
+    color: colors.green[10],
+  },
   regular: {
     fontFamily: 'benton-sans-regular',
   },

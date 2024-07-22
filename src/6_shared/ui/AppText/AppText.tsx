@@ -11,7 +11,7 @@ type Font = (typeof fonts)[number];
 const headers = ['h1', 'h2', 'h3', 'h4', 'h5'] as const;
 type TextSize = (typeof headers)[number];
 
-const colors = ['orange', 'grey'] as const;
+const colors = ['orange', 'grey', 'green'] as const;
 type Color = (typeof colors)[number];
 
 type TextSizeProps = Partial<Record<TextSize, boolean>>;
@@ -28,6 +28,7 @@ interface AppTextProps extends TextSizeProps {
   orange?: boolean;
   grey?: boolean;
   center?: boolean; // TODO Deleting
+  green?: boolean;
 }
 
 export const AppText = ({ center, children, ...etc }: AppTextProps) => {

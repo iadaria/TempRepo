@@ -88,7 +88,7 @@ db.cart.create({
   restaurantName: 'Vegan Resto',
 });
 
-db.cart.create({
+/* db.cart.create({
   ...MENUS[1],
   id: 3,
   productId: MENUS[1].id,
@@ -98,9 +98,19 @@ db.cart.create({
   restaurantName: 'Vegan Resto',
 });
 
-/* db.cart.create({
+db.cart.create({
   ...MENUS[1],
   id: 4,
+  productId: MENUS[1].id,
+  quantity: 1,
+  totalPrice: 1 * MENUS[1].price,
+  userId: 1,
+  restaurantName: 'Vegan Resto',
+}); */
+
+/* db.cart.create({
+  ...MENUS[1],
+  id: 5,
   productId: MENUS[1].id,
   quantity: 1,
   totalPrice: 1 * MENUS[1].price,
@@ -110,14 +120,43 @@ db.cart.create({
 
 db.cart.create({
   ...MENUS[1],
-  id: 5,
+  id: 6,
   productId: MENUS[1].id,
   quantity: 1,
   totalPrice: 1 * MENUS[1].price,
   userId: 1,
   restaurantName: 'Vegan Resto',
-}); */
+});
 
+db.cart.create({
+  ...MENUS[1],
+  id: 7,
+  productId: MENUS[1].id,
+  quantity: 1,
+  totalPrice: 1 * MENUS[1].price,
+  userId: 1,
+  restaurantName: 'Vegan Resto',
+});
+db.cart.create({
+  ...MENUS[1],
+  id: 8,
+  productId: MENUS[1].id,
+  quantity: 1,
+  totalPrice: 1 * MENUS[1].price,
+  userId: 1,
+  restaurantName: 'Vegan Resto',
+});
+
+db.cart.create({
+  ...MENUS[1],
+  id: 9,
+  productId: MENUS[1].id,
+  quantity: 1,
+  totalPrice: 1 * MENUS[1].price,
+  userId: 1,
+  restaurantName: 'Vegan Resto',
+});
+ */
 export { db };
 
 export const menus = db.menu.getAll();

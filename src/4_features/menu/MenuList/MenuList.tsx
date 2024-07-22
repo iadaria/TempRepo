@@ -1,10 +1,9 @@
-import { FlatList, Text } from 'react-native';
-import { MenuItem } from '../MenuItem';
-import { MenusProps } from '../Menus';
 import { Menu } from '@src/5_entities/shop/shop.types';
 import { GAP } from '@src/6_shared/consts/dimentsions';
 import { AppText } from '@src/6_shared/ui/AppText';
-import { styles } from './MenuListStyle';
+import { FlatList } from 'react-native';
+import { MenuItem } from '../MenuItem';
+import { MenusProps } from '../Menus';
 
 interface MenuListProps extends MenusProps {}
 
