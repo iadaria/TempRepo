@@ -19,6 +19,7 @@ export type Menu = {
   uri: string;
   pupular: boolean;
   category: string;
+  discount: number;
 };
 
 export type Filter = {

@@ -9,6 +9,7 @@ export const MENUS = [
     uri: `${PATH}/menu/m1.png`,
     pupular: true,
     category: 'soup',
+    discount: 0,
   },
   {
     id: 2,
@@ -18,6 +19,8 @@ export const MENUS = [
     uri: `${PATH}/menu/m2.png`,
     popular: true,
     category: 'soup',
+
+    discount: 3,
   },
   {
     id: 3,
@@ -27,6 +30,8 @@ export const MENUS = [
     uri: `${PATH}/menu/m3.png`,
     popular: true,
     category: 'main course',
+
+    discount: 1,
   },
   {
     id: 4,
@@ -36,6 +41,8 @@ export const MENUS = [
     uri: `${PATH}/menu/m1.png`,
     pupular: true,
     category: 'dessert',
+
+    discount: 2,
   },
   {
     id: 5,
@@ -45,6 +52,8 @@ export const MENUS = [
     uri: `${PATH}/menu/m1.png`,
     pupular: true,
     category: 'dessert',
+
+    discount: 2,
   },
 ];
 
