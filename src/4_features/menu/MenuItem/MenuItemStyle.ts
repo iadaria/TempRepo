@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   },
   textAndPriceWrapper: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

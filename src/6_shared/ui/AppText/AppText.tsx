@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { StyleProp, Text, TextStyle } from 'react-native';
 import { styles } from './AppTextStyle';
 import { log, logline } from '@src/6_shared/lib/debug/log';
 
@@ -29,9 +29,15 @@ interface AppTextProps extends TextSizeProps {
   grey?: boolean;
   center?: boolean; // TODO Deleting
   green?: boolean;
+  //style?: StyleProp<TextStyle>;
 }
 
-export const AppText = ({ center, children, ...etc }: AppTextProps) => {
+export const AppText = ({
+  center,
+  children,
+  //style: customStyle,
+  ...etc
+}: AppTextProps) => {
   const isHeader = (property: Item) => headers.includes(property[0]); //property[0].startsWith('h');
   const isFont = (property: Item) => fonts.includes(property[0]);
   const isColor = (property: Item) => colors.includes(property[0]);
@@ -55,7 +61,13 @@ export const AppText = ({ center, children, ...etc }: AppTextProps) => {
   };
 
   return (
-    <Text style={[style, styles[size], styles[font], styles[color]]}>
+    <Text
+      style={[
+        style,
+        styles[size],
+        styles[font],
+        styles[color] /* , customStyle */,
+      ]}>
       {children}
     </Text>
   );

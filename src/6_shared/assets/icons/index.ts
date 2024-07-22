@@ -9,3 +9,5 @@ export { default as HomeIcon } from './home.svg';
 export { default as CartIcon } from './cart.svg';
 export { default as BackIcon } from './back.svg';
 export { default as CloseIcon } from './close.svg';
+export { default as MinusIcon } from './minus.svg';
+export { default as PlusIcon } from './plus.svg';

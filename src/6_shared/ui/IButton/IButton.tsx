@@ -6,11 +6,12 @@ import { styles } from './IButtonStyle';
 interface IButtonProps {
   icon: React.FC<SvgProps>;
   onPress: () => void;
+  secondary?: boolean;
 }
 
-export function IButton({ icon: SvgIcon, onPress }: IButtonProps) {
+export function IButton({ icon: SvgIcon, onPress, secondary }: IButtonProps) {
   return (
-    <Button style={styles.buttonIcon} onPress={onPress}>
+    <Button style={styles.buttonIcon} onPress={onPress} secondary={secondary}>
       <SvgIcon />
     </Button>
   );

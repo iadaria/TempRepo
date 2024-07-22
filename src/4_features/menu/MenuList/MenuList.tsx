@@ -4,6 +4,7 @@ import { AppText } from '@src/6_shared/ui/AppText';
 import { FlatList } from 'react-native';
 import { MenuItem } from '../MenuItem';
 import { MenusProps } from '../Menus';
+import { CartItem } from '@src/5_entities/cart/cart.types';
 
 interface MenuListProps extends MenusProps {}
 
@@ -19,7 +20,7 @@ export const MenuList = ({
     </AppText>
   );
 
-  const renderItem = ({ item }: { item: Menu }) => (
+  const renderItem = ({ item }: { item: CartItem }) => (
     <MenuItem menu={item} onPress={() => {}} />
   );
 
