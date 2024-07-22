@@ -26,7 +26,9 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
           <AppText h4 grey>
             {menu.restaurantName}
           </AppText>
-          <AppText green>$ {menu.price}</AppText>
+          <AppText bold green>
+            $ {menu.price}
+          </AppText>
         </View>
         <Row style={{ width: 115 }}>
           <IButton icon={MinusIcon} onPress={() => {}} />

@@ -18,12 +18,13 @@ export const styles = StyleSheet.create({
   },
   textAndPriceWrapper: {
     flex: 1,
-    paddingHorizontal: 8,
     flexDirection: 'row',
-    alignItems: 'center',
+    //alignItems: 'center',
     justifyContent: 'space-between',
   },
   column: {
     flexDirection: 'column',
+    maxWidth: '55%',
+    marginLeft: 13,
   },
 });
