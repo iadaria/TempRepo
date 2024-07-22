@@ -9,7 +9,7 @@ import { MinusIcon, PlusIcon } from '@src/6_shared/assets/icons';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import { CartItem } from '@src/5_entities/cart/cart.types';
 import { useAppDispatch } from '@src/1_app/hooks';
-import { increment } from '@src/5_entities/cart/cart.slice';
+import { decrement, increment } from '@src/5_entities/cart/cart.slice';
 
 interface MenuItemProps {
   onPress: () => void;
@@ -36,7 +36,7 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
         <Row style={{ width: 115 }}>
           <IButton
             icon={MinusIcon}
-            onPress={() => dispatch(increment(menu.id))}
+            onPress={() => dispatch(decrement(menu.id))}
           />
           <AppText>{menu.quantity}</AppText>
           <IButton
