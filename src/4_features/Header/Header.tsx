@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import { Row } from '@src/6_shared/ui/Row/Row';
-import { BackButton } from '../BackButton';
+import { Notification } from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { IButton } from '@src/6_shared/ui/IButton';
-import { Notification } from '@src/6_shared/assets/icons';
+import { Row } from '@src/6_shared/ui/Row/Row';
+import React from 'react';
+import { BackButton } from '../BackButton';
 
 interface HeaderProps {
   text: string;

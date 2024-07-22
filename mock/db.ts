@@ -38,6 +38,7 @@ const db = factory({
     price: Number,
     quantity: Number,
     totalPrice: Number,
+    restaurantName: String,
   },
 });
 
@@ -72,6 +73,7 @@ db.cart.create({
   quantity: 2,
   totalPrice: 2 * MENUS[0].price,
   userId: 1,
+  restaurantName: 'Vegan Resto',
 });
 
 db.cart.create({
@@ -81,6 +83,7 @@ db.cart.create({
   quantity: 1,
   totalPrice: 1 * MENUS[1].price,
   userId: 1,
+  restaurantName: 'Vegan Resto',
 });
 
 export { db };

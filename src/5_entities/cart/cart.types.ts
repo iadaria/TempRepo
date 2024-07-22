@@ -1,10 +1,7 @@
-export type CartItem = {
-  id: string;
+import { Menu } from '../shop/shop.types';
+
+export type CartItem = Menu & {
   productId: string;
-  name: string;
   quantity: number;
-  categoryName: string;
-  uri: string;
-  price: number;
   totalPrice: number;
 };
