@@ -7,40 +7,17 @@ import {
   FilterKey,
   FilterName,
 } from '@src/5_entities/shop/shop.types';
-import {
-  CloseIcon,
-  FilterIcon,
-  Notification,
-} from '@src/6_shared/assets/icons';
+import { CloseIcon, FilterIcon } from '@src/6_shared/assets/icons';
 import { routes } from '@src/6_shared/consts/routes';
-import { colors } from '@src/6_shared/lib/theme';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { IButton } from '@src/6_shared/ui/IButton';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { BackButton } from '../BackButton';
+import { Header } from '../Header';
+import { styles } from './FilterHeaderStyle';
 import { Search } from './search/Search';
-
-export const styles = StyleSheet.create({
-  item: {
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    backgroundColor: colors.interface,
-    borderRadius: 15,
-    flexDirection: 'row',
-  },
-  items: {
-    flexDirection: 'row',
-    gap: 10,
-    flexWrap: 'wrap',
-  },
-});
-
-interface FilterHeaderProps {
-  openned?: boolean;
-}
 
 const Item = ({ item, name }: { item: FilterKey; name: FilterName }) => {
   const dispatch = useAppDispatch();
@@ -59,6 +36,11 @@ const Item = ({ item, name }: { item: FilterKey; name: FilterName }) => {
   );
 };
 
+interface FilterHeaderProps {
+  openned?: boolean;
+  text: string;
+}
+
 export function FilterHeader({ openned = false }: FilterHeaderProps) {
   const params = useSelector(selectParams);
 
@@ -71,11 +53,7 @@ export function FilterHeader({ openned = false }: FilterHeaderProps) {
 
   return (
     <>
-      <Row>
-        <BackButton />
-        <AppText h1 bold>{`Find Your \nFavorite Food`}</AppText>
-        <IButton icon={Notification} onPress={() => {}} />
-      </Row>
+      <Header text={`Find Your \nFavorite Food`} />
       <Row gap={9}>
         <Search />
         {!openned && (

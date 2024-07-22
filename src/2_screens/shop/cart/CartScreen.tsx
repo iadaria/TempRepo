@@ -1,10 +1,12 @@
 import { useAppDispatch } from '@src/1_app/hooks';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
-import { fetchCart, focusCartScreen } from '@src/5_entities/cart/cart.services';
+import { FilterHeader } from '@src/4_features/FilterHeader';
+import { Header } from '@src/4_features/Header';
+import { focusCartScreen } from '@src/5_entities/cart/cart.services';
 import { selectCartItems } from '@src/5_entities/cart/cart.slice';
-import { log } from '@src/6_shared/lib/debug/log';
-import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Box } from '@src/6_shared/ui/Box';
+import React from 'react';
+import { Text } from 'react-native';
 import { useSelector } from 'react-redux';
 
 export const CartScreen = () => {
@@ -14,8 +16,9 @@ export const CartScreen = () => {
   useFocus(focusCartScreen);
 
   return (
-    <View>
-      <Text>CartScreen</Text>
-    </View>
+    <Box>
+      <Header text="Order details" />
+      {/* <Menus flat menus={cartItems} /> */}
+    </Box>
   );
 };
