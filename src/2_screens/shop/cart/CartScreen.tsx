@@ -13,6 +13,8 @@ import React from 'react';
 import { ImageBackground, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { styles } from './CartScreenStyles';
+import { IButton } from '@src/6_shared/ui/IButton';
+import { HistoryIcon } from '@src/6_shared/assets/icons';
 
 const OrderPriceAndPlace = () => {
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
@@ -56,7 +58,9 @@ export const CartScreen = () => {
 
   return (
     <Box>
-      <Header text="Order details" />
+      <Header subtitle="Order details">
+        <IButton icon={HistoryIcon} onPress={() => {}} />
+      </Header>
       <Menus
         flat
         menus={cartItems}

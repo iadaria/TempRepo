@@ -11,3 +11,4 @@ export { default as BackIcon } from './back.svg';
 export { default as CloseIcon } from './close.svg';
 export { default as MinusIcon } from './minus.svg';
 export { default as PlusIcon } from './plus.svg';
+export { default as HistoryIcon } from './history.svg';

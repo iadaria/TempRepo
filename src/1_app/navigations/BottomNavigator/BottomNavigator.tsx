@@ -26,13 +26,7 @@ export const BottomNavigator = createBottomTabNavigator({
         tabBarIcon: ({ focused }) => <HomeIcon opacity={+focused || 0.5} />,
       },
     },
-    [tabs.Profile]: {
-      screen: ProfileNavigator,
-      options: {
-        tabBarLabel: 'Profile',
-        tabBarIcon: ({ focused }) => <ProfileIcon opacity={+focused || 0.5} />,
-      },
-    },
+
     [tabs.Cart]: {
       screen: CartNavigator,
       options: {
@@ -46,6 +40,14 @@ export const BottomNavigator = createBottomTabNavigator({
             />
           );
         },
+      },
+    },
+
+    [tabs.Profile]: {
+      screen: ProfileNavigator,
+      options: {
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ focused }) => <ProfileIcon opacity={+focused || 0.5} />,
       },
     },
   },

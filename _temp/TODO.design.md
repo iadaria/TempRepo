@@ -12,3 +12,5 @@
 - Nothing was found for restaurant and menu
 
 - badge fontsize to 14
+
+- add history icon

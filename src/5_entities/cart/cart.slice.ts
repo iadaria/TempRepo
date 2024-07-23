@@ -83,5 +83,4 @@ export const selectPrices = (state: RootState) => {
   const { items, amount, ...others } = state.cart;
   return others;
 };
-
 export const selectStatus = (state: RootState) => state.cart.status;
