@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem } from './cart.types';
-import { fetchCart, fetchCartAmount } from './cart.services';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
+import { fetchCart } from './cart.services';
+import { CartItem } from './cart.types';
 
 export type CartState = {
   items: CartItem[];
@@ -45,6 +45,7 @@ const cartSlice = createSlice({
     },
     calculate: state => {
       const items = state.items;
+      state.amount = items.reduce((sum, item) => sum + item.quantity, 0);
       state.totalPrice = items.reduce((sum, item) => sum + item.totalPrice, 0);
       state.totalDiscount = items.reduce((sum, item) => sum + item.discount, 0);
       state.total =
@@ -55,10 +56,6 @@ const cartSlice = createSlice({
     builder.addCase(fetchCart.fulfilled, (state, action) => {
       state.items = action.payload;
       cartSlice.caseReducers.calculate(state); //https://redux-toolkit.js.org/usage/usage-with-typescript#createslice
-    });
-
-    builder.addCase(fetchCartAmount.fulfilled, (state, action) => {
-      state.amount = action.payload;
     });
   },
 });
