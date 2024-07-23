@@ -15,10 +15,11 @@ import { useSelector } from 'react-redux';
 import { styles } from './CartScreenStyles';
 
 const OrderPriceAndPlace = () => {
-  const dispatch = useAppDispatch();
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
     devModeChecks: { stabilityCheck: 'never' },
   });
+
+  const disabled = total <= 0;
 
   return (
     <ImageBackground source={Pattern3} resizeMode="cover" style={styles.total}>
@@ -38,7 +39,7 @@ const OrderPriceAndPlace = () => {
           {total} $
         </AppText>
       </Row>
-      <Button style={styles.btnOrder}>
+      <Button disabled={disabled} style={styles.btnOrder}>
         <AppText green bold h5>
           Place my Order
         </AppText>
