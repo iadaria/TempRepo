@@ -1,20 +1,21 @@
-import { useAppDispatch } from '@src/1_app/hooks';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
 import { Header } from '@src/4_features/Header';
 import { Menus } from '@src/4_features/menu/Menus';
 import { focusCartScreen } from '@src/5_entities/cart/cart.services';
 import { selectCartItems, selectPrices } from '@src/5_entities/cart/cart.slice';
+import { HistoryIcon } from '@src/6_shared/assets/icons';
 import { Pattern3 } from '@src/6_shared/assets/images';
 import { AppText } from '@src/6_shared/ui/AppText';
 import { Box } from '@src/6_shared/ui/Box';
 import { Button } from '@src/6_shared/ui/Button';
+import { IButton } from '@src/6_shared/ui/IButton';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
-import { ImageBackground, View } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { useSelector } from 'react-redux';
 import { styles } from './CartScreenStyles';
-import { IButton } from '@src/6_shared/ui/IButton';
-import { HistoryIcon } from '@src/6_shared/assets/icons';
+import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { routes } from '@src/6_shared/consts/routes';
 
 const OrderPriceAndPlace = () => {
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
@@ -51,7 +52,6 @@ const OrderPriceAndPlace = () => {
 };
 
 export const CartScreen = () => {
-  const dispatch = useAppDispatch();
   const cartItems = useSelector(selectCartItems);
 
   useFocus(focusCartScreen);
@@ -59,7 +59,10 @@ export const CartScreen = () => {
   return (
     <Box>
       <Header subtitle="Order details">
-        <IButton icon={HistoryIcon} onPress={() => {}} />
+        <IButton
+          icon={HistoryIcon}
+          onPress={() => navigate(routes.cart.OrderHistory)}
+        />
       </Header>
       <Menus
         flat

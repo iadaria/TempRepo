@@ -10,6 +10,10 @@ export const routes = {
     Menus: 'MenusScreen',
     Filter: 'FilterScreen',
   },
+  cart: {
+    Cart: 'CartScreen',
+    OrderHistory: 'OrderHistoryScreen',
+  },
 };
 
 /* export const allScreens: string[] = Object.values(routes)
