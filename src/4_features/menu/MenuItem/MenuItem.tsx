@@ -33,18 +33,21 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
             $ {menu.price}
           </AppText>
         </View>
-        <Row style={{ width: 115 }}>
-          <IButton
-            icon={MinusIcon}
-            onPress={() => dispatch(add({ id: menu.id, digit: -1 }))}
-          />
-          <AppText>{menu.quantity}</AppText>
-          <IButton
-            icon={PlusIcon}
-            onPress={() => dispatch(add({ id: menu.id, digit: 1 }))}
-            secondary
-          />
-        </Row>
+        {menu.quantity > 0 && (
+          <Row style={{ width: 115 }}>
+            <IButton
+              icon={MinusIcon}
+              onPress={() => dispatch(add({ id: menu.id, digit: -1 }))}
+            />
+            <AppText>{menu.quantity}</AppText>
+            <IButton
+              icon={PlusIcon}
+              onPress={() => dispatch(add({ id: menu.id, digit: 1 }))}
+              secondary
+            />
+          </Row>
+        )}
+
         {/*<AppText bold h2 orange>${menu.price}</AppText> */}
       </View>
     </TouchableOpacity>

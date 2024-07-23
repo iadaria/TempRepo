@@ -40,7 +40,7 @@ const cartSlice = createSlice({
         0,
       );
       state.totalDiscount = items.reduce((sum, item) => {
-        console.log({ sum, plus: (item.discount / 100) * item.price });
+        //console.log({ sum, plus: (item.discount / 100) * item.price });
         return sum + (item.discount / 100) * item.price * item.quantity;
       }, 0);
       state.total = state.totalPrice - state.totalDiscount;
