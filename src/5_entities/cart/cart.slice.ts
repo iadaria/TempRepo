@@ -23,22 +23,17 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    increment: (state, action: PayloadAction<string>) => {
-      const index = state.items.findIndex(item => item.id === action.payload);
-      if (index != -1) {
-        state.items[index].quantity++;
-        state.items[index].totalPrice += state.items[index].price;
-        state.amount++;
+    add: (state, action: PayloadAction<{ id: string; digit: -1 | 1 }>) => {
+      const { id, digit } = action.payload;
+      const index = state.items.findIndex(item => item.id === id);
+      if (index != -1 && [-1, 1].includes(digit) && state.amount + digit >= 0) {
+        const item = state.items[index];
 
-        cartSlice.caseReducers.calculate(state);
-      }
-    },
-    decrement: (state, action: PayloadAction<string>) => {
-      const index = state.items.findIndex(item => item.id === action.payload);
-      if (index != -1) {
-        state.items[index].quantity--;
-        state.items[index].totalPrice -= state.items[index].price;
-        state.amount--;
+        item.quantity = item.quantity + digit;
+        item.totalPrice = item.totalPrice + digit * item.price;
+
+        state.items[index] = item;
+        state.amount = state.amount + digit;
 
         cartSlice.caseReducers.calculate(state);
       }
@@ -62,7 +57,7 @@ const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 
-export const { increment, decrement } = cartSlice.actions;
+export const { add } = cartSlice.actions;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
 export const selectCartAmount = (state: RootState) => state.cart.amount;
