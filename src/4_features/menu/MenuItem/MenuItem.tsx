@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@src/1_app/hooks';
-import { add } from '@src/5_entities/cart/cart.slice';
+import { add, selectStatus } from '@src/5_entities/cart/cart.slice';
 import { CartItem } from '@src/5_entities/cart/cart.types';
 import { MinusIcon, PlusIcon } from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText';
@@ -9,6 +9,8 @@ import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { styles } from './MenuItemStyle';
+import { cartAdd } from '@src/5_entities/cart/cart.services';
+import { useSelector } from 'react-redux';
 
 interface MenuItemProps {
   onPress: () => void;
@@ -17,8 +19,13 @@ interface MenuItemProps {
 
 export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
   const dispatch = useAppDispatch();
-  const increment = () => dispatch(add({ id: menu.id, digit: 1 }));
-  const decrement = () => dispatch(add({ id: menu.id, digit: -1 }));
+
+  const status = useSelector(selectStatus);
+
+  const increment = () => dispatch(cartAdd({ id: menu.id, digit: 1 }));
+  const decrement = () => dispatch(cartAdd({ id: menu.id, digit: -1 }));
+  const disabled = status == 'loading';
+
   return (
     <TouchableOpacity style={styles.item} onPress={onPress}>
       <Image style={styles.image} source={{ uri: menu.uri }} />
@@ -35,21 +42,20 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
           </AppText>
         </View>
         {menu.quantity > 0 ? (
-          <Row style={{ width: 115 }}>
-            <IButton icon={MinusIcon} onPress={decrement} />
+          <Row style={styles.menu}>
+            <IButton disabled={disabled} icon={MinusIcon} onPress={decrement} />
             <AppText>{menu.quantity}</AppText>
-            <IButton icon={PlusIcon} onPress={increment} secondary />
+            <IButton
+              disabled={disabled}
+              icon={PlusIcon}
+              onPress={increment}
+              secondary
+            />
           </Row>
         ) : (
-          <View
-            style={{
-              width: 115,
-              justifyContent: 'center',
-            }}>
-            <Button style={{ height: 40 }} onPress={increment} secondary>
-              <AppText>Add</AppText>
-            </Button>
-          </View>
+          <Button style={styles.add} onPress={increment} secondary>
+            <AppText>Add</AppText>
+          </Button>
         )}
 
         {/*<AppText bold h2 orange>${menu.price}</AppText> */}

@@ -22,3 +22,15 @@ export const focusCartScreen = createAsyncThunk(
     dispatch(fetchCart());
   },
 );
+
+export const cartAdd = createAsyncThunk<
+  CartItem,
+  { id: string; digit: number }
+>('cart/add', async (data, { dispatch }) => {
+  const endpoint = shop.cartAdd;
+  const method = 'post';
+  const body = JSON.stringify(data);
+  const response = await request({ endpoint, method, body });
+  const json = await response.json();
+  return json.data;
+});

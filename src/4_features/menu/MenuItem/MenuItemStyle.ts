@@ -27,4 +27,12 @@ export const styles = StyleSheet.create({
     maxWidth: '55%',
     marginLeft: 13,
   },
+  menu: {
+    width: 115,
+  },
+  add: {
+    width: 115,
+    height: 40,
+    alignSelf: 'center',
+  },
 });

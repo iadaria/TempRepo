@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
-import { fetchCart } from './cart.services';
+import { cartAdd, fetchCart } from './cart.services';
 import { CartItem } from './cart.types';
 
 export type CartState = {
@@ -9,6 +9,7 @@ export type CartState = {
   totalPrice: number;
   totalDiscount: number;
   total: number;
+  status: 'idle' | 'loading' | 'failed';
 };
 
 const initialState: CartState = {
@@ -17,6 +18,7 @@ const initialState: CartState = {
   totalPrice: 0,
   totalDiscount: 0,
   total: 0,
+  status: 'idle',
 };
 
 const cartSlice = createSlice({
@@ -28,6 +30,7 @@ const cartSlice = createSlice({
       const item = state.items.find(item => item.id === id);
       if ([-1, 1].includes(digit) && item && item.quantity + digit >= 0) {
         item.quantity += digit;
+        item.totalPrice += digit;
 
         cartSlice.caseReducers.calculate(state);
       }
@@ -47,10 +50,26 @@ const cartSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(fetchCart.fulfilled, (state, action) => {
-      state.items = action.payload;
-      cartSlice.caseReducers.calculate(state); //https://redux-toolkit.js.org/usage/usage-with-typescript#createslice
-    });
+    builder
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        state.items = action.payload;
+        cartSlice.caseReducers.calculate(state); //https://redux-toolkit.js.org/usage/usage-with-typescript#createslice
+      })
+      .addCase(cartAdd.fulfilled, (state, action) => {
+        state.status = 'idle';
+
+        const { id } = action.payload;
+
+        const index = state.items.findIndex(item => item.id === id);
+        if (index != -1) state.items[index] = action.payload;
+        cartSlice.caseReducers.calculate(state);
+      })
+      .addCase(cartAdd.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(cartAdd.rejected, state => {
+        state.status = 'failed';
+      });
   },
 });
 
@@ -64,3 +83,5 @@ export const selectPrices = (state: RootState) => {
   const { items, amount, ...others } = state.cart;
   return others;
 };
+
+export const selectStatus = (state: RootState) => state.cart.status;
