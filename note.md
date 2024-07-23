@@ -1,1 +1,1 @@
-- at first try without reset
+- check adding -1 after 0

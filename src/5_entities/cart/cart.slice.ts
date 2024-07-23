@@ -25,15 +25,9 @@ const cartSlice = createSlice({
   reducers: {
     add: (state, action: PayloadAction<{ id: string; digit: -1 | 1 }>) => {
       const { id, digit } = action.payload;
-      const index = state.items.findIndex(item => item.id === id);
-      if (index != -1 && [-1, 1].includes(digit) && state.amount + digit >= 0) {
-        const item = state.items[index];
-
-        item.quantity = item.quantity + digit;
-        item.totalPrice = item.totalPrice + digit * item.price;
-
-        state.items[index] = item;
-        state.amount = state.amount + digit;
+      const item = state.items.find(item => item.id === id);
+      if ([-1, 1].includes(digit) && item && item.quantity + digit >= 0) {
+        item.quantity += digit;
 
         cartSlice.caseReducers.calculate(state);
       }
@@ -41,10 +35,15 @@ const cartSlice = createSlice({
     calculate: state => {
       const items = state.items;
       state.amount = items.reduce((sum, item) => sum + item.quantity, 0);
-      state.totalPrice = items.reduce((sum, item) => sum + item.totalPrice, 0);
-      state.totalDiscount = items.reduce((sum, item) => sum + item.discount, 0);
-      state.total =
-        state.totalPrice - (state.totalPrice / 100) * state.totalDiscount;
+      state.totalPrice = items.reduce(
+        (sum, item) => sum + item.quantity * item.price,
+        0,
+      );
+      state.totalDiscount = items.reduce((sum, item) => {
+        console.log({ sum, plus: (item.discount / 100) * item.price });
+        return sum + (item.discount / 100) * item.price * item.quantity;
+      }, 0);
+      state.total = state.totalPrice - state.totalDiscount;
     },
   },
   extraReducers: builder => {

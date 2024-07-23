@@ -19,7 +19,7 @@ const OrderPriceAndPlace = () => {
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
     devModeChecks: { stabilityCheck: 'never' },
   });
-  const discount = (((totalDiscount * 1) / 100) * totalPrice).toFixed(2);
+
   return (
     <ImageBackground source={Pattern3} resizeMode="cover" style={styles.total}>
       <Row>
@@ -28,7 +28,7 @@ const OrderPriceAndPlace = () => {
       </Row>
       <Row>
         <AppText h5>Discount</AppText>
-        <AppText h5>{discount} $</AppText>
+        <AppText h5>{totalDiscount.toFixed(2)} $</AppText>
       </Row>
       <Row style={{ marginTop: 15 }}>
         <AppText bold h4>
