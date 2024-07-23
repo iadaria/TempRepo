@@ -1,15 +1,14 @@
-import { Menu } from '@src/5_entities/shop/shop.types';
+import { useAppDispatch } from '@src/1_app/hooks';
+import { add } from '@src/5_entities/cart/cart.slice';
+import { CartItem } from '@src/5_entities/cart/cart.types';
+import { MinusIcon, PlusIcon } from '@src/6_shared/assets/icons';
 import { AppText } from '@src/6_shared/ui/AppText';
+import { Button } from '@src/6_shared/ui/Button';
+import { IButton } from '@src/6_shared/ui/IButton';
+import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { styles } from './MenuItemStyle';
-import { logline } from '@src/6_shared/lib/debug/log';
-import { IButton } from '@src/6_shared/ui/IButton';
-import { MinusIcon, PlusIcon } from '@src/6_shared/assets/icons';
-import { Row } from '@src/6_shared/ui/Row/Row';
-import { CartItem } from '@src/5_entities/cart/cart.types';
-import { useAppDispatch } from '@src/1_app/hooks';
-import { add, decrement, increment } from '@src/5_entities/cart/cart.slice';
 
 interface MenuItemProps {
   onPress: () => void;
@@ -18,6 +17,8 @@ interface MenuItemProps {
 
 export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
   const dispatch = useAppDispatch();
+  const increment = () => dispatch(add({ id: menu.id, digit: 1 }));
+  const decrement = () => dispatch(add({ id: menu.id, digit: -1 }));
   return (
     <TouchableOpacity style={styles.item} onPress={onPress}>
       <Image style={styles.image} source={{ uri: menu.uri }} />
@@ -33,19 +34,22 @@ export const MenuItem = ({ menu, onPress }: MenuItemProps) => {
             $ {menu.price}
           </AppText>
         </View>
-        {menu.quantity > 0 && (
+        {menu.quantity > 0 ? (
           <Row style={{ width: 115 }}>
-            <IButton
-              icon={MinusIcon}
-              onPress={() => dispatch(add({ id: menu.id, digit: -1 }))}
-            />
+            <IButton icon={MinusIcon} onPress={decrement} />
             <AppText>{menu.quantity}</AppText>
-            <IButton
-              icon={PlusIcon}
-              onPress={() => dispatch(add({ id: menu.id, digit: 1 }))}
-              secondary
-            />
+            <IButton icon={PlusIcon} onPress={increment} secondary />
           </Row>
+        ) : (
+          <View
+            style={{
+              width: 115,
+              justifyContent: 'center',
+            }}>
+            <Button style={{ height: 40 }} onPress={increment} secondary>
+              <AppText>Add</AppText>
+            </Button>
+          </View>
         )}
 
         {/*<AppText bold h2 orange>${menu.price}</AppText> */}
