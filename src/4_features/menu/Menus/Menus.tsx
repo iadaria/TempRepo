@@ -1,18 +1,26 @@
-import { Menu } from '@src/5_entities/shop/shop.types';
 import React from 'react';
 import { MenuItems } from '../MenuItems';
 import { MenuList } from '../MenuList';
-import { StyleProp, ViewStyle } from 'react-native';
+import { Menu } from '@src/5_entities/shop/shop.types';
 
-export interface MenusProps {
-  menus: Menu[];
+/* export type GuiMenu = {
+  Order: React.ReactNode;
+  //History
+};
+
+const guiMenu: GuiMenu = {
+  OrderGUI,
+}; */
+
+export interface MenusProps<T> {
+  menus: T[];
   horizontal?: boolean;
   flat?: boolean;
   footer?: React.JSX.Element;
-  footerStyle?: StyleProp<ViewStyle>;
+  gui: React.FC<{ menu: T }>;
 }
 
-export const Menus = ({ flat, ...props }: MenusProps) => {
+export function Menus<T extends Menu>({ flat, ...props }: MenusProps<T>) {
   const List = flat ? MenuList : MenuItems;
   return <List {...props} />;
-};
+}

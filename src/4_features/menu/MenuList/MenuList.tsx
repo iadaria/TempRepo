@@ -4,24 +4,23 @@ import { AppText } from '@src/6_shared/ui/AppText';
 import { FlatList } from 'react-native';
 import { MenuItem } from '../MenuItem';
 import { MenusProps } from '../Menus';
-import { CartItem } from '@src/5_entities/cart/cart.types';
 
-interface MenuListProps extends MenusProps {}
+interface MenuListProps<T> extends MenusProps<T> {}
 
-export const MenuList = ({
+export function MenuList<T extends Menu>({
   menus,
   horizontal,
   footer,
-  footerStyle,
-}: MenuListProps) => {
+  gui,
+}: MenuListProps<T>) {
   const EmptyComponent = (
     <AppText h4 grey>
       Nothing Was Found
     </AppText>
   );
 
-  const renderItem = ({ item }: { item: CartItem }) => (
-    <MenuItem menu={item} onPress={() => {}} />
+  const renderItem = ({ item }: { item: T }) => (
+    <MenuItem menu={item} gui={gui} onPress={() => {}} />
   );
 
   return (
@@ -34,7 +33,6 @@ export const MenuList = ({
       renderItem={renderItem}
       ListEmptyComponent={EmptyComponent}
       ListFooterComponent={footer}
-      ListFooterComponentStyle={footerStyle}
     />
   );
-};
+}
