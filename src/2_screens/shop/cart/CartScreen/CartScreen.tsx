@@ -10,8 +10,8 @@ import { Box } from '@src/6_shared/ui/Box';
 import { IButton } from '@src/6_shared/ui/IButton';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { OrderGUI } from '../OrderGUI';
 import { PriceAndOrder } from '../PriceAndOrder';
+import { CartGUI } from '../CartGUI';
 
 export const CartScreen = () => {
   const cartItems = useSelector(selectCartItems);
@@ -26,7 +26,7 @@ export const CartScreen = () => {
           onPress={() => navigate(routes.cart.OrderHistory)}
         />
       </Header>
-      <Menus flat menus={cartItems} footer={<PriceAndOrder />} gui={OrderGUI} />
+      <Menus flat menus={cartItems} footer={<PriceAndOrder />} gui={CartGUI} />
     </Box>
   );
 };

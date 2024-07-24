@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleProp, Text, TextStyle } from 'react-native';
+import { Text } from 'react-native';
 import { styles } from './AppTextStyle';
-import { log, logline } from '@src/6_shared/lib/debug/log';
 
 type Item = [key: Font & TextSize & Color, value: boolean];
 
@@ -11,7 +10,7 @@ type Font = (typeof fonts)[number];
 const headers = ['h1', 'h2', 'h3', 'h4', 'h5'] as const;
 type TextSize = (typeof headers)[number];
 
-const colors = ['orange', 'grey', 'green'] as const;
+const colors = ['orange', 'grey', 'green', 'black'] as const;
 type Color = (typeof colors)[number];
 
 type TextSizeProps = Partial<Record<TextSize, boolean>>;
@@ -29,6 +28,7 @@ interface AppTextProps extends TextSizeProps {
   grey?: boolean;
   center?: boolean; // TODO Deleting
   green?: boolean;
+  black?: boolean;
   //style?: StyleProp<TextStyle>;
 }
 

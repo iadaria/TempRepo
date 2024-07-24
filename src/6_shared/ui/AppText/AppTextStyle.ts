@@ -5,8 +5,9 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   text: {
     color: 'white',
-    textTransform: 'capitalize',
     fontFamily: 'benton-sans-bold',
+    textTransform: 'capitalize',
+    //..debugStyles.blue,
   },
   h1: {
     fontSize: 31,
@@ -34,6 +35,9 @@ export const styles = StyleSheet.create({
   grey: {
     color: colors.text,
   },
+  black: {
+    color: '#0D0D0D',
+  },
   green: {
     color: colors.green[10],
   },
@@ -48,6 +52,5 @@ export const styles = StyleSheet.create({
   },
   center: {
     textAlign: 'center',
-    ...debugStyles.red,
   },
 });

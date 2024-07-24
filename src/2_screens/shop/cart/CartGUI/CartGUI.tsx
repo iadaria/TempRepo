@@ -9,9 +9,9 @@ import { IButton } from '@src/6_shared/ui/IButton';
 import { Row } from '@src/6_shared/ui/Row/Row';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { styles } from './OrderGUIStyle';
+import { styles } from './CartGUIStyle';
 
-export const OrderGUI: React.FC<{ menu: CartItem }> = ({ menu }) => {
+export const CartGUI: React.FC<{ menu: CartItem }> = ({ menu }) => {
   const dispatch = useAppDispatch();
 
   const status = useSelector(selectStatus);
