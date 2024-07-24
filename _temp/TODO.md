@@ -72,3 +72,5 @@ Image:
 
 - https://github.com/georstat/react-native-image-cache
 - https://github.com/xerdnu/react-native-blasted-image
+
+- get discount from user profile

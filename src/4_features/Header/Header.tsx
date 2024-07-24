@@ -35,7 +35,7 @@ export const Header = ({
       <Row>
         <BackButton />
         {h1}
-        <Row gap={10}>
+        <Row gap={10} style={{ justifyContent: 'flex-end' }}>
           {children}
           {notification && <IButton icon={Notification} onPress={() => {}} />}
         </Row>

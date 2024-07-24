@@ -6,6 +6,7 @@ type RowProps = {
   gap?: number;
   style?: StyleProp<ViewStyle>;
 };
+//justifyContent: 'flex-end'
 
 export const Row = ({ children, style, gap = 0 }: RowProps) => {
   return <View style={[styles.group, { gap }, style]}>{children}</View>;

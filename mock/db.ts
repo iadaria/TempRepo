@@ -34,13 +34,26 @@ const db = factory({
     userId: Number,
     productId: Number,
     name: String,
-    category: String,
+    category: String, // ?
     uri: String,
     price: Number,
     quantity: Number,
     totalPrice: Number,
     restaurantName: String,
     discount: Number,
+  },
+  order: {
+    id: primaryKey(Number),
+    date: () => new Date(),
+    userId: Number,
+    productId: Number,
+    name: String,
+    uri: String,
+    price: Number,
+    quantity: Number,
+    totalPrice: Number,
+    restaurantName: String,
+    status: String,
   },
 });
 
@@ -88,75 +101,30 @@ db.cart.create({
   restaurantName: 'Vegan Resto',
 });
 
-/* db.cart.create({
-  ...MENUS[1],
-  id: 3,
-  productId: MENUS[1].id,
+db.order.create({
+  ...MENUS[5],
+  id: 1,
+  productId: MENUS[5].id,
   quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
+  totalPrice: 1 * MENUS[5].price,
   userId: 1,
   restaurantName: 'Vegan Resto',
+  date: new Date(),
+  status: 'done',
 });
 
-db.cart.create({
-  ...MENUS[1],
-  id: 4,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
+db.order.create({
+  ...MENUS[6],
+  id: 2,
+  productId: MENUS[6].id,
+  quantity: 2,
+  totalPrice: 2 * MENUS[5].price,
   userId: 1,
   restaurantName: 'Vegan Resto',
-}); */
-
-/* db.cart.create({
-  ...MENUS[1],
-  id: 5,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
+  date: new Date(),
+  status: 'delivery ',
 });
 
-db.cart.create({
-  ...MENUS[1],
-  id: 6,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
-});
-
-db.cart.create({
-  ...MENUS[1],
-  id: 7,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
-});
-db.cart.create({
-  ...MENUS[1],
-  id: 8,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
-});
-
-db.cart.create({
-  ...MENUS[1],
-  id: 9,
-  productId: MENUS[1].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[1].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
-});
- */
 export { db };
 
 export const menus = db.menu.getAll();
