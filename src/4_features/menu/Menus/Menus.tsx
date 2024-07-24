@@ -3,15 +3,6 @@ import { MenuItems } from '../MenuItems';
 import { MenuList } from '../MenuList';
 import { Menu } from '@src/5_entities/shop/shop.types';
 
-/* export type GuiMenu = {
-  Order: React.ReactNode;
-  //History
-};
-
-const guiMenu: GuiMenu = {
-  OrderGUI,
-}; */
-
 export interface MenusProps<T> {
   menus: T[];
   horizontal?: boolean;

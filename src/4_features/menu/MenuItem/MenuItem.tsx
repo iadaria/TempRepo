@@ -1,4 +1,3 @@
-import { CartItem } from '@src/5_entities/cart/cart.types';
 import { Menu } from '@src/5_entities/shop/shop.types';
 import { AppText } from '@src/6_shared/ui/AppText';
 import React from 'react';

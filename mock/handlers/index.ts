@@ -3,6 +3,7 @@ import { shopFilterHandlers } from './filter.handlers';
 import { shopHandlers } from './shop.handlers';
 import { userHandlers } from './user.handlers';
 import { cartHandlers } from './cart.handlers';
+import { orderHandlers } from './order.handlers';
 
 export const handlers = [
   ...userHandlers,
@@ -11,4 +12,5 @@ export const handlers = [
   ...restaurantHandlers,
   ...menuHandlers,
   ...cartHandlers,
+  ...orderHandlers,
 ];
