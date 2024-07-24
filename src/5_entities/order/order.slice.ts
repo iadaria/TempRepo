@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { OrderItem } from './order.types';
+import { OrderItem, OrderStatus } from './order.types';
 import { fetchOrders } from './order.services';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
 
@@ -17,7 +17,11 @@ const orderSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.map(item => {
+        if (item.status === OrderStatus.Done)
+          return { ...item, disabled: true };
+        return item;
+      });
     });
   },
 });

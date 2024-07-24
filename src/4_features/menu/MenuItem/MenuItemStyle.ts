@@ -35,4 +35,7 @@ export const styles = StyleSheet.create({
     height: 40,
     alignSelf: 'center',
   },
+  disabled: {
+    opacity: 0.5,
+  },
 });

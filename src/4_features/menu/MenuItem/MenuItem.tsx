@@ -1,7 +1,7 @@
 import { Menu } from '@src/5_entities/shop/shop.types';
 import { AppText } from '@src/6_shared/ui/AppText';
 import React from 'react';
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, Pressable, TouchableOpacity, View } from 'react-native';
 import { styles } from './MenuItemStyle';
 
 interface MenuItemProps<T extends Menu> {
@@ -15,8 +15,13 @@ export function MenuItem<T extends Menu>({
   onPress,
   gui: GUI,
 }: MenuItemProps<T>) {
+  const style = {
+    ...styles.item,
+    ...(menu.disabled && styles.disabled),
+  };
+
   return (
-    <TouchableOpacity style={styles.item} onPress={onPress}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <Image style={styles.image} source={{ uri: menu.uri }} />
       <View style={styles.textAndPriceWrapper}>
         <View style={styles.column}>

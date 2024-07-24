@@ -10,7 +10,11 @@ export type Banner = {
   img: string;
 };
 
-export type Menu = {
+export type Interface = {
+  disabled?: boolean;
+};
+
+export type Menu = Interface & {
   id: string;
   name: string;
   price: number;
