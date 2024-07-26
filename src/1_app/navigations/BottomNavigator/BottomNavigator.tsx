@@ -17,6 +17,12 @@ const { tabs } = routes;
 
 export const BottomNavigator = createBottomTabNavigator({
   initialRouteName: tabs.Cart,
+  /* screenListeners: ({ navigation, route }) => ({
+    state: (e: any) => {
+      //e.preventDefault();
+      navigation.reset({ index: 0, routes: [{ name: route?.name }] });
+    },
+  }), */
   screenOptions: TabBarOptions,
   screens: {
     [tabs.Home]: {

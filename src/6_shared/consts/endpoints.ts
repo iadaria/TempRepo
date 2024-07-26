@@ -20,4 +20,7 @@ export const endpoints = {
     removeBookmark: '/shop/bookmarks/remove',
     ordersHistory: '/shop/order',
   },
+  order: {
+    create: '/shop/order/create',
+  },
 };

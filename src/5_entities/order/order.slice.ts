@@ -1,31 +1,42 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { OrderItem, OrderStatus } from './order.types';
-import { fetchOrders } from './order.services';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Order, OrderStatus } from './order.types';
+import { createOrder, fetchOrders } from './order.services';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
+import { logline } from '@src/6_shared/lib/debug/log';
 
 export type OrderState = {
-  items: OrderItem[];
+  orders: Order[];
 };
 
 const initialState: OrderState = {
-  items: [],
+  orders: [],
 };
 
 const orderSlice = createSlice({
   name: 'order',
   initialState,
-  reducers: {},
+  reducers: {
+    checkStatus: (state, action: PayloadAction<Order[]>) => {
+      state.orders = action.payload.map(order => {
+        const items = order.items.map(item => ({
+          ...item,
+          disabled: order.status === OrderStatus.Done,
+        }));
+        return { ...order, items };
+      });
+    },
+  },
   extraReducers: builder => {
     builder.addCase(fetchOrders.fulfilled, (state, action) => {
-      state.items = action.payload.map(item => {
-        if (item.status === OrderStatus.Done)
-          return { ...item, disabled: true };
-        return item;
-      });
+      if (action.payload) orderSlice.caseReducers.checkStatus(state, action);
+    });
+
+    builder.addCase(createOrder.fulfilled, (state, action) => {
+      if (action.payload) orderSlice.caseReducers.checkStatus(state, action);
     });
   },
 });
 
 export const orderReducer = orderSlice.reducer;
 
-export const selectOrderItems = (state: RootState) => state.order.items;
+export const selectOrderItems = (state: RootState) => state.order.orders;

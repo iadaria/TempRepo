@@ -2,6 +2,7 @@ import { factory, manyOf, oneOf, primaryKey } from '@mswjs/data';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { MENUS } from './data/menu.data';
 import { RESTAURANTS } from './data/restaurants.data';
+import { OrderStatus } from '@src/5_entities/order/order.types';
 
 const db = factory({
   user: {
@@ -44,16 +45,24 @@ const db = factory({
   },
   order: {
     id: primaryKey(Number),
-    date: () => new Date(),
     userId: Number,
-    productId: Number,
+    date: () => new Date(),
+    deliveryAddress: () => 'address 1',
+    status: String,
+    totalAmount: Number,
+    items: manyOf('orderDetails'),
+  },
+  orderDetails: {
+    id: primaryKey(Number),
+    orderId: Number,
+    order: oneOf('order'),
+    productId: Number, //menuItemId
     name: String,
     uri: String,
     price: Number,
     quantity: Number,
     totalPrice: Number,
     restaurantName: String,
-    status: String,
   },
 });
 
@@ -101,28 +110,33 @@ db.cart.create({
   restaurantName: 'Vegan Resto',
 });
 
-db.order.create({
-  ...MENUS[5],
-  id: 1,
-  productId: MENUS[5].id,
-  quantity: 1,
-  totalPrice: 1 * MENUS[5].price,
-  userId: 1,
-  restaurantName: 'Vegan Resto',
-  date: new Date(),
-  status: 'done',
-});
+const items = [
+  db.orderDetails.create({
+    ...MENUS[5],
+    orderId: 1,
+    id: 1,
+    productId: MENUS[5].id,
+    quantity: 1,
+    totalPrice: 1 * MENUS[5].price,
+    restaurantName: 'Vegan Resto',
+  }),
+  db.orderDetails.create({
+    ...MENUS[6],
+    orderId: 1,
+    id: 2,
+    productId: MENUS[6].id,
+    quantity: 2,
+    totalPrice: 2 * MENUS[5].price,
+    restaurantName: 'Vegan Resto',
+  }),
+];
 
 db.order.create({
-  ...MENUS[6],
-  id: 2,
-  productId: MENUS[6].id,
-  quantity: 2,
-  totalPrice: 2 * MENUS[5].price,
+  id: 1,
   userId: 1,
-  restaurantName: 'Vegan Resto',
-  date: new Date(),
-  status: 'delivery ',
+  status: OrderStatus.Done,
+  totalAmount: 1 * MENUS[5].price + 2 * MENUS[5].price,
+  items,
 });
 
 export { db };

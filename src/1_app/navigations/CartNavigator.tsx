@@ -7,7 +7,7 @@ import { routes } from '@src/6_shared/consts/routes';
 const { cart } = routes;
 
 export const CartNavigator = createNativeStackNavigator({
-  initialRouteName: cart.OrderHistory,
+  //initialRouteName: cart.OrderHistory,
   screenOptions: {
     headerShown: false,
   },

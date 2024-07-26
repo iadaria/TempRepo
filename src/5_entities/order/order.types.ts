@@ -1,9 +1,16 @@
 import { Menu } from '../shop/shop.types';
 
-export type OrderItem = Menu & {
+export type Order = {
+  id: string;
+  status: OrderStatus;
+  totalAmount: number;
+  deliveryAddress: string;
+  date: Date;
+  items: OrderMenuItem[];
+};
+export type OrderMenuItem = Menu & {
   productId: string;
   quantity: number;
-  status: OrderStatus;
   totalPrice: number;
   date: Date;
 };

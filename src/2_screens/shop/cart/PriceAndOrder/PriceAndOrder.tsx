@@ -7,8 +7,11 @@ import React from 'react';
 import { ImageBackground } from 'react-native';
 import { useSelector } from 'react-redux';
 import { styles } from './PriceAndOrderStyle';
+import { useAppDispatch } from '@src/1_app/hooks';
+import { createOrder } from '@src/5_entities/order/order.services';
 
 export const PriceAndOrder = () => {
+  const dispatch = useAppDispatch();
   const { total, totalDiscount, totalPrice } = useSelector(selectPrices, {
     devModeChecks: { stabilityCheck: 'never' },
   });
@@ -33,7 +36,10 @@ export const PriceAndOrder = () => {
           {total} $
         </AppText>
       </Row>
-      <Button disabled={disabled} style={styles.btnOrder}>
+      <Button
+        disabled={disabled}
+        style={styles.btnOrder}
+        onPress={() => dispatch(createOrder(0))}>
         <AppText green bold h5>
           Place my Order
         </AppText>
