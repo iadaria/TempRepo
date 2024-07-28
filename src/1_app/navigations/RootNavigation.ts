@@ -13,6 +13,12 @@ export function navigate(screen: string, params?: object) {
   }
 }
 
+export function goBack() {
+  if (navigationRef.isReady() && navigationRef.canGoBack()) {
+    navigationRef.goBack();
+  }
+}
+
 export function navReset(screen: string, secondScreen?: string) {
   logline('navReset to', { screen });
   const routes = [{ name: screen }];

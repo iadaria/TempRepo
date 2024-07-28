@@ -1,23 +1,26 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import { Box } from '@src/6_shared/ui/Box';
+import { goBack } from '@src/1_app/navigations/RootNavigation';
 import { Header } from '@src/4_features/Header';
-import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
-import { focusOrdersScreen } from '@src/5_entities/order/order.services';
-import { useSelector } from 'react-redux';
-import { selectOrderItems } from '@src/5_entities/order/order.slice';
 import { Menus } from '@src/4_features/menu/Menus';
+import { selectOrder } from '@src/5_entities/order/order.slice';
+import { Box } from '@src/6_shared/ui/Box';
+import React from 'react';
+import { Alert } from 'react-native';
+import { useSelector } from 'react-redux';
 import { OrderGUI } from './OrderGUI';
 
 export const OrderHistoryScreen = () => {
-  const items = useSelector(selectOrderItems);
+  const order = useSelector(selectOrder);
 
-  useFocus(focusOrdersScreen);
+  if (!order) {
+    Alert.alert('Something goes wrong. Select an order.');
+    goBack();
+    return null;
+  }
 
   return (
     <Box>
       <Header subtitle="Order history" />
-      <Menus flat menus={items} gui={OrderGUI} />
+      <Menus flat menus={order.items} gui={OrderGUI} />
     </Box>
   );
 };

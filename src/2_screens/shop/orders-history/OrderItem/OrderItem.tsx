@@ -1,5 +1,6 @@
 import { useAppDispatch } from '@src/1_app/hooks';
 import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { pickOrder } from '@src/5_entities/order/order.slice';
 import { Order } from '@src/5_entities/order/order.types';
 import { routes } from '@src/6_shared/consts/routes';
 import { formatter } from '@src/6_shared/lib/date/formatter';
@@ -7,7 +8,6 @@ import { AppText } from '@src/6_shared/ui/AppText';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { styles } from './OrderItemStyle';
-import { selectOrder } from '@src/5_entities/order/order.slice';
 
 interface OrderItemProps {
   order: Order;
@@ -16,7 +16,7 @@ interface OrderItemProps {
 export function OrderItem({ order }: OrderItemProps) {
   const dispatch = useAppDispatch();
   function seeOrderDetails() {
-    dispatch(selectOrder(order));
+    dispatch(pickOrder(order));
     navigate(routes.cart.OrderHistory);
   }
 

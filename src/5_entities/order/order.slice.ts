@@ -27,7 +27,7 @@ const orderSlice = createSlice({
         return { ...order, items };
       });
     },
-    selectOrder: (state, action: PayloadAction<Order>) => {
+    pickOrder: (state, action: PayloadAction<Order>) => {
       state.selectedOrder = action.payload;
     },
     deselectOrder: (state, _) => {
@@ -47,6 +47,7 @@ const orderSlice = createSlice({
 
 export const orderReducer = orderSlice.reducer;
 
-export const { selectOrder, deselectOrder } = orderSlice.actions;
+export const { pickOrder, deselectOrder } = orderSlice.actions;
 
 export const selectOrders = (state: RootState) => state.order.orders;
+export const selectOrder = (state: RootState) => state.order.selectedOrder;
