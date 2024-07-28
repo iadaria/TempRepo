@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Order, OrderStatus } from './order.types';
 import { createOrder, fetchOrders } from './order.services';
 import { RootState } from '@src/1_app/providers/StoreProvider/config/store';
-import { logline } from '@src/6_shared/lib/debug/log';
+import { log, logline } from '@src/6_shared/lib/debug/log';
 
 export type OrderState = {
   orders: Order[];

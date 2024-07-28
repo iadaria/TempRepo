@@ -148,6 +148,19 @@ export { db };
 export const menus = db.menu.getAll();
 export const restaurants = db.restaurant.getAll();
 
+export function lastId(type: string) {
+  return db[type]
+    .getAll()
+    .reduce(
+      (prev: any, current: any) => (current.id > prev ? current.id : prev),
+      1,
+    );
+}
+
+export const lastOrderId = db.order
+  .getAll()
+  .reduce((prev, current) => (current.id > prev ? current.id : prev), 1);
+
 export function dataByType(type: 'menu' | 'restaurant') {
   return db[type];
 }

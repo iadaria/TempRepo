@@ -2,7 +2,7 @@ import { OrderStatus } from '@src/5_entities/order/order.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { logline } from '@src/6_shared/lib/debug/log';
-import { db } from 'mock/db';
+import { db, lastId, lastOrderId } from 'mock/db';
 import { withAuth } from 'mock/middleware';
 import { DefaultBodyType, http, HttpResponse, StrictRequest } from 'msw';
 
@@ -33,16 +33,38 @@ export const orderHandlers = [
       const userId = resolve.request.userId;
       const where = { userId: { equals: userId } };
 
-      const items = db.cart.findMany({ where });
+      const cartItems = db.cart.findMany({ where });
 
-      logline('found items', { items });
+      //logline('found items', { items });
 
-      if (!items.length) {
+      if (!cartItems.length) {
         return new HttpResponse('Add products into the cart', { status: 400 });
       }
 
-      items.forEach(({ id, ...props }) => {
-        db.order.create({ ...props, status: OrderStatus.Proccess });
+      const orderId = lastOrderId + 1;
+      const orderDetailsId = lastId('orderDetails');
+      console.log({ orderDetailsId });
+      console.log({ lastOrderId });
+
+      const orderItems = cartItems.map(({ id, ...props }, index) =>
+        db.orderDetails.create({
+          ...props,
+          id: orderDetailsId + index + 1, // 3 + index (2 + 1 + index)
+          orderId,
+        }),
+      );
+
+      const totalAmount = orderItems.reduce(
+        (sum, item) => sum + item.totalPrice,
+        0,
+      );
+      const order = db.order.create({
+        items: orderItems,
+        id: orderId,
+        userId,
+        status: OrderStatus.Proccess,
+        date: new Date(),
+        totalAmount,
       });
 
       db.cart.deleteMany({ where });

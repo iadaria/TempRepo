@@ -23,7 +23,7 @@ export const CartScreen = () => {
       <Header subtitle="Order details">
         <IButton
           icon={HistoryIcon}
-          onPress={() => navigate(routes.cart.OrderHistory)}
+          onPress={() => navigate(routes.cart.OrdersHistory)}
         />
       </Header>
       <Menus flat menus={cartItems} footer={<PriceAndOrder />} gui={CartGUI} />

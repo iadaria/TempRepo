@@ -21,7 +21,7 @@ export function MenuItem<T extends Menu>({
   };
 
   return (
-    <TouchableOpacity style={style} onPress={onPress}>
+    <TouchableOpacity style={style} onPress={onPress} disabled={menu.disabled}>
       <Image style={styles.image} source={{ uri: menu.uri }} />
       <View style={styles.textAndPriceWrapper}>
         <View style={styles.column}>
