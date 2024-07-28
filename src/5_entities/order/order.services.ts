@@ -4,6 +4,8 @@ import { request } from '@src/6_shared/lib/api/request';
 import { Order } from './order.types';
 import { Alert } from 'react-native';
 import { fetchCart } from '../cart/cart.services';
+import { navigate } from '@src/1_app/navigations/RootNavigation';
+import { routes } from '@src/6_shared/consts/routes';
 
 const { shop } = endpoints;
 
@@ -35,7 +37,7 @@ export const createOrder = createAsyncThunk<Order[]>(
     Alert.alert('Your order was created successful');
     dispatch(fetchCart());
     dispatch(fetchOrders());
-
+    navigate(routes.cart.OrdersHistory);
     return json.data;
   },
 );

@@ -1,8 +1,7 @@
 import { OrderStatus } from '@src/5_entities/order/order.types';
 import { endpoints } from '@src/6_shared/consts/endpoints';
 import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
-import { logline } from '@src/6_shared/lib/debug/log';
-import { db, lastId, lastOrderId } from 'mock/db';
+import { db } from 'mock/db';
 import { withAuth } from 'mock/middleware';
 import { DefaultBodyType, http, HttpResponse, StrictRequest } from 'msw';
 
@@ -41,15 +40,12 @@ export const orderHandlers = [
         return new HttpResponse('Add products into the cart', { status: 400 });
       }
 
-      const orderId = lastOrderId + 1;
-      const orderDetailsId = lastId('orderDetails');
-      console.log({ orderDetailsId });
-      console.log({ lastOrderId });
-
+      const orderId = 2;
+      const orderDetailsId = 3;
       const orderItems = cartItems.map(({ id, ...props }, index) =>
         db.orderDetails.create({
           ...props,
-          id: orderDetailsId + index + 1, // 3 + index (2 + 1 + index)
+          id: orderDetailsId + index,
           orderId,
         }),
       );

@@ -19,13 +19,14 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     checkStatus: (state, action: PayloadAction<Order[]>) => {
-      state.orders = action.payload.map(order => {
+      const orders = action.payload.map(order => {
         const items = order.items.map(item => ({
           ...item,
           disabled: order.status === OrderStatus.Done,
         }));
         return { ...order, items };
       });
+      state.orders = orders.sort((a, b) => new Date(b.date) - new Date(a.date));
     },
     pickOrder: (state, action: PayloadAction<Order>) => {
       state.selectedOrder = action.payload;
