@@ -13,6 +13,7 @@ export const routes = {
   cart: {
     Cart: 'CartScreen',
     OrderHistory: 'OrderHistoryScreen',
+    OrdersHistory: 'OrdersHistoryScreen',
   },
 };
 
