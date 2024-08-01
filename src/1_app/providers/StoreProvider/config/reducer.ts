@@ -3,6 +3,7 @@ import { settingsReducer } from '@src/1_app/services/msw';
 
 import authReducer from '@src/5_entities/auth/auth.slice';
 import { cartReducer } from '@src/5_entities/cart/cart.slice';
+import { notifyReducer } from '@src/5_entities/notification/notify.slice';
 import { orderReducer } from '@src/5_entities/order/order.slice';
 import { shopReducer } from '@src/5_entities/shop/shop.slice';
 
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   settings: settingsReducer,
   cart: cartReducer,
   order: orderReducer,
+  notifications: notifyReducer,
 });

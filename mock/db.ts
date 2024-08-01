@@ -4,6 +4,7 @@ import { MENUS } from './data/menu.data';
 import { RESTAURANTS } from './data/restaurants.data';
 import { OrderStatus } from '@src/5_entities/order/order.types';
 import { log } from '@src/6_shared/lib/debug/log';
+import { NotifyType } from '@src/5_entities/notification/notify.types';
 
 const db = factory({
   user: {
@@ -64,6 +65,15 @@ const db = factory({
     quantity: Number,
     totalPrice: Number,
     restaurantName: String,
+  },
+  notification: {
+    id: primaryKey(Number),
+    userId: Number,
+    title: String,
+    message: String,
+    type: String,
+    isRead: Boolean,
+    date: () => new Date(),
   },
 });
 
@@ -141,25 +151,39 @@ const order = db.order.create({
   date: new Date('2024-07-21T11:41:58.477Z'),
 });
 
+db.notification.create({
+  id: 1,
+  userId: 1,
+  title: 'Discount for a month',
+  message: 'We give you a discount for a month',
+  type: NotifyType.Info,
+  isRead: true,
+});
+db.notification.create({
+  id: 2,
+  userId: 1,
+  title: 'Small survey',
+  message:
+    'We are conducting a survey to find out what our customers think of about us',
+  type: NotifyType.Info,
+  isRead: false,
+});
+db.notification.create({
+  id: 3,
+  userId: 1,
+  title: 'Your order has been canceled',
+  message:
+    'We are conducting a survey to find out what our customers think of about us',
+  type: NotifyType.Important,
+  isRead: false,
+});
+
 //log('db', { order });
 
 export { db };
 
 export const menus = db.menu.getAll();
 export const restaurants = db.restaurant.getAll();
-
-export function lastId(type: string) {
-  return db[type]
-    .getAll()
-    .reduce(
-      (prev: any, current: any) => (current.id > prev ? current.id : prev),
-      1,
-    );
-}
-
-export const lastOrderId = db.order
-  .getAll()
-  .reduce((prev, current) => (current.id > prev ? current.id : prev), 1);
 
 export function dataByType(type: 'menu' | 'restaurant') {
   return db[type];
@@ -170,6 +194,11 @@ export const restaurantHandlers = db.restaurant.toHandlers(
   baseUrl('/shop'),
 );
 export const menuHandlers = db.menu.toHandlers('rest', baseUrl('/shop'));
+
+export const notifyHandlers = db.notification.toHandlers(
+  'rest',
+  baseUrl('/shop'),
+);
 
 //console.log(restaurants);
 //log('[db] restaurants', db.restaurant.getAll());

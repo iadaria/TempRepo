@@ -23,4 +23,7 @@ export const endpoints = {
   order: {
     create: '/shop/order/create',
   },
+  notify: {
+    fetch: '/shop/noitifcations',
+  },
 };

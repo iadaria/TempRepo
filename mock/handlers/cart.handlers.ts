@@ -3,16 +3,10 @@ import { baseUrl } from '@src/6_shared/lib/api/baseUrl';
 import { log } from '@src/6_shared/lib/debug/log';
 import { db } from 'mock/db';
 import { withAuth } from 'mock/middleware';
-import { DefaultBodyType, http, HttpResponse, StrictRequest } from 'msw';
+import { http, HttpResponse } from 'msw';
+import { ResolverProps } from './handler.types';
 
 const { shop } = endpoints;
-
-interface ResolverProps {
-  request: {
-    userId: number;
-    _bodyText: string;
-  } & StrictRequest<DefaultBodyType>;
-}
 
 export const cartHandlers = [
   http.get(

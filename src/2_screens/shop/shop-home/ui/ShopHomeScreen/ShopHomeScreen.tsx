@@ -1,7 +1,7 @@
 import { Banner } from '@src/3_widgets/banner/Banner';
 import { RestaurantList } from '@src/4_features/RestaurantList';
 import { Box } from '@src/6_shared/ui/Box';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 import { useFocus } from '@src/1_app/navigations/model/lib/hooks/useFocus';
@@ -16,10 +16,13 @@ import {
 import { NavigationProp } from '@src/6_shared/config/navigation/navigation.types';
 import { routes } from '@src/6_shared/consts/routes';
 import { useSelector } from 'react-redux';
+import { fetchNotifications } from '@src/5_entities/notification/notify.services';
+import { useAppDispatch } from '@src/1_app/hooks';
 
 const { shop } = routes;
 
 export const ShopHomeScreen = () => {
+  const dispatch = useAppDispatch();
   const navigation = useNavigation<NavigationProp>();
 
   const restaurants = useSelector(selectRestaurants);
@@ -27,9 +30,14 @@ export const ShopHomeScreen = () => {
 
   useFocus(focusShopHomeScreen);
 
+  useEffect(() => {
+    const timeId = setInterval(() => dispatch(fetchNotifications()), 5000);
+    return () => clearInterval(timeId);
+  }, []);
+
   return (
     <Box scroll>
-      <FilterHeader />
+      <FilterHeader text="Find Your Favorite Food" />
       <Banner />
       <ListHeader
         title="Nearest Restaurant"

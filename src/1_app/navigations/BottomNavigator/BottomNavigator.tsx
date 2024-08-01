@@ -16,7 +16,7 @@ const { tabs } = routes;
 // ScreenComponentType<ParamListBase, string>
 
 export const BottomNavigator = createBottomTabNavigator({
-  initialRouteName: tabs.Cart,
+  //initialRouteName: tabs.Cart,
   /* screenListeners: ({ navigation, route }) => ({
     state: (e: any) => {
       //e.preventDefault();
